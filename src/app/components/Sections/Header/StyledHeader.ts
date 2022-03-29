@@ -3,4 +3,5 @@ import headerBg from '../../../../assets/images/header-bg.png';
 
 export const StyledHeader = styled.header`
   background-image: url(${headerBg});
+  padding-bottom: 32px;
 `;
