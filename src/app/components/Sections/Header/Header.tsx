@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Cart from '../../Blocks/Cart/Cart';
 import Contacts from '../../Blocks/Contacts/Contacts';
 import Container from '../../Blocks/Container/Container';
 import Search from '../../Blocks/Search/Search';
@@ -12,6 +13,7 @@ const Header: FC = () => {
         <TopLine />
         <Contacts />
         <Search />
+        <Cart />
       </Container>
     </StyledHeader>
   );

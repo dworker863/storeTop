@@ -6,7 +6,7 @@ export const StyledSearch = styled.div`
   /* align-self: flex-end; */
   width: 730px;
   height: 60px;
-  margin-top: 90px;
+  margin-top: 35px;
   margin-left: 110px;
   border: 1px solid #979797;
   border-radius: 7px;
