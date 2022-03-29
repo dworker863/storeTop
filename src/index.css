@@ -1,8 +1,31 @@
+@font-face {
+  font-family: Gilroy, serif;
+  font-style: normal;
+  font-weight: 700;
+  src: local(''), url('assets/fonts/Gilroy/Gilroy-Bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gilroy, serif;
+  font-style: normal;
+  font-weight: 900;
+  src: local(''), url('assets/fonts/Gilroy/Gilroy-Heavy.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 700;
+  src: local(''), url('assets/fonts/Roboto/Roboto-Bold.woff2') format('woff2');
+  font-display: swap;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
