@@ -22,6 +22,7 @@ export const StyledCartIcon = styled.img`
   width: 65px;
   height: 60px;
   margin-right: 23px;
+  transform: translateY(-8px);
 
   &:before {
     content: '';

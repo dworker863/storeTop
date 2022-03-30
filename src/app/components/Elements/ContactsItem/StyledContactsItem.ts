@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledContactsItem = styled.div``;
+export const StyledContactsItem = styled.div`
+  margin-bottom: 15px;
+`;
 
 export const StyledContactsItemTitle = styled.h3`
   margin-top: 0;

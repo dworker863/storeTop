@@ -21,4 +21,8 @@ export const StyledRequest = styled.a`
   text-decoration: underline;
   font-weight: 400;
   transform: translateX(18px);
+
+  @media (max-width: 768px) {
+    transform: translateX(0px);
+  }
 `;
