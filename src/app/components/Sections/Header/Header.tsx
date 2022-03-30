@@ -18,7 +18,7 @@ const Header: FC = () => {
   return (
     <StyledHeader>
       <NavMobile isActive={hamburgerActive} />
-      <Container>
+      <Container type="header">
         <Hamburger
           hamburgerActive={hamburgerActive}
           clickHandler={hamburgerClickHndler}

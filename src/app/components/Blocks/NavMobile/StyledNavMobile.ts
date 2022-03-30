@@ -8,7 +8,7 @@ export const StyledNavMobileWrapper = styled.nav<IStyledActiveComponent>`
   right: 0;
   width: 320px;
   height: 100vh;
-  padding: 200px 0;
+  padding: 130px 0;
   background-color: #fff;
   transform: translateX(320px);
   transition: all 0.3s;

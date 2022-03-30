@@ -3,12 +3,19 @@ import { ThemeProvider } from 'styled-components';
 
 import { commonTheme } from './app/commonStyles/theme';
 import Menu from './app/components/Blocks/Menu/Menu';
+import PopularGoods from './app/components/Sections/PopularGoods/PopularGoods';
+import Container from './app/components/Blocks/Container/Container';
 
 function App() {
   return (
     <ThemeProvider theme={commonTheme}>
       <Header />
-      <Menu />
+      <main>
+        <Menu />
+        <Container type="common">
+          <PopularGoods />
+        </Container>
+      </main>
     </ThemeProvider>
   );
 }

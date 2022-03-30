@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import { IStyledContainer } from './IContainer';
+import styled, { css } from 'styled-components';
 
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.div<IStyledContainer>`
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -35,4 +36,11 @@ export const StyledContainer = styled.div`
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  ${({ type }) =>
+    type === 'common' &&
+    css`
+      width: 1220px;
+      margin: 0 auto;
+    `}
 `;

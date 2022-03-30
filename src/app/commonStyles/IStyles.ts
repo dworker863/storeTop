@@ -3,7 +3,8 @@ export interface ITheme {
     primary: string;
     secondary: string;
     grey: string;
-    lightGrey: string;
+    lightYellow: string;
+    yellow: string;
     superLightGrey: string;
     brown: string;
     lightBrown: string;
