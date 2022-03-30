@@ -6,6 +6,11 @@ export const StyledContacts = styled.div`
   flex-wrap: wrap;
   width: 525px;
   font-size: 14px;
+
+  @media (max-width: 1600px) {
+    order: 2;
+    margin-right: 80px;
+  }
 `;
 
 export const StyledRequest = styled.a`

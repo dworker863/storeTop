@@ -5,6 +5,16 @@ export const StyledCart = styled.div`
   display: flex;
   align-items: center;
   margin-left: 85px;
+
+  @media (max-width: 1800px) {
+    margin-left: 70px;
+  }
+
+  @media (max-width: 1600px) {
+    align-self: start;
+    order: 3;
+    margin-left: 0;
+  }
 `;
 
 export const StyledCartIcon = styled.img`

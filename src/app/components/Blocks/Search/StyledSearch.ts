@@ -11,6 +11,18 @@ export const StyledSearch = styled.div`
   border: 1px solid #979797;
   border-radius: 7px;
   box-shadow: 0px 5px #d1d1d1;
+
+  @media (max-width: 1800px) {
+    width: 585px;
+    margin-left: 70px;
+  }
+
+  @media (max-width: 1600px) {
+    width: 910px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+  }
 `;
 
 export const StyledButtonWrapper = styled.div`
