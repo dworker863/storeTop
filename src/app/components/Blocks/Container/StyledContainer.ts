@@ -14,4 +14,13 @@ export const StyledContainer = styled.div`
     width: 1360px;
     justify-content: flex-start;
   }
+
+  @media (max-width: 1400px) {
+    width: 1140px;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 1200px) {
+    width: 992px;
+  }
 `;

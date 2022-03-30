@@ -18,4 +18,16 @@ export const StyledNavItem = styled.li`
     background-color: #ff3a00;
     transform: translateY(-50%);
   }
+
+  @media (max-width: 1400px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1200px) {
+    padding-left: 20px;
+
+    &:before {
+      display: none;
+    }
+  }
 `;

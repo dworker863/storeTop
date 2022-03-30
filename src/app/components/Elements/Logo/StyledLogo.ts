@@ -11,6 +11,16 @@ export const StyledLogoThin = styled.span`
   font-weight: 700;
   color: #ff3a00;
   text-transform: uppercase;
+
+  @media (max-width: 1600px) {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  @media (max-width: 1200px) {
+    font-size: 48px;
+    line-height: 48px;
+  }
 `;
 
 export const StyledLogoBold = styled.span`
@@ -19,4 +29,14 @@ export const StyledLogoBold = styled.span`
   font-weight: 900;
   color: #191919;
   text-transform: uppercase;
+
+  @media (max-width: 1600px) {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  @media (max-width: 1200px) {
+    font-size: 48px;
+    line-height: 48px;
+  }
 `;
