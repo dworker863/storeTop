@@ -1,9 +1,20 @@
 import styled from 'styled-components';
 
 export const StyledMenuWrapper = styled.div`
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
   width: 100%;
   padding: 10px;
   background: linear-gradient(to bottom, #ff4d00, #ff3a00);
+
+  @media (max-width: 992px) {
+    padding: 10px 0;
+  }
+
+  @media (max-width: 768px) {
+    overflow: scroll;
+  }
 `;
 
 export const StyledMenu = styled.ul`
@@ -26,5 +37,18 @@ export const StyledMenu = styled.ul`
     &:hover {
       color: #fff;
     }
+
+    @media (max-width: 992px) {
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 10px 0;
   }
 `;
