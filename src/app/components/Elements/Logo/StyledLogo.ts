@@ -21,6 +21,11 @@ export const StyledLogoThin = styled.span`
     font-size: 42px;
     line-height: 42px;
   }
+
+  @media (max-width: 576px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
 `;
 
 export const StyledLogoBold = styled.span`
@@ -38,5 +43,10 @@ export const StyledLogoBold = styled.span`
   @media (max-width: 1200px) {
     font-size: 42px;
     line-height: 42px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 32px;
+    line-height: 32px;
   }
 `;

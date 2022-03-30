@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import Cart from '../../Blocks/Cart/Cart';
 import Contacts from '../../Blocks/Contacts/Contacts';
 import Container from '../../Blocks/Container/Container';
+import NavMobile from '../../Blocks/NavMobile/NavMobile';
 import Search from '../../Blocks/Search/Search';
 import TopLine from '../../Blocks/TopLine/TopLine';
 import Hamburger from '../../Elements/Hamburger/Hamburger';
@@ -16,6 +17,7 @@ const Header: FC = () => {
 
   return (
     <StyledHeader>
+      <NavMobile isActive={hamburgerActive} />
       <Container>
         <Hamburger
           hamburgerActive={hamburgerActive}

@@ -11,7 +11,7 @@ import searchIcon from '../../../../assets/images/search-icon.png';
 const Search: FC = () => {
   return (
     <StyledSearch>
-      <StyledSearchInput type="search" placeholder="Поиск товара на сайте" />
+      <StyledSearchInput type="search" placeholder="Поиск товара" />
       <StyledButtonWrapper>
         <Button text="Поиск" />
       </StyledButtonWrapper>

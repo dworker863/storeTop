@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { IStyledNavMobile } from '../../Blocks/NavMobile/INavMobile';
 
-export const StyledNavItem = styled.li`
+export const StyledNavItem = styled.li<IStyledNavMobile>`
   position: relative;
   padding-left: 40px;
   text-transform: uppercase;
@@ -18,6 +19,18 @@ export const StyledNavItem = styled.li`
     background-color: #ff3a00;
     transform: translateY(-50%);
   }
+
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
+  }
+
+  ${({ type }) =>
+    type === 'mobile' &&
+    css`
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    `}
 
   @media (max-width: 1400px) {
     font-size: 14px;

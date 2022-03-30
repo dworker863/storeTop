@@ -5,12 +5,16 @@ export const HamburgerWrapper = styled.div`
   position: absolute;
   top: 70px;
   display: none;
-  right: 25px;
+  right: 50px;
   cursor: pointer;
   padding-top: 26px;
 
   @media (max-width: 992px) {
     display: block;
+  }
+
+  @media (max-width: 576px) {
+    top: 65px;
   }
 
   &:hover {
@@ -25,7 +29,7 @@ export const HamburgerWrapper = styled.div`
 `;
 
 export const StyledHamburger = styled.div<IStyledActiveComponent>`
-  z-index: 100;
+  z-index: 1000;
   position: absolute;
   width: 24px;
   height: 4px;

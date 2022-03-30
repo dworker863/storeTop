@@ -36,4 +36,9 @@ export const StyledCartIcon = styled.img`
     border-right: 2px solid #ff3a00;
     background-color: #000;
   }
+
+  @media (max-width: 576px) {
+    width: 55px;
+    height: 50px;
+  }
 `;

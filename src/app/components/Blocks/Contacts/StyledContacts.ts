@@ -15,14 +15,24 @@ export const StyledContacts = styled.div`
   @media (max-width: 992px) {
     margin-bottom: 40px;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-right: 0px;
+  }
 `;
 
 export const StyledRequest = styled.a`
   text-decoration: underline;
+  font-size: 14px;
   font-weight: 400;
   transform: translateX(18px);
 
   @media (max-width: 768px) {
     transform: translateX(0px);
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
   }
 `;

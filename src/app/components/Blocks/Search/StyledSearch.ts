@@ -48,6 +48,12 @@ export const StyledSearchInput = styled.input`
     line-height: 60px;
     color: #979797;
   }
+
+  @media (max-width: 576px) {
+    &::-webkit-input-placeholder::before {
+      content: 'Поиск товара';
+    }
+  }
 `;
 
 export const StyledSearchIcon = styled.img`

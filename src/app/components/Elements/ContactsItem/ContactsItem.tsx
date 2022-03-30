@@ -6,12 +6,18 @@ import {
   StyledContactsItemTitle,
 } from './StyledContactsItem';
 
-const ContactsItem: FC<IContactsItem> = ({ title, textFirst, textSecond }) => {
+const ContactsItem: FC<IContactsItem> = ({
+  title,
+  textFirst,
+  textSecond,
+  children,
+}) => {
   return (
     <StyledContactsItem>
       <StyledContactsItemTitle>{title}</StyledContactsItemTitle>
       <StyledContactsItemText>{textFirst}</StyledContactsItemText>
       <StyledContactsItemText>{textSecond}</StyledContactsItemText>
+      {children}
     </StyledContactsItem>
   );
 };
