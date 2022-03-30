@@ -5,6 +5,7 @@ import { commonTheme } from './app/commonStyles/theme';
 import Menu from './app/components/Blocks/Menu/Menu';
 import PopularGoods from './app/components/Sections/PopularGoods/PopularGoods';
 import Container from './app/components/Blocks/Container/Container';
+import DiscountGoods from './app/components/Sections/DiscountGoods/DiscountGoods';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Menu />
         <Container type="common">
           <PopularGoods />
+          <DiscountGoods />
         </Container>
       </main>
     </ThemeProvider>
