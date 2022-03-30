@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { IStyledNavMobile } from '../../Blocks/NavMobile/INavMobile';
 
 export const StyledNavItem = styled.li<IStyledNavMobile>`
+  cursor: pointer;
   position: relative;
   padding-left: 40px;
   text-transform: uppercase;

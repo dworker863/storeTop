@@ -3,7 +3,7 @@ import { ITheme } from './IStyles';
 export const commonTheme: ITheme = {
   colors: {
     primary: '#FF3A00',
-    secondary: '#e0f7f5',
+    secondary: '#ff4d00',
     grey: 'rgba(156, 163, 175)',
     lightGrey: '#a69895',
     superLightGrey: '#bfb7b699',
