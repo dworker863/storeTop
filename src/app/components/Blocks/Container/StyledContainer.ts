@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 1800px;
@@ -21,6 +22,10 @@ export const StyledContainer = styled.div`
   }
 
   @media (max-width: 1200px) {
-    width: 992px;
+    width: 960px;
+  }
+
+  @media (max-width: 992px) {
+    width: 720px;
   }
 `;

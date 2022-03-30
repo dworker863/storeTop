@@ -11,6 +11,10 @@ export const StyledContacts = styled.div`
     order: 2;
     margin-right: 80px;
   }
+
+  @media (max-width: 992px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const StyledRequest = styled.a`

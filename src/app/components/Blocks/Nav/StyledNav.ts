@@ -15,6 +15,10 @@ export const StyledNav = styled.ul`
   }
 
   @media (max-width: 1200px) {
-    line-height: 48px;
+    line-height: 42px;
+  }
+
+  @media (max-width: 992px) {
+    display: none;
   }
 `;

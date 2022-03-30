@@ -18,10 +18,14 @@ export const StyledSearch = styled.div`
   }
 
   @media (max-width: 1600px) {
-    width: 910px;
+    width: 890px;
     margin-top: 0px;
     margin-bottom: 50px;
     margin-left: 0px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 940px;
   }
 `;
 
