@@ -6,12 +6,12 @@ export const commonTheme: ITheme = {
     secondary: '#ff4d00',
     grey: '#1f1f1f',
     lightGrey: '#b2b7bb',
+    superLightGrey: '#e8e8e8',
     lightYellow: '#ffca67',
     yellow: '#ffac3a',
-    superLightGrey: '#bfb7b699',
+    red: '#c82429',
     brown: '#70544f',
     lightBrown: '#a69895',
-    red: '#C21313',
   },
 
   media: {

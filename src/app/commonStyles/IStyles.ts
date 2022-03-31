@@ -6,10 +6,10 @@ export interface ITheme {
     lightGrey: string;
     lightYellow: string;
     yellow: string;
+    red: string;
     superLightGrey: string;
     brown: string;
     lightBrown: string;
-    red: string;
   };
 
   media: {

@@ -8,6 +8,6 @@ export const StyledSectionTitle = styled.h2<IStyledSectionTitle>`
   ${({ primary }) =>
     primary &&
     css`
-      color: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.red};
     `}
 `;
