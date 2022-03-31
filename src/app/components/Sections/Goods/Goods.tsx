@@ -1,19 +1,16 @@
 import { FC } from 'react';
 import { SwiperSlide } from 'swiper/react';
+import { ISection } from '../../../commonInterfaces/ISection';
 import { goodsData } from '../../../utils/staticData';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
 import SliderComponent from '../../Blocks/Slider/Slider';
-import {
-  StyledPopularGoods,
-  StyledPopularGoodsDesc,
-  StyledPopularGoodsTitle,
-} from './StyledPopularGoods';
+import { StyledGoods, StyledGoodsDesc, StyledGoodsTitle } from './StyledGoods';
 
-const PopularGoods: FC = () => {
+const Goods: FC<ISection> = ({ title, desc }) => {
   return (
-    <StyledPopularGoods>
-      <StyledPopularGoodsTitle>Популярные товары</StyledPopularGoodsTitle>
-      <StyledPopularGoodsDesc>То, что выбирают люди</StyledPopularGoodsDesc>
+    <StyledGoods>
+      <StyledGoodsTitle>{title}</StyledGoodsTitle>
+      <StyledGoodsDesc>{desc}</StyledGoodsDesc>
       <SliderComponent>
         {goodsData.map((good, index) => (
           <SwiperSlide>
@@ -27,8 +24,8 @@ const PopularGoods: FC = () => {
           </SwiperSlide>
         ))}
       </SliderComponent>
-    </StyledPopularGoods>
+    </StyledGoods>
   );
 };
 
-export default PopularGoods;
+export default Goods;

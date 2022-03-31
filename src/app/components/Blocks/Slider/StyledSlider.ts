@@ -31,7 +31,7 @@ export const StyledPrevButton = styled.div`
     left: -15px;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 992px) {
     left: 15px;
   }
 `;
@@ -52,7 +52,7 @@ export const StyledNextButton = styled.div`
     right: -15px;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 992px) {
     right: 15px;
   }
 `;

@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { commonTheme } from './app/commonStyles/theme';
 import Menu from './app/components/Blocks/Menu/Menu';
-import PopularGoods from './app/components/Sections/PopularGoods/PopularGoods';
+import Goods from './app/components/Sections/Goods/Goods';
 import Container from './app/components/Blocks/Container/Container';
 import DiscountGoods from './app/components/Sections/DiscountGoods/DiscountGoods';
 
@@ -14,8 +14,12 @@ function App() {
       <main>
         <Menu />
         <Container type="common">
-          <PopularGoods />
-          {/* <DiscountGoods /> */}
+          <Goods title="Популярные товары" desc="То, что выбирают люди" />
+          <DiscountGoods
+            title="Горячие скидки"
+            desc="Избранные товары по новой цене"
+          />
+          <Goods title="Свежие новинки" desc="Новое поступление" />
         </Container>
       </main>
     </ThemeProvider>

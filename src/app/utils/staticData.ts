@@ -70,3 +70,36 @@ export const goodsData: IGood[] = [
     favorite: false,
   },
 ];
+
+export const discountGoodsData: IGood[] = [
+  {
+    title: 'Наименование товара',
+    desc: 'То, что выбирают люди',
+    price: '20.000 тг.',
+    favorite: false,
+  },
+  {
+    title: 'Наименование товара',
+    desc: 'То, что выбирают люди',
+    price: '20.000 тг.',
+    favorite: false,
+  },
+  {
+    title: 'Наименование товара',
+    desc: 'То, что выбирают люди',
+    price: '20.000 тг.',
+    favorite: false,
+  },
+  {
+    title: 'Наименование товара',
+    desc: 'То, что выбирают люди',
+    price: '20.000 тг.',
+    favorite: false,
+  },
+  {
+    title: 'Наименование товара',
+    desc: 'То, что выбирают люди',
+    price: '20.000 тг.',
+    favorite: false,
+  },
+];

@@ -1,22 +1,22 @@
 import { FC } from 'react';
-import { goodsData } from '../../../utils/staticData';
+import { ISection } from '../../../commonInterfaces/ISection';
+import { discountGoodsData, goodsData } from '../../../utils/staticData';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
 import {
   StyledDiscountGoods,
   StyledDiscountGoodsDesc,
   StyledDiscountGoodsTitle,
   StyledDiscountGoodsWrapper,
+  StyledEmptyDiv,
 } from './StyledDiscountGoods';
 
-const DiscountGoods: FC = () => {
+const DiscountGoods: FC<ISection> = ({ title, desc }) => {
   return (
     <StyledDiscountGoods>
-      <StyledDiscountGoodsTitle>Горячие ссылки</StyledDiscountGoodsTitle>
-      <StyledDiscountGoodsDesc>
-        Избранные товары по новой цене
-      </StyledDiscountGoodsDesc>
+      <StyledDiscountGoodsTitle>{title}</StyledDiscountGoodsTitle>
+      <StyledDiscountGoodsDesc>{desc}</StyledDiscountGoodsDesc>
       <StyledDiscountGoodsWrapper>
-        {goodsData.map((good, index) => (
+        {discountGoodsData.map((good, index) => (
           <GoodsItem
             key={index + good.desc}
             title={good.title}
@@ -25,6 +25,7 @@ const DiscountGoods: FC = () => {
             favorite={false}
           />
         ))}
+        <StyledEmptyDiv></StyledEmptyDiv>
       </StyledDiscountGoodsWrapper>
     </StyledDiscountGoods>
   );

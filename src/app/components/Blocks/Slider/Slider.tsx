@@ -33,7 +33,7 @@ const SwiperComponent: FC = ({ children }) => {
           },
           768: {
             slidesPerView: 3,
-            centeredSlides: true,
+            centeredSlides: false,
           },
           992: {
             spaceBetween: 16,
@@ -43,11 +43,14 @@ const SwiperComponent: FC = ({ children }) => {
           1200: {
             spaceBetween: 0,
             slidesPerView: 5,
-            centeredSlides: true,
+            initialSlide: 3,
+            centeredSlides: false,
           },
           1400: {
             spaceBetween: 21,
             slidesPerView: 5,
+            initialSlide: 3,
+            centeredSlides: false,
           },
         }}
       >
