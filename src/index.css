@@ -51,3 +51,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.swiper-button-next-custom.swiper-button-disabled,
+.swiper-button-prev-custom.swiper-button-disabled {
+  background-image: url(assets/images/arrow-disabled.png);
+  transform: rotate(180deg);
+}
+
+.swiper-button-prev-custom.swiper-button-disabled {
+  transform: rotate(360deg);
+}

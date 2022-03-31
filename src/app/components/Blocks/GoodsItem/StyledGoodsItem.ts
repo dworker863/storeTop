@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledGoodsItem = styled.div`
+  margin-left: 1px;
   border: 1px solid ${(props) => props.theme.colors.grey};
   border-radius: 6px;
 `;
@@ -22,7 +23,10 @@ export const StyledGoodsItemTitle = styled.h3`
   color: ${(props) => props.theme.colors.primary};
 `;
 
-export const StyledGoodsItemDesc = styled.div``;
+export const StyledGoodsItemDesc = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
+`;
 
 export const StyledGoodsItemPriceWrapper = styled.div`
   display: flex;
@@ -30,7 +34,8 @@ export const StyledGoodsItemPriceWrapper = styled.div`
 `;
 
 export const StyledGoodsItemPrice = styled.div`
-  padding: 12px 15px;
+  width: 170px;
+  padding: 5px 15px;
   border-bottom-left-radius: 5px;
   border-right: 1px solid ${(props) => props.theme.colors.grey};
   background-color: ${(props) => props.theme.colors.primary};
@@ -52,7 +57,7 @@ export const StyledGoodsItemFavorite = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 36.4%;
+  width: 55px;
   border-bottom-right-radius: 5px;
   background: linear-gradient(to bottom, #ffca67, #ffac3a);
 `;

@@ -1,11 +1,12 @@
 import { FC } from 'react';
+import { SwiperSlide } from 'swiper/react';
 import { goodsData } from '../../../utils/staticData';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
+import SliderComponent from '../../Blocks/Slider/Slider';
 import {
   StyledPopularGoods,
   StyledPopularGoodsDesc,
   StyledPopularGoodsTitle,
-  StyledPopularGoodsWrapper,
 } from './StyledPopularGoods';
 
 const PopularGoods: FC = () => {
@@ -13,17 +14,19 @@ const PopularGoods: FC = () => {
     <StyledPopularGoods>
       <StyledPopularGoodsTitle>Популярные товары</StyledPopularGoodsTitle>
       <StyledPopularGoodsDesc>То, что выбирают люди</StyledPopularGoodsDesc>
-      <StyledPopularGoodsWrapper>
+      <SliderComponent>
         {goodsData.map((good, index) => (
-          <GoodsItem
-            key={index + good.desc}
-            title={good.title}
-            desc={good.desc}
-            price={good.price}
-            favorite={false}
-          />
+          <SwiperSlide>
+            <GoodsItem
+              key={index + good.desc}
+              title={good.title}
+              desc={good.desc}
+              price={good.price}
+              favorite={false}
+            />
+          </SwiperSlide>
         ))}
-      </StyledPopularGoodsWrapper>
+      </SliderComponent>
     </StyledPopularGoods>
   );
 };
