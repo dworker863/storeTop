@@ -15,7 +15,7 @@ function App() {
         <Menu />
         <Container type="common">
           <PopularGoods />
-          <DiscountGoods />
+          {/* <DiscountGoods /> */}
         </Container>
       </main>
     </ThemeProvider>

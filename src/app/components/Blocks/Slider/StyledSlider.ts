@@ -26,6 +26,14 @@ export const StyledPrevButton = styled.div`
   background-size: cover;
   background-position: center;
   transform: rotate(180deg);
+
+  @media (max-width: 1400px) {
+    left: -15px;
+  }
+
+  @media (max-width: 1200px) {
+    left: 15px;
+  }
 `;
 
 export const StyledNextButton = styled.div`
@@ -39,4 +47,12 @@ export const StyledNextButton = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 1400px) {
+    right: -15px;
+  }
+
+  @media (max-width: 1200px) {
+    right: 15px;
+  }
 `;

@@ -16,8 +16,9 @@ const SwiperComponent: FC = ({ children }) => {
   return (
     <StyledSliderWrapper>
       <Swiper
-        spaceBetween={21}
-        slidesPerView={5}
+        spaceBetween={0}
+        slidesPerView={1}
+        centeredSlides={true}
         navigation={{
           prevEl: '.swiper-button-prev-custom',
           nextEl: '.swiper-button-next-custom',
@@ -25,6 +26,30 @@ const SwiperComponent: FC = ({ children }) => {
         modules={[Pagination, Navigation]}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
+        breakpoints={{
+          576: {
+            slidesPerView: 2,
+            centeredSlides: false,
+          },
+          768: {
+            slidesPerView: 3,
+            centeredSlides: true,
+          },
+          992: {
+            spaceBetween: 16,
+            slidesPerView: 4,
+            centeredSlides: false,
+          },
+          1200: {
+            spaceBetween: 0,
+            slidesPerView: 5,
+            centeredSlides: true,
+          },
+          1400: {
+            spaceBetween: 21,
+            slidesPerView: 5,
+          },
+        }}
       >
         {children}
       </Swiper>

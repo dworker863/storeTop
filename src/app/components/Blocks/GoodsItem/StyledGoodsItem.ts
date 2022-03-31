@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledGoodsItem = styled.div`
+  width: 225px;
   margin-left: 1px;
   border: 1px solid ${(props) => props.theme.colors.grey};
   border-radius: 6px;
+
+  @media (max-width: 992px) {
+    margin: 0 auto;
+  }
 `;
 
 export const StyledGoodsItemContentWrapper = styled.div`
