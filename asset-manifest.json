@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.59ca8a07.css",
+    "main.js": "/static/js/main.493bc3dd.js",
+    "static/media/header-bg.png": "/static/media/header-bg.c16f7be21a77952c218c.png",
+    "static/media/Roboto-Bold.woff2": "/static/media/Roboto-Bold.6cd35edfbc0d7a417131.woff2",
+    "static/media/Gilroy-Bold.woff2": "/static/media/Gilroy-Bold.ef7c40ff1efeaaa4c7c6.woff2",
+    "static/media/Gilroy-Heavy.woff2": "/static/media/Gilroy-Heavy.19b3f6fe15dc6f668d28.woff2",
+    "static/media/favorite-icon.png": "/static/media/favorite-icon.ffd6f44ecb351add55af.png",
+    "index.html": "/index.html",
+    "main.59ca8a07.css.map": "/static/css/main.59ca8a07.css.map",
+    "main.493bc3dd.js.map": "/static/js/main.493bc3dd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.59ca8a07.css",
+    "static/js/main.493bc3dd.js"
+  ]
+}
