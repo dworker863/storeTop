@@ -5,6 +5,7 @@ export const commonTheme: ITheme = {
     primary: '#FF3A00',
     secondary: '#ff4d00',
     grey: '#1f1f1f',
+    lightGrey: '#b2b7bb',
     lightYellow: '#ffca67',
     yellow: '#ffac3a',
     superLightGrey: '#bfb7b699',

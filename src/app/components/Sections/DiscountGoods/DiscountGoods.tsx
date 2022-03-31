@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { ISection } from '../../../commonInterfaces/ISection';
-import { discountGoodsData, goodsData } from '../../../utils/staticData';
+import { discountGoodsData } from '../../../utils/staticData';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
+import SectionDesc from '../../Elements/SectionDesc/SectionDesc';
+import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import {
   StyledDiscountGoods,
-  StyledDiscountGoodsDesc,
-  StyledDiscountGoodsTitle,
   StyledDiscountGoodsWrapper,
   StyledEmptyDiv,
 } from './StyledDiscountGoods';
@@ -13,8 +13,8 @@ import {
 const DiscountGoods: FC<ISection> = ({ title, desc }) => {
   return (
     <StyledDiscountGoods>
-      <StyledDiscountGoodsTitle>{title}</StyledDiscountGoodsTitle>
-      <StyledDiscountGoodsDesc>{desc}</StyledDiscountGoodsDesc>
+      <SectionTitle text={title} primary={true} />
+      <SectionDesc text={desc} />
       <StyledDiscountGoodsWrapper>
         {discountGoodsData.map((good, index) => (
           <GoodsItem

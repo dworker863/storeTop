@@ -8,7 +8,12 @@ export const StyledButton = styled.button`
   font-weight: 700;
   color: #fff;
 
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     font-size: 16px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 10px 12px;
+    font-size: 14px;
   }
 `;

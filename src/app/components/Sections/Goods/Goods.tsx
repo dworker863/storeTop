@@ -4,13 +4,15 @@ import { ISection } from '../../../commonInterfaces/ISection';
 import { goodsData } from '../../../utils/staticData';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
 import SliderComponent from '../../Blocks/Slider/Slider';
-import { StyledGoods, StyledGoodsDesc, StyledGoodsTitle } from './StyledGoods';
+import SectionDesc from '../../Elements/SectionDesc/SectionDesc';
+import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
+import { StyledGoods } from './StyledGoods';
 
 const Goods: FC<ISection> = ({ title, desc }) => {
   return (
     <StyledGoods>
-      <StyledGoodsTitle>{title}</StyledGoodsTitle>
-      <StyledGoodsDesc>{desc}</StyledGoodsDesc>
+      <SectionTitle text={title} primary={false} />
+      <SectionDesc text={desc} />
       <SliderComponent>
         {goodsData.map((good, index) => (
           <SwiperSlide>

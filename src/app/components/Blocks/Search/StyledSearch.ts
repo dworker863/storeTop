@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledSearch = styled.div`
   position: relative;
   display: inline-block;
-  /* align-self: flex-end; */
   width: 730px;
   height: 60px;
   margin-top: 47px;
@@ -27,6 +26,10 @@ export const StyledSearch = styled.div`
   @media (max-width: 1200px) {
     width: 940px;
   }
+
+  @media (max-width: 576px) {
+    height: 48px;
+  }
 `;
 
 export const StyledButtonWrapper = styled.div`
@@ -49,9 +52,16 @@ export const StyledSearchInput = styled.input`
     color: #979797;
   }
 
+  @media (max-width: 992px) {
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+
   @media (max-width: 576px) {
-    &::-webkit-input-placeholder::before {
-      content: 'Поиск товара';
+    &::placeholder {
+      font-size: 14px;
+      line-height: 40px;
     }
   }
 `;
@@ -62,4 +72,8 @@ export const StyledSearchIcon = styled.img`
   top: 50%;
   width: 30px;
   transform: translateY(-50%);
+
+  @media (max-width: 576px) {
+    width: 24px;
+  }
 `;

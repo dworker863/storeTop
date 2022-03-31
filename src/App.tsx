@@ -6,6 +6,7 @@ import Menu from './app/components/Blocks/Menu/Menu';
 import Goods from './app/components/Sections/Goods/Goods';
 import Container from './app/components/Blocks/Container/Container';
 import DiscountGoods from './app/components/Sections/DiscountGoods/DiscountGoods';
+import Order from './app/components/Sections/Order/Order';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             desc="Избранные товары по новой цене"
           />
           <Goods title="Свежие новинки" desc="Новое поступление" />
+          <Order />
         </Container>
       </main>
     </ThemeProvider>
