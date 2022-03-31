@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import trimmer from '../../../../assets/images/trimmer.png';
 
 export const StyledGoodsItem = styled.div`
   width: 225px;
@@ -19,6 +20,8 @@ export const StyledGoodsItemPhoto = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 6px;
+  background-image: url(${trimmer});
+  background-size: cover;
   background-color: #e8e8e8;
 `;
 
