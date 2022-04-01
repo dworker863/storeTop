@@ -6,3 +6,7 @@ export interface IGoodItem {
   discount: string;
   hit: boolean;
 }
+
+export interface IStyledSticker {
+  mode?: 'discount' | 'hit';
+}

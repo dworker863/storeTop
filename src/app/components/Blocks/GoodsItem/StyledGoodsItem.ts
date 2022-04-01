@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { IStyledSticker } from './IGoodItem';
+import styled, { css } from 'styled-components';
 import trimmer from '../../../../assets/images/trimmer.png';
 
 export const StyledGoodsItem = styled.div`
@@ -13,7 +14,7 @@ export const StyledGoodsItem = styled.div`
   }
 `;
 
-export const StyledDiscountSticker = styled.div`
+export const StyledSticker = styled.div<IStyledSticker>`
   /* display: none; */
   position: absolute;
   top: 20px;
@@ -23,19 +24,17 @@ export const StyledDiscountSticker = styled.div`
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  background-color: ${(props) => props.theme.colors.red};
-`;
 
-export const StyledHitSticker = styled.div`
-  /* display: none; */
-  position: absolute;
-  font-family: Roboto, serif;
-  top: 20px;
-  left: -1px;
-  padding: 7px 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  background-color: ${(props) => props.theme.colors.yellow};
+  ${({ mode }) =>
+    mode === 'hit'
+      ? css`
+          color: #000;
+          background-color: ${(props) => props.theme.colors.yellow};
+        `
+      : css`
+          color: #fff;
+          background-color: ${(props) => props.theme.colors.red};
+        `}
 `;
 
 export const StyledGoodsItemContentWrapper = styled.div`

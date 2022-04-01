@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { IGoodItem } from './IGoodItem';
 import {
-  StyledDiscountSticker,
   StyledGoodsItem,
   StyledGoodsItemBlack,
   StyledGoodsItemContentWrapper,
@@ -13,7 +12,7 @@ import {
   StyledGoodsItemPriceWrapper,
   StyledGoodsItemTitle,
   StyledGoodsItemWhite,
-  StyledHitSticker,
+  StyledSticker,
 } from './StyledGoodsItem';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
 
@@ -28,9 +27,9 @@ const GoodsItem: FC<IGoodItem> = ({
   return (
     <StyledGoodsItem>
       {discount.length > 0 && (
-        <StyledDiscountSticker>Скидка {discount}</StyledDiscountSticker>
+        <StyledSticker mode="discount">Скидка {discount}</StyledSticker>
       )}
-      {hit && <StyledHitSticker>Хит продаж</StyledHitSticker>}
+      {hit && <StyledSticker mode="hit">Хит продаж</StyledSticker>}
       <StyledGoodsItemContentWrapper>
         <StyledGoodsItemPhoto />
         <StyledGoodsItemTitle>{title}</StyledGoodsItemTitle>
