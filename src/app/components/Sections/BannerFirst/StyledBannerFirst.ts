@@ -3,17 +3,21 @@ import styled from 'styled-components';
 export const StyledBanners = styled.section`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
 `;
 
-export const StyledBannersFirst = styled.img`
-  width: 655px;
+export const StyledBanner = styled.img`
+  width: 48%;
   height: 350px;
   background-color: ${(props) => props.theme.colors.superLightGrey};
-`;
 
-export const StyledBannersSecond = styled.img`
-  width: 520px;
-  height: 350px;
-  background-color: ${(props) => props.theme.colors.superLightGrey};
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 `;

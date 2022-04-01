@@ -1,4 +1,3 @@
-import { IGood } from '../components/Blocks/GoodsItem/IGood';
 import { IContactsItem } from '../components/Elements/ContactsItem/IContactsItem';
 
 export const contactsData: IContactsItem[] = [
@@ -30,76 +29,4 @@ export const menuData: string[] = [
   'Кнопка категории',
   'Кнопка категории',
   'Кнопка категории',
-];
-
-export const goodsData: IGood[] = [
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-];
-
-export const discountGoodsData: IGood[] = [
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
-  {
-    title: 'Наименование товара',
-    desc: 'То, что выбирают люди',
-    price: '20.000 тг.',
-    favorite: false,
-  },
 ];

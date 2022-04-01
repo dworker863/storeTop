@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import trimmer from '../../../../assets/images/trimmer.png';
 
 export const StyledGoodsItem = styled.div`
+  position: relative;
   width: 225px;
   margin-left: 1px;
   border: 1px solid ${(props) => props.theme.colors.grey};
@@ -10,6 +11,31 @@ export const StyledGoodsItem = styled.div`
   @media (max-width: 992px) {
     margin: 0 auto;
   }
+`;
+
+export const StyledDiscountSticker = styled.div`
+  /* display: none; */
+  position: absolute;
+  top: 20px;
+  left: -1px;
+  font-family: Roboto, serif;
+  padding: 7px 10px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: ${(props) => props.theme.colors.red};
+`;
+
+export const StyledHitSticker = styled.div`
+  /* display: none; */
+  position: absolute;
+  font-family: Roboto, serif;
+  top: 20px;
+  left: -1px;
+  padding: 7px 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: ${(props) => props.theme.colors.yellow};
 `;
 
 export const StyledGoodsItemContentWrapper = styled.div`

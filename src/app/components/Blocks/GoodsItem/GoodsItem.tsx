@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { IGood } from './IGood';
+import { IGoodItem } from './IGoodItem';
 import {
+  StyledDiscountSticker,
   StyledGoodsItem,
   StyledGoodsItemBlack,
   StyledGoodsItemContentWrapper,
@@ -12,12 +13,24 @@ import {
   StyledGoodsItemPriceWrapper,
   StyledGoodsItemTitle,
   StyledGoodsItemWhite,
+  StyledHitSticker,
 } from './StyledGoodsItem';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
 
-const GoodsItem: FC<IGood> = ({ title, desc, price, favorite }) => {
+const GoodsItem: FC<IGoodItem> = ({
+  title,
+  desc,
+  price,
+  favorite,
+  discount,
+  hit,
+}) => {
   return (
     <StyledGoodsItem>
+      {discount.length > 0 && (
+        <StyledDiscountSticker>Скидка {discount}</StyledDiscountSticker>
+      )}
+      {hit && <StyledHitSticker>Хит продаж</StyledHitSticker>}
       <StyledGoodsItemContentWrapper>
         <StyledGoodsItemPhoto />
         <StyledGoodsItemTitle>{title}</StyledGoodsItemTitle>

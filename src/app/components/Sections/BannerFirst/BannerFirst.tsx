@@ -1,14 +1,10 @@
-import {
-  StyledBanners,
-  StyledBannersFirst,
-  StyledBannersSecond,
-} from './StyledBannerFirst';
+import { StyledBanners, StyledBanner } from './StyledBannerFirst';
 
 const BannerFirst = () => {
   return (
     <StyledBanners>
-      <StyledBannersFirst />
-      <StyledBannersSecond />
+      <StyledBanner />
+      <StyledBanner />
     </StyledBanners>
   );
 };
