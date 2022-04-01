@@ -4,4 +4,5 @@ export interface IContactsItem {
   textFirst: string;
   textSecond?: string;
   children?: ReactNode;
+  textCustom?: boolean;
 }

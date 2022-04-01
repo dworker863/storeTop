@@ -12,6 +12,7 @@ const Contacts: FC = () => {
           title={data.title}
           textFirst={data.textFirst}
           textSecond={data.textSecond}
+          textCustom={/^П/.test(data.textFirst) && true}
         />
       ))}
       <StyledRequest>Оставить заявку на звонок</StyledRequest>

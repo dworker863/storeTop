@@ -59,6 +59,8 @@ export const StyledSearchInput = styled.input`
   }
 
   @media (max-width: 576px) {
+    padding-left: 52px;
+
     &::placeholder {
       font-size: 14px;
       line-height: 40px;

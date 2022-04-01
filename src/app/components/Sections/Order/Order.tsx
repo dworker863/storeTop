@@ -35,6 +35,7 @@ const Order: FC = () => {
           title="График работы"
           textFirst="Пн-Пт - с 09:00 до 17:00"
           textSecond="Сб-Вс - выходной"
+          textCustom={true}
         />
         <ContactsItem
           title="Прием заказов онлайн"

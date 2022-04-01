@@ -4,6 +4,7 @@ import {
   StyledContactsItem,
   StyledContactsItemText,
   StyledContactsItemTitle,
+  StyledTextGrey,
 } from './StyledContactsItem';
 
 const ContactsItem: FC<IContactsItem> = ({
@@ -11,12 +12,27 @@ const ContactsItem: FC<IContactsItem> = ({
   textFirst,
   textSecond,
   children,
+  textCustom,
 }) => {
   return (
     <StyledContactsItem>
       <StyledContactsItemTitle>{title}</StyledContactsItemTitle>
-      <StyledContactsItemText>{textFirst}</StyledContactsItemText>
-      <StyledContactsItemText>{textSecond}</StyledContactsItemText>
+      {textCustom ? (
+        <StyledContactsItemText>
+          <StyledTextGrey>{textFirst.slice(0, 6)}</StyledTextGrey>
+          {textFirst.slice(6)}
+        </StyledContactsItemText>
+      ) : (
+        <StyledContactsItemText>{textFirst}</StyledContactsItemText>
+      )}
+      {textCustom ? (
+        <StyledContactsItemText>
+          <StyledTextGrey>{textSecond?.slice(0, 6)}</StyledTextGrey>
+          {textSecond?.slice(6)}
+        </StyledContactsItemText>
+      ) : (
+        <StyledContactsItemText>{textSecond}</StyledContactsItemText>
+      )}
       {children}
     </StyledContactsItem>
   );

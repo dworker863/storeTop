@@ -29,3 +29,8 @@ export const StyledContactsItemText = styled.p`
     font-size: 12px;
   }
 `;
+
+export const StyledTextGrey = styled.span`
+  font-weight: 700;
+  color: #686868;
+`;
