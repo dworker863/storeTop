@@ -5,7 +5,6 @@ import { commonTheme } from './app/commonStyles/theme';
 import Menu from './app/components/Blocks/Menu/Menu';
 import Goods from './app/components/Sections/Goods/Goods';
 import Container from './app/components/Blocks/Container/Container';
-import DiscountGoods from './app/components/Sections/DiscountGoods/DiscountGoods';
 import Order from './app/components/Sections/Order/Order';
 import BannerFirst from './app/components/Sections/BannerFirst/BannerFirst';
 import BannerSecond from './app/components/Sections/BannerSecond/BannerSecond';
@@ -35,17 +34,31 @@ function App() {
             title="Популярные товары"
             desc="То, что выбирают люди"
             goods={goodsArr}
+            hit={true}
+            sliderClass={[
+              'swiper-button-prev-custom1',
+              'swiper-button-next-custom1',
+            ]}
           />
-          <DiscountGoods
+          <Goods
             title="Горячие скидки"
             desc="Избранные товары по новой цене"
             goods={goodsArr}
+            discount={true}
+            sliderClass={[
+              'swiper-button-prev-custom2',
+              'swiper-button-next-custom2',
+            ]}
           />
           <BannerSecond />
           <Goods
             title="Свежие новинки"
             desc="Новое поступление"
             goods={goodsArr}
+            sliderClass={[
+              'swiper-button-prev-custom3',
+              'swiper-button-next-custom3',
+            ]}
           />
           <Order />
         </Container>

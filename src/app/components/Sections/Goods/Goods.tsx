@@ -7,14 +7,33 @@ import SectionDesc from '../../Elements/SectionDesc/SectionDesc';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import { StyledGoods } from './StyledGoods';
 
-const Goods: FC<ISection> = ({ title, desc, goods }) => {
+const Goods: FC<ISection> = ({
+  title,
+  desc,
+  goods,
+  discount,
+  hit,
+  sliderClass,
+}) => {
+  const goodsDiscount = goods.filter((good) => !!good.discount);
+  const goodsHit = goods.filter((good) => good.hit);
+  let goodsToMap;
+
+  if (discount === undefined && hit === undefined) {
+    goodsToMap = goods;
+  } else if (hit) {
+    goodsToMap = goodsHit;
+  } else {
+    goodsToMap = goodsDiscount;
+  }
+
   return (
     <StyledGoods>
       <SectionTitle text={title} primary={false} />
       <SectionDesc text={desc} />
-      <SliderComponent>
-        {goods.length &&
-          goods.map((good) => (
+      <SliderComponent sliderClass={sliderClass}>
+        {goodsToMap.length &&
+          goodsToMap.map((good) => (
             <SwiperSlide>
               <GoodsItem
                 key={good.id + good.name}

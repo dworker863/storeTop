@@ -11,8 +11,12 @@ import {
   StyledPrevButton,
   StyledSliderWrapper,
 } from './StyledSlider';
+import { ISlider } from './ISlider';
 
-const SwiperComponent: FC = ({ children }) => {
+const SwiperComponent: FC<ISlider> = ({ children, sliderClass }) => {
+  console.log(sliderClass[0]);
+  console.log(sliderClass[1]);
+
   return (
     <StyledSliderWrapper>
       <Swiper
@@ -20,8 +24,8 @@ const SwiperComponent: FC = ({ children }) => {
         slidesPerView={1}
         centeredSlides={true}
         navigation={{
-          prevEl: '.swiper-button-prev-custom',
-          nextEl: '.swiper-button-next-custom',
+          prevEl: `.${sliderClass[0]}`,
+          nextEl: `.${sliderClass[1]}`,
         }}
         modules={[Pagination, Navigation]}
         onSlideChange={() => console.log('slide change')}
@@ -57,8 +61,12 @@ const SwiperComponent: FC = ({ children }) => {
         {children}
       </Swiper>
       <StyledNav>
-        <StyledPrevButton className="swiper-button-prev-custom"></StyledPrevButton>
-        <StyledNextButton className="swiper-button-next-custom"></StyledNextButton>
+        <StyledPrevButton
+          className={'swiper-button-prev-custom ' + sliderClass[0]}
+        ></StyledPrevButton>
+        <StyledNextButton
+          className={'swiper-button-next-custom ' + sliderClass[1]}
+        ></StyledNextButton>
       </StyledNav>
     </StyledSliderWrapper>
   );
