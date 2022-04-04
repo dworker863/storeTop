@@ -21,18 +21,18 @@ export const StyledMenu = styled.ul`
   display: flex;
   width: max-content;
   margin: 0 auto;
-  padding: 10px 85px;
+  padding: 0 85px;
 
-  & > li {
+  a:last-child li {
+    border: none;
+  }
+
+  li {
     text-transform: none;
     color: #fff;
     font-size: 16px;
     padding: 15px 35px;
     border-right: 1px solid #fff;
-
-    &:last-child {
-      border-right: none;
-    }
 
     &:hover {
       color: #fff;
