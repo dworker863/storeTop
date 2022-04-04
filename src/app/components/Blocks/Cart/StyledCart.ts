@@ -42,3 +42,5 @@ export const StyledCartIcon = styled.img`
     height: 50px;
   }
 `;
+
+export const StyledCartCount = styled.span``;

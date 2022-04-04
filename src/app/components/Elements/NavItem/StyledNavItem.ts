@@ -33,6 +33,10 @@ export const StyledNavItem = styled.li<IStyledNavMobile>`
       text-align: center;
     `}
 
+  &.menuItem {
+    color: #fff;
+  }
+
   @media (max-width: 1400px) {
     font-size: 14px;
   }

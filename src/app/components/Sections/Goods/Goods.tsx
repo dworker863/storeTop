@@ -17,6 +17,7 @@ const Goods: FC<ISection> = ({
 }) => {
   const goodsDiscount = goods.filter((good) => !!good.discount);
   const goodsHit = goods.filter((good) => good.hit);
+
   let goodsToMap;
 
   if (discount === undefined && hit === undefined) {
@@ -34,9 +35,8 @@ const Goods: FC<ISection> = ({
       <SliderComponent sliderClass={sliderClass}>
         {goodsToMap.length &&
           goodsToMap.map((good, index) => (
-            <SwiperSlide>
+            <SwiperSlide key={index + good.name}>
               <GoodsItem
-                key={index + good.name}
                 title={good.name}
                 desc={good.description}
                 price={good.price}

@@ -5,7 +5,7 @@ export enum ECart {
 
 export interface ICartState {
   goods: IGood[];
-  sum: string;
+  sum: number;
 }
 
 export interface ISetCartAction {

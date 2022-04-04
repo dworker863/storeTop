@@ -14,7 +14,7 @@ const initialState = {
 const goods = (state = initialState, action: TGoodsActionTypes | any) => {
   switch (action.type) {
     case EGoods.SET_GOODS:
-      return { state, ...action.payload };
+      return { ...state, ...action.payload };
 
     default:
       return state;

@@ -1,14 +1,17 @@
 import { FC } from 'react';
-import { menuData } from '../../../utils/staticData';
+import { Link } from 'react-router-dom';
 import NavItem from '../../Elements/NavItem/NavItem';
+import { IMenu } from './IMenu';
 import { StyledMenu, StyledMenuWrapper } from './StyledMenu';
 
-const Menu: FC = () => {
+const Menu: FC<IMenu> = ({ categories }) => {
   return (
     <StyledMenuWrapper>
       <StyledMenu>
-        {menuData.map((text, index) => (
-          <NavItem key={index + text} text={text} type="desktop" />
+        {categories.map((category, index) => (
+          <Link key={index + category} to={`goods/${category}`}>
+            <NavItem text={category} type="desktop" className="menuItem" />
+          </Link>
         ))}
       </StyledMenu>
     </StyledMenuWrapper>

@@ -95,6 +95,15 @@ export const StyledGoodsItemFavorite = styled.div`
   background: linear-gradient(to bottom, #ffca67, #ffac3a);
 `;
 
-export const StyledGoodsItemFavoriteIcon = styled.img`
+export const StyledGoodsItemCart = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  border-bottom-right-radius: 5px;
+  background: #fff; ;
+`;
+
+export const StyledGoodsItemIcon = styled.img`
   width: 30px;
 `;

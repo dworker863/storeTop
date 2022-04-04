@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Cart from '../../Blocks/Cart/Cart';
 import Contacts from '../../Blocks/Contacts/Contacts';
 import Container from '../../Blocks/Container/Container';
@@ -26,7 +27,9 @@ const Header: FC = () => {
         <TopLine />
         <Contacts />
         <Search />
-        <Cart />
+        <Link to="/cart">
+          <Cart />
+        </Link>
       </Container>
     </StyledHeader>
   );

@@ -14,9 +14,6 @@ import {
 import { ISlider } from './ISlider';
 
 const SwiperComponent: FC<ISlider> = ({ children, sliderClass }) => {
-  console.log(sliderClass[0]);
-  console.log(sliderClass[1]);
-
   return (
     <StyledSliderWrapper>
       <Swiper
@@ -28,8 +25,6 @@ const SwiperComponent: FC<ISlider> = ({ children, sliderClass }) => {
           nextEl: `.${sliderClass[1]}`,
         }}
         modules={[Pagination, Navigation]}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
         breakpoints={{
           576: {
             slidesPerView: 2,
