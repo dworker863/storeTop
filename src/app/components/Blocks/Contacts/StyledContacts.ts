@@ -22,7 +22,7 @@ export const StyledContacts = styled.div`
   }
 `;
 
-export const StyledRequest = styled.span`
+export const StyledRequest = styled.a`
   text-decoration: underline;
   font-size: 14px;
   font-weight: 400;

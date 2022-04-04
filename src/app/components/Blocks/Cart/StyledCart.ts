@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const StyledCartWrapper = styled.div`
+  @media (max-width: 1600px) {
+    order: 3;
+  }
+`;
+
 export const StyledCart = styled.div`
   position: relative;
   display: flex;
@@ -11,8 +17,8 @@ export const StyledCart = styled.div`
   }
 
   @media (max-width: 1600px) {
-    align-self: start;
     order: 3;
+    align-self: start;
     margin-left: 0;
   }
 `;
@@ -43,4 +49,16 @@ export const StyledCartIcon = styled.img`
   }
 `;
 
-export const StyledCartCount = styled.span``;
+export const StyledCartCount = styled.span`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 42px;
+  left: -8.5px;
+  width: 25px;
+  height: 25px;
+  border: 3px solid ${(props) => props.theme.colors.primary};
+  border-radius: 50%;
+  font-weight: 700;
+`;

@@ -18,7 +18,7 @@ import {
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
 import cartIcon from '../../../../assets/images/cart-icon.png';
 import {
-  setCart,
+  setGoodCart,
   setCartGoodCount,
 } from '../../../redux/reducers/cart/cartReducer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,7 +39,7 @@ const GoodsItem: FC<IGoodItem> = ({
   const addToCartClickHandler = () => {
     if (!cart.goods.some((good) => good.name === title)) {
       dispatch(
-        setCart({
+        setGoodCart({
           name: title,
           description: desc,
           price,

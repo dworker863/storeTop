@@ -1,7 +1,7 @@
-import { IGood } from './../../../commonInterfaces/IGood';
 export enum ECart {
-  SET_CART = 'SET_CART',
+  SET_CART_GOOD = 'SET_CART_GOOD',
   SET_CART_GOODS_COUNT = 'SET_CART_GOODS_COUNT',
+  SET_CART = 'SET_CART',
 }
 
 export interface ICartGood {
@@ -18,14 +18,14 @@ export interface ICartState {
   sum: number;
 }
 
-export interface ISetCartAction {
-  type: ECart.SET_CART;
-  payload: IGood[];
+export interface ISetGoodCartAction {
+  type: ECart.SET_CART_GOOD;
+  payload: ICartGood[];
 }
 
 export interface ISetCartGoodCountAction {
-  type: ECart.SET_CART;
-  payload: IGood[];
+  type: ECart.SET_CART_GOOD;
+  payload: ICartGood[];
 }
 
-export type TCartActionTypes = ISetCartAction | ISetCartGoodCountAction;
+export type TCartActionTypes = ISetGoodCartAction | ISetCartGoodCountAction;

@@ -12,3 +12,7 @@ export const StyledCartItemName = styled.div``;
 export const StyledCartItemCount = styled.div``;
 
 export const StyledCartItemPrice = styled.div``;
+
+export const StyledCartItemRemoveBtn = styled.div`
+  cursor: pointer;
+`;
