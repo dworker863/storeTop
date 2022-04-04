@@ -11,7 +11,7 @@ const CartItem: FC<ICartItem> = ({ good }) => {
   return (
     <StyledCartItem>
       <StyledCartItemName>{good.name}</StyledCartItemName>
-      <StyledCartItemCount>{good.description}</StyledCartItemCount>
+      <StyledCartItemCount>{good.goodsCount}</StyledCartItemCount>
       <StyledCartItemPrice>{good.price}</StyledCartItemPrice>
     </StyledCartItem>
   );

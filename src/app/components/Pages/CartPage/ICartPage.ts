@@ -1,6 +1,6 @@
-import { IGood } from '../../../commonInterfaces/IGood';
+import { ICartGood } from '../../../redux/reducers/cart/ICartReducer';
 
 export interface ICartPage {
-  goods: IGood[];
+  goods: ICartGood[];
   sum: number;
 }

@@ -13,8 +13,8 @@ const CartPage: FC<ICartPage> = ({ goods, sum }) => {
     <Container type="common">
       <StyledCartPage>
         <StyledCartTitle>Корзина</StyledCartTitle>
-        {goods.map((good) => (
-          <CartItem good={good} />
+        {goods.map((good, index) => (
+          <CartItem key={index + good.name} good={good} />
         ))}
         <StyledCartSum>{sum}</StyledCartSum>
       </StyledCartPage>

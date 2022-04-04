@@ -1,5 +1,5 @@
-import { IGood } from './../../../commonInterfaces/IGood';
-import { ECart, ICartState, TCartActionTypes } from './ICartReducer';
+import { IGood } from '../../../commonInterfaces/IGood';
+import { ECart, ICartGood, ICartState, TCartActionTypes } from './ICartReducer';
 
 const initialState: ICartState = {
   goods: [],
@@ -8,7 +8,7 @@ const initialState: ICartState = {
 
 export const cart = (state = initialState, action: TCartActionTypes | any) => {
   switch (action.type) {
-    case ECart.SET_CART:
+    case ECart.SET_CART: {
       const cartState = {
         ...state,
         goods: [...state.goods, action.payload],
@@ -18,18 +18,38 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
         ),
       };
 
-      console.log(cartState);
+      // console.log(cartState);
 
       return cartState;
+    }
 
+    case ECart.SET_CART_GOODS_COUNT: {
+      const customGoods = [...state.goods];
+
+      console.log(customGoods);
+
+      return {
+        ...state,
+        goods: [
+          ...customGoods.map((good) =>
+            good.name === action.payload.name ? action.payload : good,
+          ),
+        ],
+      };
+    }
     default:
       return state;
   }
 };
 
-export const setCart = (good: IGood) => ({
+export const setCart = (good: ICartGood) => ({
   type: ECart.SET_CART,
   payload: good,
+});
+
+export const setCartGoodCount = (good: IGood, goodsCount: number) => ({
+  type: ECart.SET_CART_GOODS_COUNT,
+  payload: { ...good, goodsCount },
 });
 
 export default cart;

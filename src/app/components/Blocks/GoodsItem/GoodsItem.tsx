@@ -17,9 +17,13 @@ import {
 } from './StyledGoodsItem';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
 import cartIcon from '../../../../assets/images/cart-icon.png';
-import { setCart } from '../../../redux/reducers/cart/cartReducer';
-import { useDispatch } from 'react-redux';
+import {
+  setCart,
+  setCartGoodCount,
+} from '../../../redux/reducers/cart/cartReducer';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../../redux/store';
 
 const GoodsItem: FC<IGoodItem> = ({
   title,
@@ -29,10 +33,29 @@ const GoodsItem: FC<IGoodItem> = ({
   discount,
   hit,
 }) => {
+  const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
 
   const addToCartClickHandler = () => {
-    dispatch(setCart({ name: title, description: desc, price, discount, hit }));
+    if (!cart.goods.some((good) => good.name === title)) {
+      dispatch(
+        setCart({
+          name: title,
+          description: desc,
+          price,
+          discount,
+          hit,
+          goodsCount: 1,
+        }),
+      );
+    } else {
+      dispatch(
+        setCartGoodCount(
+          { name: title, description: desc, price, discount, hit },
+          cart.goods.filter((good) => good.name === title)[0].goodsCount + 1,
+        ),
+      );
+    }
   };
 
   return (

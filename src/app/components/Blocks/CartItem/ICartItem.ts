@@ -1,5 +1,5 @@
-import { IGood } from './../../../commonInterfaces/IGood';
+import { ICartGood } from '../../../redux/reducers/cart/ICartReducer';
 
 export interface ICartItem {
-  good: IGood;
+  good: ICartGood;
 }
