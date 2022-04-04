@@ -12,7 +12,9 @@ const Cart: FC = () => {
   return (
     <StyledCart>
       <StyledCartIcon src={cartIcon} alt="Корзина" />
-      <StyledCartCount>{cart.goods.length}</StyledCartCount>
+      <StyledCartCount>
+        {cart.goods.reduce((count, good) => (count += good.goodsCount), 0)}
+      </StyledCartCount>
       <ContactsItem title="Ваша корзина" textFirst="В корзине нет товаров">
         <StyledRequest>Посмотреть список желаний</StyledRequest>
       </ContactsItem>
