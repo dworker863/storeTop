@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 import GoodPage from './app/components/Pages/GoodPage/GoodPage';
 
 function App() {
-  const cartGoods = useSelector((state: RootState) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart);
   const goods = useSelector((state: RootState) => state.goods);
 
   const dispatch = useDispatch();
@@ -28,7 +28,10 @@ function App() {
       <Menu categories={Object.keys(goods)} />
       <Routes>
         <Route path="/" element={<HomePage goods={goods} />} />
-        <Route path="cart" element={<CartPage goods={cartGoods.goods} />} />
+        <Route
+          path="cart"
+          element={<CartPage goods={cart.goods} sum={cart.sum} />}
+        />
         <Route
           path="goods/electronics"
           element={<Category goods={goods.electronics} title="Электроника" />}

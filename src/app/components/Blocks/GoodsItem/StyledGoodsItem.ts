@@ -96,6 +96,7 @@ export const StyledGoodsItemFavorite = styled.div`
 `;
 
 export const StyledGoodsItemCart = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledCartItem = styled.div``;
+export const StyledCartItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+  margin-bottom: 20px;
+`;
 
 export const StyledCartItemName = styled.div``;
 
