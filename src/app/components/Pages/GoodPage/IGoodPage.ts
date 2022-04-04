@@ -1,5 +1,5 @@
-import { IGood } from '../../../commonInterfaces/IGood';
+import { IGoodsState } from './../../../redux/reducers/goods/IgoodsReducer';
 
 export interface IGoodPage {
-  good: IGood;
+  goods: IGoodsState;
 }

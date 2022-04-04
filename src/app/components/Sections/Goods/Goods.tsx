@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { SwiperSlide } from 'swiper/react';
 import { ISection } from '../../../commonInterfaces/ISection';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';

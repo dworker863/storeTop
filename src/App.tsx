@@ -10,6 +10,7 @@ import Category from './app/components/Pages/Category/Category';
 import Menu from './app/components/Blocks/Menu/Menu';
 import { getGoods } from './app/redux/reducers/goods/goodsReducer';
 import { useEffect } from 'react';
+import GoodPage from './app/components/Pages/GoodPage/GoodPage';
 
 function App() {
   const cartGoods = useSelector((state: RootState) => state.cart);
@@ -36,6 +37,7 @@ function App() {
           path="goods/cosmetics"
           element={<Category goods={goods.cosmetics} title="Косметика" />}
         />
+        <Route path="goods/:goodName" element={<GoodPage goods={goods} />} />
       </Routes>
     </ThemeProvider>
   );

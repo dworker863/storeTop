@@ -19,6 +19,7 @@ import favoriteIcon from '../../../../assets/images/favorite-icon.png';
 import cartIcon from '../../../../assets/images/cart-icon.png';
 import { setCart } from '../../../redux/reducers/cart/cartReducer';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const GoodsItem: FC<IGoodItem> = ({
   title,
@@ -41,7 +42,9 @@ const GoodsItem: FC<IGoodItem> = ({
       )}
       {hit && <StyledSticker mode="hit">Хит продаж</StyledSticker>}
       <StyledGoodsItemContentWrapper>
-        <StyledGoodsItemPhoto />
+        <Link to={`/goods/${title}`}>
+          <StyledGoodsItemPhoto />
+        </Link>
         <StyledGoodsItemTitle>{title}</StyledGoodsItemTitle>
         <StyledGoodsItemDesc>{desc}</StyledGoodsItemDesc>
       </StyledGoodsItemContentWrapper>
