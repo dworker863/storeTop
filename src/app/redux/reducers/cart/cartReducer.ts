@@ -13,12 +13,12 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
         ...state,
         goods: [...state.goods, action.payload],
         sum: [...state.goods, action.payload].reduce(
-          (sum, good) => (sum += Number(good.price)),
+          (sum, good) => (sum += Number(good.price) * good.goodsCount),
           0,
         ),
       };
 
-      // console.log(cartState);
+      console.log(state.sum);
 
       return cartState;
     }
@@ -26,9 +26,7 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
     case ECart.SET_CART_GOODS_COUNT: {
       const customGoods = [...state.goods];
 
-      console.log(customGoods);
-
-      return {
+      const customState = {
         ...state,
         goods: [
           ...customGoods.map((good) =>
@@ -36,7 +34,18 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
           ),
         ],
       };
+
+      console.log(state.sum);
+
+      return {
+        ...customState,
+        sum: [...customState.goods].reduce(
+          (sum, good) => (sum += Number(good.price) * good.goodsCount),
+          0,
+        ),
+      };
     }
+
     default:
       return state;
   }
