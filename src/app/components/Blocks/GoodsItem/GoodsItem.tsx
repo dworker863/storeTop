@@ -15,6 +15,9 @@ import {
   StyledSticker,
 } from './StyledGoodsItem';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
+import { useDispatch } from 'react-redux';
+import { setCart } from '../../../redux/reducers/cart/cartReducer';
+import { IGood } from '../../../commonInterfaces/IGood';
 
 const GoodsItem: FC<IGoodItem> = ({
   title,
@@ -24,8 +27,24 @@ const GoodsItem: FC<IGoodItem> = ({
   discount,
   hit,
 }) => {
+  const dispatch = useDispatch();
+
+  const goodClickHandler = (good: IGood): void => {
+    dispatch(setCart(good));
+  };
+
   return (
-    <StyledGoodsItem>
+    <StyledGoodsItem
+      onClick={() =>
+        goodClickHandler({
+          name: title,
+          description: desc,
+          price,
+          discount,
+          hit,
+        })
+      }
+    >
       {discount.length > 0 && (
         <StyledSticker mode="discount">Скидка {discount}</StyledSticker>
       )}

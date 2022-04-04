@@ -33,10 +33,10 @@ const Goods: FC<ISection> = ({
       <SectionDesc text={desc} />
       <SliderComponent sliderClass={sliderClass}>
         {goodsToMap.length &&
-          goodsToMap.map((good) => (
+          goodsToMap.map((good, index) => (
             <SwiperSlide>
               <GoodsItem
-                key={good.id + good.name}
+                key={index + good.name}
                 title={good.name}
                 desc={good.description}
                 price={good.price}

@@ -1,4 +1,4 @@
-import { IGood } from '../../commonInterfaces/IGood';
+import { IGood } from '../../../commonInterfaces/IGood';
 
 export enum EGoods {
   SET_GOODS = 'SET_GOODS',

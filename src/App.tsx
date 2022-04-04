@@ -8,7 +8,7 @@ import Order from './app/components/Sections/Order/Order';
 import BannerFirst from './app/components/Sections/BannerFirst/BannerFirst';
 import BannerSecond from './app/components/Sections/BannerSecond/BannerSecond';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGoods } from './app/redux/reducers/goodsReducer';
+import { getGoods } from './app/redux/reducers/goods/goodsReducer';
 import { useEffect } from 'react';
 import { RootState } from './app/redux/store';
 

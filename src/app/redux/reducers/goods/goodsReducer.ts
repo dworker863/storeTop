@@ -1,4 +1,4 @@
-import { fetchGoods } from './../../api/api';
+import { fetchGoods } from '../../../api/api';
 import { AnyAction, Dispatch, ThunkAction } from '@reduxjs/toolkit';
 import {
   EGoods,
