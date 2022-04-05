@@ -3,7 +3,7 @@ import { ECart, ICartGood, ICartState, TCartActionTypes } from './IcartReducer';
 
 const initialState: ICartState = {
   goods: [],
-  delivery: 0,
+  delivery: 2000,
   sum: 0,
 };
 
