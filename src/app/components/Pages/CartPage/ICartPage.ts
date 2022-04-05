@@ -1,4 +1,4 @@
-import { ICartGood } from '../../../redux/reducers/cart/ICartReducer';
+import { ICartGood } from '../../../redux/reducers/cart/IcartReducer';
 
 export interface ICartPage {
   goods: ICartGood[];

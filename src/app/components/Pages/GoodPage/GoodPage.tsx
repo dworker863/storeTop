@@ -5,9 +5,11 @@ import { IGoodPage } from './IGoodPage';
 import {
   StyledGoodPage,
   StyledGoodPageDesc,
+  StyledGoodPagePhoto,
   StyledGoodPagePrice,
   StyledGoodPageTitle,
 } from './StyledGoodPage';
+import goodPhoto from '../../../../assets/images/trimmer.png';
 
 const GoodPage: FC<IGoodPage> = ({ goods }) => {
   const { goodName } = useParams();
@@ -18,6 +20,7 @@ const GoodPage: FC<IGoodPage> = ({ goods }) => {
   return (
     <Container type="common">
       <StyledGoodPage>
+        <StyledGoodPagePhoto src={goodPhoto} />
         <StyledGoodPageTitle>{good.name}</StyledGoodPageTitle>
         <StyledGoodPageDesc>{good.description}</StyledGoodPageDesc>
         <StyledGoodPagePrice>{good.price}</StyledGoodPagePrice>

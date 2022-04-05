@@ -1,5 +1,5 @@
 import { IGood } from '../../../commonInterfaces/IGood';
-import { ECart, ICartGood, ICartState, TCartActionTypes } from './ICartReducer';
+import { ECart, ICartGood, ICartState, TCartActionTypes } from './IcartReducer';
 
 const initialState: ICartState = {
   goods: [],
@@ -7,7 +7,9 @@ const initialState: ICartState = {
   sum: 0,
 };
 
-export const cart = (state = initialState, action: TCartActionTypes | any) => {
+type NewType = TCartActionTypes;
+
+export const cart = (state = initialState, action: NewType | any) => {
   switch (action.type) {
     case ECart.SET_CART: {
       const cartState = {
