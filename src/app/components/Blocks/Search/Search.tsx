@@ -1,6 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { ChangeEvent, FC } from 'react';
 import Button from '../../Elements/Button/Button';
 import {
   StyledButtonWrapper,
@@ -9,13 +7,17 @@ import {
   StyledSearchInput,
 } from './StyledSearch';
 import searchIcon from '../../../../assets/images/search-icon.png';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSearch } from '../../../redux/reducers/search/searchReducer';
 
 const Search: FC = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const goods = useSelector((state: RootState) => state.goods);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const searchBarKeyPressHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+    navigate('/search');
+    dispatch(setSearch(event.target.value.trim()));
   };
 
   return (

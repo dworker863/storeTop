@@ -14,10 +14,21 @@ import GoodPage from './app/components/Pages/GoodPage/GoodPage';
 import PaymentConditionsPage from './app/components/Pages/PaymentConditionsPage/PaymentConditionsPage';
 import ContactsPage from './app/components/Pages/ContactsPage/ContactsPage';
 import ReviewsPage from './app/components/Pages/ReviewsPage/ReviewsPage';
+import { IGood } from './app/commonInterfaces/IGood';
+import SearchPage from './app/components/Pages/SearchPage/SearchPage';
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
   const goods = useSelector((state: RootState) => state.goods);
+  const goodsArr = [...goods.electronics, ...goods.cosmetics];
+
+  const searchStr = useSelector((state: RootState) => state.search.value);
+  const searchRegExp = new RegExp(`^${searchStr}`);
+  const searchGoods = searchStr.length
+    ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
+    : [];
+
+  console.log(searchGoods);
 
   const dispatch = useDispatch();
 
@@ -38,6 +49,7 @@ function App() {
           path="cart"
           element={<CartPage goods={cart.goods} sum={cart.sum} />}
         />
+        <Route path="search" element={<SearchPage goods={searchGoods} />} />
         <Route
           path="goods/electronics"
           element={<Category goods={goods.electronics} title="Электроника" />}

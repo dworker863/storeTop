@@ -2,8 +2,9 @@ import { IStyledSectionTitle } from './ISectionTitle';
 import styled, { css } from 'styled-components';
 
 export const StyledSectionTitle = styled.h2<IStyledSectionTitle>`
-  font-size: 24px;
+  width: 100%;
   margin-bottom: 0;
+  font-size: 24px;
 
   ${({ primary }) =>
     primary &&
