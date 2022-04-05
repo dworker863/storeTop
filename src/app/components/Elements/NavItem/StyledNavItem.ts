@@ -34,7 +34,6 @@ export const StyledNavItem = styled.li<IStyledNavMobile>`
     `}
 
   &.menuItem {
-    color: #fff;
     border-right: 1px solid #fff;
   }
 

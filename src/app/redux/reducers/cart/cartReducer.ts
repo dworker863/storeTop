@@ -3,6 +3,7 @@ import { ECart, ICartGood, ICartState, TCartActionTypes } from './ICartReducer';
 
 const initialState: ICartState = {
   goods: [],
+  delivery: 0,
   sum: 0,
 };
 
@@ -16,10 +17,11 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
 
       return {
         ...cartState,
-        sum: cartState.goods.reduce(
-          (sum, good) => (sum += Number(good.price) * good.goodsCount),
-          0,
-        ),
+        sum:
+          cartState.goods.reduce(
+            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            0,
+          ) + cartState.delivery,
       };
     }
 
@@ -27,10 +29,11 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
       const cartState = {
         ...state,
         goods: [...state.goods, action.payload],
-        sum: [...state.goods, action.payload].reduce(
-          (sum, good) => (sum += Number(good.price) * good.goodsCount),
-          0,
-        ),
+        sum:
+          [...state.goods, action.payload].reduce(
+            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            0,
+          ) + state.delivery,
       };
 
       console.log(state.sum);
@@ -39,12 +42,12 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
     }
 
     case ECart.SET_CART_GOODS_COUNT: {
-      const customGoods = [...state.goods];
+      const cartGoods = [...state.goods];
 
-      const customState = {
+      const cartState = {
         ...state,
         goods: [
-          ...customGoods.map((good) =>
+          ...cartGoods.map((good) =>
             good.name === action.payload.name ? action.payload : good,
           ),
         ],
@@ -53,11 +56,28 @@ export const cart = (state = initialState, action: TCartActionTypes | any) => {
       console.log(state.sum);
 
       return {
-        ...customState,
-        sum: [...customState.goods].reduce(
-          (sum, good) => (sum += Number(good.price) * good.goodsCount),
-          0,
-        ),
+        ...cartState,
+        sum:
+          [...cartState.goods].reduce(
+            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            0,
+          ) + cartState.delivery,
+      };
+    }
+
+    case ECart.SET_CART_DELIVERY: {
+      const cartState = {
+        ...state,
+        delivery: action.payload,
+      };
+
+      return {
+        ...cartState,
+        sum:
+          cartState.goods.reduce(
+            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            0,
+          ) + cartState.delivery,
       };
     }
 
@@ -79,6 +99,11 @@ export const setCartGoodCount = (good: IGood, goodsCount: number) => ({
 export const setCart = (goods: ICartGood[]) => ({
   type: ECart.SET_CART,
   payload: goods,
+});
+
+export const setCartDelivery = (delivery: number) => ({
+  type: ECart.SET_CART_DELIVERY,
+  payload: delivery,
 });
 
 export default cart;

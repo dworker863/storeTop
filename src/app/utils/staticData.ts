@@ -17,9 +17,9 @@ export const contactsData: IContactsItem[] = [
   },
 ];
 
-export const navData: string[] = [
-  'О магазине',
-  'Условия оплаты и доставки',
-  'контактная информация',
-  'отзывы покупателей',
+export const navData: any[] = [
+  ['/', 'О магазине'],
+  ['conditions', 'Условия оплаты и доставки'],
+  ['contacts', 'контактная информация'],
+  ['reviews', 'отзывы покупателей'],
 ];

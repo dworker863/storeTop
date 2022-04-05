@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import Container from '../../Blocks/Container/Container';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
-import { ICategory } from './ICategory';
-import { StyledCategory, StyledCategoryTitle } from './StyledCategory';
+import { ICategory } from './ICategoryPage';
+import { StyledCategory, StyledCategoryTitle } from './StyledCategoryPage';
 
 const Category: FC<ICategory> = ({ goods, title }) => {
   return (
-    <StyledCategory>
-      <Container type="common">
+    <Container type="common">
+      <StyledCategory>
         <StyledCategoryTitle>{title}</StyledCategoryTitle>
         {goods.map((good, index) => (
           <GoodsItem
@@ -20,8 +20,8 @@ const Category: FC<ICategory> = ({ goods, title }) => {
             hit={good.hit}
           />
         ))}
-      </Container>
-    </StyledCategory>
+      </StyledCategory>
+    </Container>
   );
 };
 

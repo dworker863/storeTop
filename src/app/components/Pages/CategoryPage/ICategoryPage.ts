@@ -1,4 +1,4 @@
-import { IGood } from './../../../commonInterfaces/IGood';
+import { IGood } from '../../../commonInterfaces/IGood';
 
 export interface ICategory {
   goods: IGood[];
