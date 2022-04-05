@@ -1,6 +1,10 @@
 import { FC, ChangeEvent } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCartDelivery } from '../../../redux/reducers/cart/cartReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCartDelivery,
+  setCartSelect,
+} from '../../../redux/reducers/cart/cartReducer';
+import { RootState } from '../../../redux/store';
 import CartItem from '../../Blocks/CartItem/CartItem';
 import Container from '../../Blocks/Container/Container';
 import Button from '../../Elements/Button/Button';
@@ -15,11 +19,49 @@ import {
 
 const CartPage: FC<ICartPage> = ({ goods, sum }) => {
   const dispatch = useDispatch();
+  const selected = useSelector((state: RootState) => state.cart.selected);
 
   const optionChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    event.target.value === 'экспресс'
-      ? dispatch(setCartDelivery(2000))
-      : dispatch(setCartDelivery(0));
+    switch (event.target.value) {
+      case 'экспресс': {
+        dispatch(setCartDelivery(2000));
+        dispatch(
+          setCartSelect({ delivery: 'экспресс', payment: selected.payment }),
+        );
+        break;
+      }
+
+      case 'почтой': {
+        dispatch(setCartDelivery(0));
+        dispatch(
+          setCartSelect({
+            delivery: 'почтой',
+            payment: selected.payment,
+          }),
+        );
+        break;
+      }
+
+      case 'наличными': {
+        dispatch(
+          setCartSelect({ delivery: selected.delivery, payment: 'почтой' }),
+        );
+        break;
+      }
+
+      case 'банковской картой': {
+        dispatch(
+          setCartSelect({
+            delivery: selected.delivery,
+            payment: 'банковской картой',
+          }),
+        );
+        break;
+      }
+
+      default:
+        return;
+    }
   };
 
   return (
@@ -31,12 +73,17 @@ const CartPage: FC<ICartPage> = ({ goods, sum }) => {
         ))}
         <Label id="#delivery" text="Способ доставки" />
         <Select
+          selected={selected.delivery}
           id="delivery"
           optionValue={['экспресс', 'почтой']}
           changeHandler={optionChangeHandler}
         />
         <Label id="#payment" text="Способ оплаты" />
-        <Select id="payment" optionValue={['наличными', 'банковской картой']} />
+        <Select
+          selected={selected.payment}
+          id="payment"
+          optionValue={['наличными', 'банковской картой']}
+        />
         <StyledCartSum>{sum}</StyledCartSum>
         <Button text="Оформить заказ" />
       </StyledCartPage>

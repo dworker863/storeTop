@@ -1,10 +1,22 @@
 import { IGood } from '../../../commonInterfaces/IGood';
-import { ECart, ICartGood, ICartState, TCartActionTypes } from './IcartReducer';
+import {
+  ECart,
+  ICartGood,
+  ICartSelect,
+  ICartState,
+  ISetCartAction,
+  ISetCartDeliveryCountAction,
+  ISetCartGoodCountAction,
+  ISetCartSelectAction,
+  ISetGoodCartAction,
+  TCartActionTypes,
+} from './IcartReducer';
 
 const initialState: ICartState = {
   goods: [],
   delivery: 2000,
   sum: 0,
+  selected: { delivery: 'экспресс', payment: 'наличными' },
 };
 
 type NewType = TCartActionTypes;
@@ -38,8 +50,6 @@ export const cart = (state = initialState, action: NewType | any) => {
           ) + state.delivery,
       };
 
-      console.log(state.sum);
-
       return cartState;
     }
 
@@ -54,8 +64,6 @@ export const cart = (state = initialState, action: NewType | any) => {
           ),
         ],
       };
-
-      console.log(state.sum);
 
       return {
         ...cartState,
@@ -83,29 +91,48 @@ export const cart = (state = initialState, action: NewType | any) => {
       };
     }
 
+    case ECart.SET_CART_SELECT: {
+      const cartState = {
+        ...state,
+        selected: { ...action.payload },
+      };
+
+      return cartState;
+    }
+
     default:
       return state;
   }
 };
 
-export const setGoodCart = (good: ICartGood) => ({
+export const setGoodCart = (good: ICartGood): ISetGoodCartAction => ({
   type: ECart.SET_CART_GOOD,
   payload: good,
 });
 
-export const setCartGoodCount = (good: IGood, goodsCount: number) => ({
+export const setCartGoodCount = (
+  good: IGood,
+  goodsCount: number,
+): ISetCartGoodCountAction => ({
   type: ECart.SET_CART_GOODS_COUNT,
   payload: { ...good, goodsCount },
 });
 
-export const setCart = (goods: ICartGood[]) => ({
+export const setCart = (goods: ICartGood[]): ISetCartAction => ({
   type: ECart.SET_CART,
   payload: goods,
 });
 
-export const setCartDelivery = (delivery: number) => ({
+export const setCartDelivery = (
+  delivery: number,
+): ISetCartDeliveryCountAction => ({
   type: ECart.SET_CART_DELIVERY,
   payload: delivery,
+});
+
+export const setCartSelect = (selected: ICartSelect): ISetCartSelectAction => ({
+  type: ECart.SET_CART_SELECT,
+  payload: selected,
 });
 
 export default cart;
