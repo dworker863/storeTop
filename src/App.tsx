@@ -16,6 +16,8 @@ import ContactsPage from './app/components/Pages/ContactsPage/ContactsPage';
 import ReviewsPage from './app/components/Pages/ReviewsPage/ReviewsPage';
 import { IGood } from './app/commonInterfaces/IGood';
 import SearchPage from './app/components/Pages/SearchPage/SearchPage';
+import AuthModal from './app/components/Sections/AuthModal/AuthModal';
+import RegistrationPage from './app/components/Pages/RegistrationPage/RegistarationPage';
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -28,8 +30,6 @@ function App() {
     ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
     : [];
 
-  console.log(searchGoods);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +38,8 @@ function App() {
 
   return (
     <ThemeProvider theme={commonTheme}>
+      <RegistrationPage />
+      <AuthModal />
       <Header />
       <Menu categories={Object.keys(goods)} />
       <Routes>

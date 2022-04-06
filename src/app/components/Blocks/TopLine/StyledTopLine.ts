@@ -6,3 +6,8 @@ export const StyledTopLine = styled.div`
   width: 100%;
   padding-top: 75px;
 `;
+
+export const StyledAuthButton = styled.a`
+  cursor: pointer;
+  line-height: 72px;
+`;
