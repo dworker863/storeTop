@@ -4,27 +4,33 @@ import {
   EAuth,
   IAuthState,
   ISetAuthAction,
+  IAuthUser,
 } from './IauthReducer';
-import { login, registration } from '../../../api/api';
+import { fetchUsers, login, registration } from '../../../api/api';
+import { getUsers } from '../users/usersReducer';
 
 const initialState: IAuthState = {
   userName: '',
+  userEmail: '',
   auth: false,
 };
 
 const auth = (state = initialState, action: TAuthActionTypes | any) => {
-  switch (action.payload) {
+  switch (action.type) {
     case EAuth.SET_AUTH:
-      return { ...action.payload };
+      const authState = { ...action.payload, auth: true };
+      console.log(authState);
+
+      return authState;
 
     default:
       return state;
   }
 };
 
-export const setAuth = (userName: string): ISetAuthAction => ({
+export const setAuth = (userAuth: IAuthUser): ISetAuthAction => ({
   type: EAuth.SET_AUTH,
-  payload: userName,
+  payload: userAuth,
 });
 
 export const setLogin =
@@ -33,8 +39,9 @@ export const setLogin =
     password: string,
   ): ThunkAction<void, IAuthState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): void => {
-    console.log(11);
-    login(email, password).then((user) => dispatch(setAuth(user.username)));
+    login(email, password).then((user) => {
+      dispatch(setAuth({ userName: user.username, userEmail: user.email }));
+    });
   };
 
 export const setRegistration =
@@ -46,9 +53,10 @@ export const setRegistration =
     role: string,
   ): ThunkAction<void, IAuthState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>) => {
-    registration(username, tel, email, password, role).then((user) =>
-      dispatch(setAuth(user.username)),
-    );
+    registration(username, tel, email, password, role).then((user) => {
+      dispatch(getUsers());
+      dispatch(setAuth({ userName: user.username, userEmail: user.email }));
+    });
   };
 
 export default auth;

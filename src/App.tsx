@@ -18,11 +18,20 @@ import { IGood } from './app/commonInterfaces/IGood';
 import SearchPage from './app/components/Pages/SearchPage/SearchPage';
 import AuthModal from './app/components/Sections/AuthModal/AuthModal';
 import RegistrationPage from './app/components/Pages/RegistrationPage/RegistarationPage';
+import UserCabinet from './app/components/Pages/UserCabinet/UserCabinet';
+import { getUsers } from './app/redux/reducers/users/usersReducer';
+import { IUser } from './app/commonInterfaces/IUser';
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
   const goods = useSelector((state: RootState) => state.goods);
+  const users: IUser[] = useSelector((state: RootState) => state.users.users);
+  const userEmail = useSelector((state: RootState) => state.auth.userEmail);
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
+  const userCabinet = users.filter((user) => user.email === userEmail)[0];
+
+  console.log(users);
+  console.log(userCabinet);
 
   const searchStr = useSelector((state: RootState) => state.search.value);
   const searchRegExp = new RegExp(`^${searchStr}`);
@@ -34,6 +43,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getGoods());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (
@@ -52,6 +62,7 @@ function App() {
           element={<CartPage goods={cart.goods} sum={cart.sum} />}
         />
         <Route path="search" element={<SearchPage goods={searchGoods} />} />
+        <Route path="cabinet" element={<UserCabinet user={userCabinet} />} />
         <Route
           path="goods/electronics"
           element={<Category goods={goods.electronics} title="Электроника" />}

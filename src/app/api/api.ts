@@ -1,3 +1,4 @@
+import { IUsersState } from './../redux/reducers/users/IusersReducer';
 import axios from 'axios';
 import { IUser } from '../commonInterfaces/IUser';
 import { IGoodsState } from '../redux/reducers/goods/IgoodsReducer';
@@ -8,14 +9,18 @@ export const instance = axios.create({
 
 export const fetchGoods = (): Promise<IGoodsState> => {
   return instance.get('goods').then((res) => {
-    console.log();
+    return res.data;
+  });
+};
+
+export const fetchUsers = (): Promise<IUsersState> => {
+  return instance.get('users').then((res) => {
     return res.data;
   });
 };
 
 export const login = (email: string, password: string): Promise<IUser> => {
   return instance.post('auth/login', { email, password }).then((res) => {
-    console.log(res.data);
     localStorage.setItem('token', res.data.token);
     return res.data.dataValues;
   });
