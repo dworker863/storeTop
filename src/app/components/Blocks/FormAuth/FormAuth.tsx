@@ -33,7 +33,7 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
       <Label id="#email" text="Email" />
       <Input
         id="email"
-        type="text"
+        type="email"
         name="email"
         placeholder="Email"
         value={authValue.email}

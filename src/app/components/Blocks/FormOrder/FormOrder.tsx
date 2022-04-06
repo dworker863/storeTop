@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import { StyledForm } from '../../../commonStyles/StyledForm';
 import Button from '../../Elements/Button/Button';
 import Input from '../../Elements/Input/Input';
 import Label from '../../Elements/Label/Label';
 
-const FormOrder = () => {
+const FormOrder: FC = () => {
   return (
     <StyledForm>
       <Label id="#name" text="Ваше имя и фамилия" />

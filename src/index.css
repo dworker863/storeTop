@@ -65,6 +65,10 @@ code {
     monospace;
 }
 
+.root {
+  position: relative;
+}
+
 .swiper-button-next-custom.swiper-button-disabled,
 .swiper-button-prev-custom.swiper-button-disabled {
   background-image: url(assets/images/arrow-disabled.png);

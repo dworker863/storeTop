@@ -21,6 +21,7 @@ import RegistrationPage from './app/components/Pages/RegistrationPage/Registarat
 import UserCabinet from './app/components/Pages/UserCabinet/UserCabinet';
 import { getUsers } from './app/redux/reducers/users/usersReducer';
 import { IUser } from './app/commonInterfaces/IUser';
+import Overlay from './app/components/Elements/Overlay/Overlay';
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <ThemeProvider theme={commonTheme}>
+      <Overlay active={authModal} />
       <AuthModal active={authModal} authButtonHandler={authButtonHandler} />
       <Header authButtonHandler={authButtonHandler} />
       <Menu categories={Object.keys(goods)} />
