@@ -6,9 +6,10 @@ import NavMobile from '../../Blocks/NavMobile/NavMobile';
 import Search from '../../Blocks/Search/Search';
 import TopLine from '../../Blocks/TopLine/TopLine';
 import Hamburger from '../../Elements/Hamburger/Hamburger';
+import { IHeader } from './IHeader';
 import { StyledHeader } from './StyledHeader';
 
-const Header: FC = () => {
+const Header: FC<IHeader> = ({ authButtonHandler }) => {
   const [hamburgerActive, setHamburgerActive] = useState(false);
 
   const hamburgerClickHndler = () => {
@@ -23,7 +24,7 @@ const Header: FC = () => {
           hamburgerActive={hamburgerActive}
           clickHandler={hamburgerClickHndler}
         />
-        <TopLine />
+        <TopLine authButtonHandler={authButtonHandler} />
         <Contacts />
         <Search />
         <Cart />

@@ -1,16 +1,31 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setAuth } from '../../../redux/reducers/auth/authReducer';
 import { RootState } from '../../../redux/store';
-import Button from '../../Elements/Button/Button';
 import Logo from '../../Elements/Logo/Logo';
 import Nav from '../Nav/Nav';
-import { StyledTopLine } from './StyledTopLine';
+import { ITopLine } from './ITopLine';
+import {
+  StyledAuthButton,
+  StyledLogoutButton,
+  StyledRegistrationButton,
+  StyledTopLine,
+} from './StyledTopLine';
 
-const TopLine: FC = () => {
+const TopLine: FC<ITopLine> = ({ authButtonHandler }) => {
   const username = useSelector((state: RootState) => state.auth.userName);
+  const dispatch = useDispatch();
 
-  console.log(username);
+  const logoutClickHandler = () => {
+    dispatch(setAuth({ userName: '', userEmail: '' }));
+    authButtonHandler(false);
+  };
+
+  const logInClickHandler = () => {
+    dispatch(setAuth({ userName: '', userEmail: '' }));
+    authButtonHandler(true);
+  };
 
   return (
     <StyledTopLine>
@@ -18,7 +33,23 @@ const TopLine: FC = () => {
         <Logo />
       </Link>
       <Nav />
-      {username.length > 0 ? <Link to="/cabinet">{username}</Link> : 'Войти'}
+      {username.length > 0 ? (
+        <div>
+          <Link to="/cabinet">{username}</Link>
+          <StyledLogoutButton onClick={logoutClickHandler}>
+            Выйти
+          </StyledLogoutButton>
+        </div>
+      ) : (
+        <div>
+          <StyledAuthButton onClick={logInClickHandler}>Войти</StyledAuthButton>
+          <Link to="registration">
+            <StyledRegistrationButton>
+              Зарегистрироваться
+            </StyledRegistrationButton>
+          </Link>
+        </div>
+      )}
     </StyledTopLine>
   );
 };

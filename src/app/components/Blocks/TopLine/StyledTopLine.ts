@@ -9,5 +9,15 @@ export const StyledTopLine = styled.div`
 
 export const StyledAuthButton = styled.a`
   cursor: pointer;
-  line-height: 72px;
+  line-height: 50px;
+`;
+
+export const StyledRegistrationButton = styled.span`
+  cursor: pointer;
+  line-height: 50px;
+`;
+
+export const StyledLogoutButton = styled.a`
+  cursor: pointer;
+  line-height: 50px;
 `;

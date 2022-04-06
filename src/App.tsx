@@ -9,7 +9,7 @@ import { RootState } from './app/redux/store';
 import Category from './app/components/Pages/CategoryPage/CategoryPage';
 import Menu from './app/components/Blocks/Menu/Menu';
 import { getGoods } from './app/redux/reducers/goods/goodsReducer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import GoodPage from './app/components/Pages/GoodPage/GoodPage';
 import PaymentConditionsPage from './app/components/Pages/PaymentConditionsPage/PaymentConditionsPage';
 import ContactsPage from './app/components/Pages/ContactsPage/ContactsPage';
@@ -29,9 +29,8 @@ function App() {
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
   const userCabinet = users.filter((user) => user.email === userEmail)[0];
-
-  console.log(users);
-  console.log(userCabinet);
+  const dispatch = useDispatch();
+  const [authModal, setAuthModal] = useState(false);
 
   const searchStr = useSelector((state: RootState) => state.search.value);
   const searchRegExp = new RegExp(`^${searchStr}`);
@@ -39,7 +38,9 @@ function App() {
     ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
     : [];
 
-  const dispatch = useDispatch();
+  const authButtonHandler = (mode: boolean) => {
+    setAuthModal(mode);
+  };
 
   useEffect(() => {
     dispatch(getGoods());
@@ -48,9 +49,8 @@ function App() {
 
   return (
     <ThemeProvider theme={commonTheme}>
-      <RegistrationPage />
-      <AuthModal />
-      <Header />
+      <AuthModal active={authModal} authButtonHandler={authButtonHandler} />
+      <Header authButtonHandler={authButtonHandler} />
       <Menu categories={Object.keys(goods)} />
       <Routes>
         <Route path="/" element={<HomePage goods={goods} />} />
@@ -62,6 +62,7 @@ function App() {
           element={<CartPage goods={cart.goods} sum={cart.sum} />}
         />
         <Route path="search" element={<SearchPage goods={searchGoods} />} />
+        <Route path="registration" element={<RegistrationPage />} />
         <Route path="cabinet" element={<UserCabinet user={userCabinet} />} />
         <Route
           path="goods/electronics"

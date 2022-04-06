@@ -2,13 +2,14 @@ import { ChangeEvent, FC, MouseEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../../redux/reducers/auth/authReducer';
 import Button from '../../Elements/Button/Button';
+import { IAuthModal } from './IAuthModal';
 import {
   StyledAuthInput,
   StyledAuthLabel,
   StyledAuthModal,
 } from './StyledAuthModal';
 
-const AuthModal: FC = () => {
+const AuthModal: FC<IAuthModal> = ({ active, authButtonHandler }) => {
   const [authValue, setAuthValue] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
 
@@ -26,11 +27,11 @@ const AuthModal: FC = () => {
     event.preventDefault();
 
     dispatch(setLogin(authValue.email, authValue.password));
+    authButtonHandler(false);
   };
 
   return (
-    <StyledAuthModal>
-      {/* <form method="post"> */}
+    <StyledAuthModal active={active}>
       <StyledAuthLabel htmlFor="#email">Email</StyledAuthLabel>
       <StyledAuthInput
         id="email"

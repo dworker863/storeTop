@@ -6,7 +6,7 @@ import {
   ISetAuthAction,
   IAuthUser,
 } from './IauthReducer';
-import { fetchUsers, login, registration } from '../../../api/api';
+import { login, registration } from '../../../api/api';
 import { getUsers } from '../users/usersReducer';
 
 const initialState: IAuthState = {
@@ -18,7 +18,10 @@ const initialState: IAuthState = {
 const auth = (state = initialState, action: TAuthActionTypes | any) => {
   switch (action.type) {
     case EAuth.SET_AUTH:
-      const authState = { ...action.payload, auth: true };
+      const authState = {
+        ...action.payload,
+        auth: action.payload.userName ? false : true,
+      };
       console.log(authState);
 
       return authState;
