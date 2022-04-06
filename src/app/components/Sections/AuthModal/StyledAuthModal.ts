@@ -11,12 +11,3 @@ export const StyledAuthModal = styled.section<IStyledAuthModal>`
       display: block;
     `}
 `;
-
-export const StyledAuthLabel = styled.label`
-  display: block;
-`;
-
-export const StyledAuthInput = styled.input`
-  display: block;
-  border: 1px solid #000;
-`;

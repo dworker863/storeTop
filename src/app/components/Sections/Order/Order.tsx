@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Form from '../../Blocks/Form/Form';
+import FormOrder from '../../Blocks/FormOrder/FormOrder';
 import ContactsItem from '../../Elements/ContactsItem/ContactsItem';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import TextOrange from '../../Elements/TextOrange/TextOrange';
@@ -48,7 +48,7 @@ const Order: FC = () => {
           Вы можете заказать обратный звонок заполнив форму обратной связи ниже.
         </p>
         <p>Процесс не займет больше одной минуты.</p>
-        <Form />
+        <FormOrder />
       </StyledOrderFeedback>
     </StyledOrder>
   );
