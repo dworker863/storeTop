@@ -9,6 +9,7 @@ import {
   StyledUserCabinet,
   StyledUserCabinetAddress,
   StyledUserCabinetAddressWrapper,
+  StyledUserCabinetBtnWrapper,
   StyledUserCabinetDate,
   StyledUserCabinetEmail,
   StyledUserCabinetInfo,
@@ -29,8 +30,10 @@ const UserCabinet: FC<IUserCabinet> = ({ user }) => {
         <StyledUserCabinetInfoWrapper>
           <StyledUserCabinetPhotoWrapper>
             <StyledUserCabinetPhoto></StyledUserCabinetPhoto>
-            <Button text="Изменить изображение" />
-            <Button text="X Удалить" />
+            <StyledUserCabinetBtnWrapper>
+              <Button text="Изменить изображение" />
+              <Button text="X Удалить" />
+            </StyledUserCabinetBtnWrapper>
           </StyledUserCabinetPhotoWrapper>
 
           <StyledUserCabinetInfo>

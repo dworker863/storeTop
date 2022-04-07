@@ -42,5 +42,10 @@ export const StyledContainer = styled.div<IStyledContainer>`
     css`
       max-width: 1220px;
       margin: 0 auto;
+
+      @media (max-width: 576px) {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
     `}
 `;
