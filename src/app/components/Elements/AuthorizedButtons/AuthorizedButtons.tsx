@@ -3,8 +3,13 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setAuth } from '../../../redux/reducers/auth/authReducer';
 import NavItem from '../NavItem/NavItem';
+import TextOrange from '../TextOrange/TextOrange';
 import { IAuthorizedButtons } from './IAuthorizedButtons';
-import { StyledAuthButtons } from './StyledAuthButtons';
+import {
+  StyledAuthButtons,
+  StyledAuthTitle,
+  StyledCabinetLink,
+} from './StyledAuthButtons';
 
 const AuthorizedButtons: FC<IAuthorizedButtons> = ({
   username,
@@ -19,8 +24,12 @@ const AuthorizedButtons: FC<IAuthorizedButtons> = ({
 
   return (
     <StyledAuthButtons>
+      <StyledAuthTitle>
+        Добро пожаловать, <TextOrange text={username} />
+      </StyledAuthTitle>
+
       <Link to="/cabinet">
-        <NavItem text={username} type="desktop" />
+        <StyledCabinetLink>Мой профиль</StyledCabinetLink>
       </Link>
       <div>
         <NavItem

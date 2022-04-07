@@ -40,6 +40,7 @@ export const StyledNavMobile = styled.ul`
       margin-top: 30px;
 
       a li {
+        padding-left: 20px;
         &::before {
           display: block;
           left: 10px;

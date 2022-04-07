@@ -42,7 +42,7 @@ export const StyledNavItem = styled.li<IStyledNavMobile>`
   }
 
   @media (max-width: 992px) {
-    padding-left: 20px;
+    padding-left: 0px;
 
     &:before {
       display: none;

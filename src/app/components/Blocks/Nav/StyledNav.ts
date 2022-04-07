@@ -6,6 +6,8 @@ export const StyledNavWrapper = styled.nav`
   @media (max-width: 1600px) {
     order: 2;
     line-height: 72px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 `;
 
