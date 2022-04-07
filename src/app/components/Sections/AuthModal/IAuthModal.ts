@@ -5,4 +5,5 @@ export interface IAuthModal {
 
 export interface IStyledAuthModal {
   active: boolean;
+  ref: any;
 }
