@@ -4,6 +4,8 @@ export const StyledAuthButtons = styled.ul`
   display: flex;
   justify-content: flex-start;
   line-height: 72px;
-`;
 
-export const StyledLogoutButton = styled.a``;
+  @media (max-width: 1600px) {
+    line-height: 50px;
+  }
+`;

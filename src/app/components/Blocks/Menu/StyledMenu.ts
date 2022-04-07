@@ -29,13 +29,16 @@ export const StyledMenu = styled.ul`
 
   li {
     text-transform: none;
-    color: #fff;
     font-size: 16px;
     padding: 15px 35px;
     border-right: 1px solid #fff;
 
-    &:hover {
+    a {
       color: #fff;
+
+      &:hover {
+        color: #fff;
+      }
     }
 
     @media (max-width: 992px) {

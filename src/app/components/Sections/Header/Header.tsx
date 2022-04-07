@@ -18,7 +18,10 @@ const Header: FC<IHeader> = ({ authButtonHandler }) => {
 
   return (
     <StyledHeader>
-      <NavMobile isActive={hamburgerActive} />
+      <NavMobile
+        isActive={hamburgerActive}
+        authButtonHandler={authButtonHandler}
+      />
       <Container type="header">
         <Hamburger
           hamburgerActive={hamburgerActive}

@@ -37,11 +37,11 @@ export const StyledNavItem = styled.li<IStyledNavMobile>`
     border-right: 1px solid #fff;
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1800px) {
     font-size: 14px;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 992px) {
     padding-left: 20px;
 
     &:before {

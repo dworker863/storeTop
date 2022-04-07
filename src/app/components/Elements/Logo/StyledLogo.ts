@@ -3,6 +3,14 @@ import styled from 'styled-components';
 export const StyledLogo = styled.div`
   font-family: Gilroy;
   margin-bottom: 35px;
+
+  @media (max-width: 1600px) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    margin-bottom: 35px;
+  }
 `;
 
 export const StyledLogoThin = styled.span`

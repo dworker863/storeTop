@@ -6,7 +6,7 @@ export const StyledSliderWrapper = styled.div`
 `;
 
 export const StyledNav = styled.div`
-  z-index: 1000;
+  z-index: 10;
   position: absolute;
   top: 50%;
   width: 100%;

@@ -12,6 +12,7 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
   const dispatch = useDispatch();
 
   const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    console.log(authValue.email);
     setAuthValue({ ...authValue, email: event.target.value });
   };
 

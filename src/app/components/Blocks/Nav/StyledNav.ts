@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const StyledNavWrapper = styled.nav`
   width: 100%;
+
+  @media (max-width: 1600px) {
+    order: 2;
+    line-height: 72px;
+  }
 `;
 
 export const StyledNav = styled.ul`
@@ -11,11 +16,7 @@ export const StyledNav = styled.ul`
   line-height: 72px;
 
   @media (max-width: 1600px) {
-    line-height: 56px;
-  }
-
-  @media (max-width: 1200px) {
-    line-height: 42px;
+    line-height: 72px;
   }
 
   @media (max-width: 992px) {
