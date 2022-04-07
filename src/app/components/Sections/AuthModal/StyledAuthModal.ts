@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components';
 
 export const StyledAuthModal = styled.section<IStyledAuthModal>`
   z-index: 1000;
-  display: flex;
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 700px;
+  width: 420px;
+  padding-bottom: 40px;
+  border-radius: 5px;
   background-color: #fff;
   transform: translate(-50%, -50%);
 
@@ -15,9 +17,17 @@ export const StyledAuthModal = styled.section<IStyledAuthModal>`
     text-align: center;
   }
 
+  button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+
   ${({ active }) =>
     active &&
     css`
-      display: block;
+      display: grid;
+      grid-template-rows: 1fr 4fr;
+      justify-items: center;
     `};
 `;
