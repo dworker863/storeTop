@@ -1,31 +1,16 @@
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setAuth } from '../../../redux/reducers/auth/authReducer';
 import { RootState } from '../../../redux/store';
+import AuthorizedButtons from '../../Elements/AuthorizedButtons/AuthorizedButtons';
 import Logo from '../../Elements/Logo/Logo';
+import UnauthorizedButtons from '../../Elements/UnauthorizedButtons/UnauthorizedButtons';
 import Nav from '../Nav/Nav';
 import { ITopLine } from './ITopLine';
-import {
-  StyledAuthButton,
-  StyledLogoutButton,
-  StyledRegistrationButton,
-  StyledTopLine,
-} from './StyledTopLine';
+import { StyledTopLine } from './StyledTopLine';
 
 const TopLine: FC<ITopLine> = ({ authButtonHandler }) => {
   const username = useSelector((state: RootState) => state.auth.userName);
-  const dispatch = useDispatch();
-
-  const logoutClickHandler = () => {
-    dispatch(setAuth({ userName: '', userEmail: '' }));
-    authButtonHandler(false);
-  };
-
-  const logInClickHandler = () => {
-    dispatch(setAuth({ userName: '', userEmail: '' }));
-    authButtonHandler(true);
-  };
 
   return (
     <StyledTopLine>
@@ -34,21 +19,12 @@ const TopLine: FC<ITopLine> = ({ authButtonHandler }) => {
       </Link>
       <Nav />
       {username.length > 0 ? (
-        <div>
-          <Link to="/cabinet">{username}</Link>
-          <StyledLogoutButton onClick={logoutClickHandler}>
-            Выйти
-          </StyledLogoutButton>
-        </div>
+        <AuthorizedButtons
+          username={username}
+          authButtonHandler={authButtonHandler}
+        />
       ) : (
-        <div>
-          <StyledAuthButton onClick={logInClickHandler}>Войти</StyledAuthButton>
-          <Link to="registration">
-            <StyledRegistrationButton>
-              Зарегистрироваться
-            </StyledRegistrationButton>
-          </Link>
-        </div>
+        <UnauthorizedButtons authButtonHandler={authButtonHandler} />
       )}
     </StyledTopLine>
   );

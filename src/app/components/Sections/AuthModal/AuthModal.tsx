@@ -22,11 +22,11 @@ const AuthModal: FC<IAuthModal> = ({ active, authButtonHandler }) => {
         handleClickOutside(modal, event),
       );
     };
-  }, [modal]);
+  }, [authButtonHandler, modal]);
 
   return (
     <StyledAuthModal ref={modal} active={active}>
-      <SectionTitle text="Авторизация" primary={false} />
+      <SectionTitle text="Вход пользователя" primary={false} />
       <FormAuth authButtonHandler={authButtonHandler} />
     </StyledAuthModal>
   );

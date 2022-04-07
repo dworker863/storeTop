@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledTopLine = styled.div`
+export const StyledUnauthButtons = styled.ul`
   display: flex;
   justify-content: flex-start;
-  width: 100%;
-  padding-top: 75px;
+  line-height: 72px;
 `;
