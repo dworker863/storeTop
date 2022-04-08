@@ -27,16 +27,6 @@ export const StyledUserCabinetPhotoWrapper = styled.div`
   padding: 35px;
   border-right: 1px solid ${(props) => props.theme.colors.lightGrey};
 
-  button {
-    &:nth-child(2) {
-      margin-right: 12px;
-
-      @media (max-width: 992px) {
-        margin-right: 10px;
-      }
-    }
-  }
-
   @media (max-width: 992px) {
     padding: 20px;
   }
@@ -70,8 +60,7 @@ export const StyledUserCabinetPhoto = styled.div`
 `;
 export const StyledUserCabinetBtnWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
 `;
 
 export const StyledUserCabinetInfo = styled.div`
@@ -96,6 +85,10 @@ export const StyledUserCabinetName = styled.h3`
 export const StyledUserCabinetDate = styled.p`
   margin-top: 0;
   width: max-content;
+
+  span {
+    font-size: 12px;
+  }
 
   &:after {
     content: '';

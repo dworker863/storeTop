@@ -39,7 +39,8 @@ const UserCabinet: FC<IUserCabinet> = ({ user }) => {
           <StyledUserCabinetInfo>
             <StyledUserCabinetName>{user.username}</StyledUserCabinetName>
             <StyledUserCabinetDate>
-              <TextOrange text="Дата регистрации на сайте:" /> 20 апреля 2022 г.
+              <TextOrange text="Дата регистрации на сайте: " />
+              <span>20 сентября 2022 г.</span>
             </StyledUserCabinetDate>
             <StyledUserCabinetEmail>
               <StyledUserCabinetSubtitle>
