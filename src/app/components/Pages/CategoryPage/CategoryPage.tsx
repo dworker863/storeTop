@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { StyledHiddenCard } from '../../../commonStyles/StyledHiddenCard';
 import Container from '../../Blocks/Container/Container';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
 import { StyledGoodsWrapper } from '../../Elements/GoodsWrapper/StyledGoodsWrapper';
@@ -23,6 +24,7 @@ const Category: FC<ICategory> = ({ goods, title }) => {
               hit={good.hit}
             />
           ))}
+          <StyledHiddenCard></StyledHiddenCard>
         </StyledGoodsWrapper>
       </StyledCategory>
     </Container>

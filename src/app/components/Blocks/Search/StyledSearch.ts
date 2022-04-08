@@ -37,6 +37,10 @@ export const StyledButtonWrapper = styled.div`
   top: 50%;
   right: 4px;
   transform: translateY(-50%);
+
+  @media (max-width: 576px) {
+    right: 0;
+  }
 `;
 
 export const StyledSearchInput = styled.input`

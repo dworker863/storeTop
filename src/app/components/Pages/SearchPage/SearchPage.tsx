@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { StyledHiddenCard } from '../../../commonStyles/StyledHiddenCard';
 import Container from '../../Blocks/Container/Container';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
 import { StyledGoodsWrapper } from '../../Elements/GoodsWrapper/StyledGoodsWrapper';
@@ -22,6 +23,7 @@ const SearchPage: FC<ISearchPage> = ({ goods }) => {
               hit={good.hit}
             />
           ))}
+          <StyledHiddenCard></StyledHiddenCard>
         </StyledGoodsWrapper>
       </StyledSearchPage>
     </Container>
