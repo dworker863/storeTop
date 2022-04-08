@@ -6,7 +6,7 @@ export const StyledGoodsItem = styled.div`
   position: relative;
   width: 225px;
   margin-left: 1px;
-  border: 1px solid ${(props) => props.theme.colors.grey};
+  border: 1px solid ${(props) => props.theme.colors.fontColor};
   border-radius: 6px;
 
   @media (max-width: 992px) {
@@ -63,21 +63,21 @@ export const StyledGoodsItemDesc = styled.p`
 
 export const StyledGoodsItemPriceWrapper = styled.div`
   display: flex;
-  border-top: 1px solid ${(props) => props.theme.colors.grey};
+  border-top: 1px solid ${(props) => props.theme.colors.fontColor};
 `;
 
 export const StyledGoodsItemPrice = styled.div`
   width: 170px;
   padding: 5px 15px;
   border-bottom-left-radius: 5px;
-  border-right: 1px solid ${(props) => props.theme.colors.grey};
+  border-right: 1px solid ${(props) => props.theme.colors.fontColor};
   background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const StyledGoodsItemBlack = styled.span`
   font-size: 14px;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.grey};
+  color: ${(props) => props.theme.colors.fontColor};
 `;
 
 export const StyledGoodsItemWhite = styled.span`

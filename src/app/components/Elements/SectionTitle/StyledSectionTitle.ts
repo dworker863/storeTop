@@ -5,6 +5,7 @@ export const StyledSectionTitle = styled.h2<IStyledSectionTitle>`
   width: 100%;
   margin-bottom: 0;
   font-size: 24px;
+  color: ${(props) => props.theme.colors.fontColor};
 
   ${({ primary }) =>
     primary &&
