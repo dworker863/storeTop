@@ -11,7 +11,6 @@ import {
   StyledUserCabinetDate,
   StyledUserCabinetEmail,
   StyledUserCabinetName,
-  StyledUserCabinetNote,
   StyledUserCabinetSubtitle,
   StyledUserCabinetTel,
 } from './StyledUserCabinet';
@@ -21,6 +20,7 @@ import { cabinetButtonsText } from '../../../utils/staticData';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
+import Note from '../../Elements/Note/Note';
 
 const UserCabinet: FC<IUserCabinet> = ({ user }) => {
   return (
@@ -46,32 +46,32 @@ const UserCabinet: FC<IUserCabinet> = ({ user }) => {
               <StyledUserCabinetSubtitle>
                 Контактный номер телефона
               </StyledUserCabinetSubtitle>
-              {user.tel}
+              {user.phone}
               <StyledEyeIcon src={eyeIcon} />
-              <StyledUserCabinetNote>
+              <Note>
                 <StyledTextGrey>Примечание:</StyledTextGrey>
                 <br />
                 Просим Вас указывать действительный номер телефона для связи.
                 Номер телефона используется только для связи с клиентом в целях
                 подтвержения заказа товара
-              </StyledUserCabinetNote>
+              </Note>
             </StyledUserCabinetTel>
             <StyledUserCabinetAddressWrapper>
               <StyledUserCabinetSubtitle>
                 Адрес и почтовый индекс
               </StyledUserCabinetSubtitle>
               <StyledTextSimple>Республика Казахстан,</StyledTextSimple>
-              <StyledTextSimple>г. Алматы</StyledTextSimple>
+              <StyledTextSimple>{user.street}</StyledTextSimple>
               <StyledTextSimple>
-                ул. Уличная, д. 50А, кв. 111, 7 этаж
+                {`${user.street}, д.${user.houseNumber}, кв.${user.flatNumber}, ${user.floor} этаж`}
               </StyledTextSimple>
               Почтовый индекс: {user.postIndex}
-              <StyledUserCabinetNote>
+              <Note>
                 <StyledTextGrey>Примечание:</StyledTextGrey>
                 <br />
                 Адрес используется только для доставки курьером или опредения
                 ближней почтовой точки для доставки.
-              </StyledUserCabinetNote>
+              </Note>
             </StyledUserCabinetAddressWrapper>
           </StyledInfo>
         </StyledInfoWrapper>

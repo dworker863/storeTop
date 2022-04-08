@@ -10,6 +10,9 @@ import TextOrange from '../../Elements/TextOrange/TextOrange';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import { StyledFlexWrapper } from '../../../commonStyles/StyledFlexWrapper';
 import { StyledTextLightGrey } from '../../../commonStyles/StyledTextLightGrey';
+import { StyledFormRegistration } from './StyledFormRegistration';
+import Note from '../../Elements/Note/Note';
+import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 
 const FormRegistration: FC = () => {
   const [registr, setRegistr] = useState({
@@ -36,7 +39,6 @@ const FormRegistration: FC = () => {
         registr.username,
         registr.email,
         registr.password,
-        registr.passwordConfirm,
         registr.phone,
         registr.city,
         registr.street,
@@ -58,11 +60,6 @@ const FormRegistration: FC = () => {
         break;
       }
 
-      case 'tel': {
-        setRegistr({ ...registr, phone: event.target.value });
-        break;
-      }
-
       case 'email': {
         setRegistr({ ...registr, email: event.target.value });
         break;
@@ -70,6 +67,46 @@ const FormRegistration: FC = () => {
 
       case 'password': {
         setRegistr({ ...registr, password: event.target.value });
+        break;
+      }
+
+      case 'passwordConfirm': {
+        setRegistr({ ...registr, passwordConfirm: event.target.value });
+        break;
+      }
+
+      case 'phone': {
+        setRegistr({ ...registr, phone: event.target.value });
+        break;
+      }
+
+      case 'city': {
+        setRegistr({ ...registr, city: event.target.value });
+        break;
+      }
+
+      case 'street': {
+        setRegistr({ ...registr, street: event.target.value });
+        break;
+      }
+
+      case 'houseNumber': {
+        setRegistr({ ...registr, houseNumber: event.target.value });
+        break;
+      }
+
+      case 'floor': {
+        setRegistr({ ...registr, floor: event.target.value });
+        break;
+      }
+
+      case 'flatNumber': {
+        setRegistr({ ...registr, flatNumber: event.target.value });
+        break;
+      }
+
+      case 'postIndex': {
+        setRegistr({ ...registr, postIndex: event.target.value });
         break;
       }
 
@@ -88,7 +125,9 @@ const FormRegistration: FC = () => {
         value={registr.username}
         onChange={inputChangeHandler}
       />
+      <StyledFormRegistration></StyledFormRegistration>
       <Label id="#email" text="Адрес электронной почты *" />
+      <Note>Будет использоваться для авторизации на сайте</Note>
       <Input
         id="email"
         type="email"
@@ -97,7 +136,11 @@ const FormRegistration: FC = () => {
         value={registr.email}
         onChange={inputChangeHandler}
       />
+      <StyledFormRegistration></StyledFormRegistration>
       <Label id="#password" text="Пароль *" />
+      <Note>
+        Будет использоваться для авторизации на сайте. От 6 до 14 символов
+      </Note>
       <Input
         id="password"
         type="password"
@@ -109,12 +152,13 @@ const FormRegistration: FC = () => {
       <Label id="#passwordConfirm" text="Повторите пароль *" simple />
       <Input
         id="passwordConfirm"
-        type="passwordConfirm"
+        type="password"
         name="passwordConfirm"
         placeholder="********"
         value={registr.passwordConfirm}
         onChange={inputChangeHandler}
       />
+      <StyledFormRegistration></StyledFormRegistration>
       <Label id="#phone" text="Контактный номер телефона *" />
       <Input
         id="phone"
@@ -124,6 +168,13 @@ const FormRegistration: FC = () => {
         value={registr.phone}
         onChange={inputChangeHandler}
       />
+      <Note>
+        <StyledTextGrey>Примечание:</StyledTextGrey>
+        <br />
+        Просим Вас указывать действительный номер телефона для связи. Номер
+        телефона используется только для связи с клиентом в целях подтвержения
+        заказа товара.
+      </Note>
       <TextOrange text="Адрес и почтовый индекс *" />
       <StyledTextSimple>Республика Казахстан</StyledTextSimple>
       <Label id="#city" text="Город или поселок" simple />
@@ -175,7 +226,7 @@ const FormRegistration: FC = () => {
         </div>
         <div>
           <Label id="#flatNumber" text="Номер квартиры" simple />
-          <StyledTextLightGrey> (если есть)</StyledTextLightGrey>
+          <StyledTextLightGrey>(если есть)</StyledTextLightGrey>
           <Input
             id="flatNumber"
             type="text"
@@ -196,6 +247,13 @@ const FormRegistration: FC = () => {
         value={registr.postIndex}
         onChange={inputChangeHandler}
       />
+      <Note>
+        <StyledTextGrey>Примечание:</StyledTextGrey>
+        <br />
+        Просим Вас указывать действительный номер телефона для связи. Номер
+        телефона используется только для связи с клиентом в целях подтвержения
+        заказа товара.
+      </Note>
       <Button
         type="submit"
         text="Зарегистрироваться"

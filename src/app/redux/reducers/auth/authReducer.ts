@@ -50,10 +50,9 @@ export const setLogin =
 export const setRegistration =
   (
     username: string,
-    tel: string,
     email: string,
     password: string,
-    passwordConfirm: string,
+    phone: string,
     city: string,
     street: string,
     houseNumber: string,
@@ -63,7 +62,19 @@ export const setRegistration =
     role: string,
   ): ThunkAction<void, IAuthState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>) => {
-    registration(username, tel, email, password, role).then((user) => {
+    registration(
+      username,
+      email,
+      password,
+      phone,
+      city,
+      street,
+      houseNumber,
+      floor,
+      flatNumber,
+      postIndex,
+      role,
+    ).then((user) => {
       dispatch(getUsers());
       dispatch(setAuth({ userName: user.username, userEmail: user.email }));
     });

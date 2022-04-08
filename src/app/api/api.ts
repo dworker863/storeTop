@@ -28,18 +28,30 @@ export const login = (email: string, password: string): Promise<IUser> => {
 
 export const registration = (
   username: string,
-  tel: string,
   email: string,
   password: string,
+  phone: string,
+  city: string,
+  street: string,
+  houseNumber: string,
+  floor: string,
+  flatNumber: string,
+  postIndex: string,
   role: string,
 ): Promise<IUser> => {
   return instance
     .post('auth/registration', {
       username,
-      tel,
       email,
       password,
+      phone,
       role,
+      city,
+      street,
+      houseNumber,
+      floor,
+      flatNumber,
+      postIndex,
     })
     .then((res) => {
       localStorage.setItem('token', res.data.token);

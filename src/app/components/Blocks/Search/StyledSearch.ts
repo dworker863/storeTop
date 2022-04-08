@@ -22,7 +22,7 @@ export const StyledSearch = styled.div`
     width: 940px;
   }
 
-  @media (max-width: 1800px) {
+  @media (max-width: 992px) {
     margin-bottom: 345px;
   }
 

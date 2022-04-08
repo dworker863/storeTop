@@ -63,11 +63,4 @@ export const StyledEyeIcon = styled.img`
   margin-left: 10px;
 `;
 
-export const StyledUserCabinetNote = styled.p`
-  max-width: 400px;
-  font-size: 12px;
-  line-height: 16px;
-  color: ${(props) => props.theme.colors.lightGrey};
-`;
-
 export const StyledUserCabinetAddressWrapper = styled.div``;
