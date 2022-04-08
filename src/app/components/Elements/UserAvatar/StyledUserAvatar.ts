@@ -8,6 +8,7 @@ export const StyledUserCabinetPhotoWrapper = styled.div`
   border-bottom-left-radius: 6px;
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
   border-right: none;
+  box-shadow: 0px 5px #d1d1d1;
 
   @media (max-width: 768px) {
     padding: 20px;

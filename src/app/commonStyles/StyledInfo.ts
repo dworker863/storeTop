@@ -6,6 +6,7 @@ export const StyledInfo = styled.div`
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
+  box-shadow: 0px 5px #d1d1d1;
 
   @media (max-width: 992px) {
     padding: 20px;
