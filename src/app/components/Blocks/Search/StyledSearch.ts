@@ -12,14 +12,9 @@ export const StyledSearch = styled.div`
   border-top-right-radius: 7px;
 
   @media (max-width: 1800px) {
-    width: 585px;
-    margin-left: 70px;
-  }
-
-  @media (max-width: 1600px) {
     width: 890px;
     margin-top: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 140px;
     margin-left: 0px;
   }
 

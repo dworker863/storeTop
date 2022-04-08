@@ -7,7 +7,7 @@ export const StyledContacts = styled.div`
   width: 525px;
   font-size: 14px;
 
-  @media (max-width: 1600px) {
+  @media (max-width: 1800px) {
     order: 2;
     margin-right: 80px;
   }

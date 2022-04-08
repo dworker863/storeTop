@@ -14,6 +14,14 @@ export const StyledFilters = styled.div`
     margin-right: 8px;
     margin-bottom: 5px;
   }
+
+  @media (max-width: 1800px) {
+    padding: 20px 50px;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 20px 55px;
+  }
 `;
 
 export const StyledFiltersTitle = styled.h3`
@@ -39,5 +47,13 @@ export const StyledFiltersBlock = styled.div`
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  @media (max-width: 1800px) {
+    padding: 0 55px;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 0 65px;
   }
 `;
