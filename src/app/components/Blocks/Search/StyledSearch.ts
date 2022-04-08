@@ -22,7 +22,12 @@ export const StyledSearch = styled.div`
     width: 940px;
   }
 
+  @media (max-width: 1800px) {
+    margin-bottom: 345px;
+  }
+
   @media (max-width: 576px) {
+    margin-bottom: 485px;
     height: 48px;
   }
 `;

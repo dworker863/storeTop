@@ -27,5 +27,11 @@ export const StyledInput = styled.input<IStyledInput>`
 
   @media (max-width: 576px) {
     width: 280px;
+
+    ${({ inline }) =>
+      inline &&
+      css`
+        width: auto;
+      `}
   }
 `;

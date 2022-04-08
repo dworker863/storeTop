@@ -22,12 +22,21 @@ export const StyledFilters = styled.div`
   @media (max-width: 1200px) {
     padding: 20px 55px;
   }
+
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+    padding: 20px 35px;
+  }
 `;
 
 export const StyledFiltersTitle = styled.h3`
   margin-top: 0;
   margin-bottom: 0;
   font-size: 14px;
+
+  @media (max-width: 992px) {
+    margin-top: 20px;
+  }
 `;
 
 export const StyledFiltersBlock = styled.div`
@@ -44,8 +53,24 @@ export const StyledFiltersBlock = styled.div`
   }
 
   label {
+    font-weight: 400;
+
     &:last-child {
       margin-right: 0;
+    }
+
+    @media (max-width: 576px) {
+      display: inline-block;
+      width: 90%;
+      font-size: 12px;
+    }
+
+    @media (max-width: 470px) {
+      width: 88%;
+    }
+
+    @media (max-width: 410px) {
+      width: 82%;
     }
   }
 
@@ -55,5 +80,27 @@ export const StyledFiltersBlock = styled.div`
 
   @media (max-width: 1200px) {
     padding: 0 65px;
+  }
+
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 0;
+    border: none;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 200px;
+      margin-top: 20px;
+      height: 1px;
+      background-color: ${(props) => props.theme.colors.lightGrey};
+    }
+
+    &:last-child {
+      padding-bottom: 20px;
+      &:after {
+        display: none;
+      }
+    }
   }
 `;
