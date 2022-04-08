@@ -61,7 +61,6 @@ const UserCabinet: FC<IUserCabinet> = ({ user }) => {
                 Адрес и почтовый индекс
               </StyledUserCabinetSubtitle>
               <StyledTextSimple>Республика Казахстан,</StyledTextSimple>
-              <br />
               <StyledTextSimple>г. Алматы</StyledTextSimple>
               <StyledTextSimple>
                 ул. Уличная, д. 50А, кв. 111, 7 этаж

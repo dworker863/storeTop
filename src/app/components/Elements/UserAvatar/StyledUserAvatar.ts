@@ -9,16 +9,16 @@ export const StyledUserCabinetPhotoWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
   border-right: none;
 
-  @media (max-width: 992px) {
-    padding: 20px;
-  }
-
   @media (max-width: 768px) {
-    border-right: none;
+    padding: 20px;
+    border-radius: 6px;
+    border-right: 1px solid ${(props) => props.theme.colors.lightGrey};
   }
 
   @media (max-width: 576px) {
     padding: 0;
+    height: 480px;
+    border-bottom: none;
   }
 `;
 
