@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledRegistrationPage = styled.section``;
+export const StyledRegistrationPage = styled.section`
+  width: 100%;
+`;
 
 export const StyledRegistrationLabel = styled.label`
   display: block;

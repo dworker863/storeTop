@@ -13,6 +13,10 @@ export const StyledAuthModal = styled.section<IStyledAuthModal>`
   background-color: #fff;
   transform: translate(-50%, -50%);
 
+  @media (max-width: 420px) {
+    width: 100%;
+  }
+
   h2 {
     text-align: center;
   }
