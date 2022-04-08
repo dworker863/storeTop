@@ -24,6 +24,9 @@ const SearchPage: FC<ISearchPage> = ({ goods }) => {
             />
           ))}
           <StyledHiddenCard></StyledHiddenCard>
+          <StyledHiddenCard></StyledHiddenCard>
+          <StyledHiddenCard></StyledHiddenCard>
+          <StyledHiddenCard></StyledHiddenCard>
         </StyledGoodsWrapper>
       </StyledSearchPage>
     </Container>

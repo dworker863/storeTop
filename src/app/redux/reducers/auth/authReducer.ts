@@ -53,6 +53,13 @@ export const setRegistration =
     tel: string,
     email: string,
     password: string,
+    passwordConfirm: string,
+    city: string,
+    street: string,
+    houseNumber: string,
+    floor: string,
+    flatNumber: string,
+    postIndex: string,
     role: string,
   ): ThunkAction<void, IAuthState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>) => {

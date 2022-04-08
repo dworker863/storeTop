@@ -2,6 +2,7 @@ export interface ITheme {
   colors: {
     primary: string;
     secondary: string;
+    fontColor: string;
     grey: string;
     lightGrey: string;
     lightYellow: string;

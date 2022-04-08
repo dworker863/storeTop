@@ -6,5 +6,6 @@ export interface IInput {
   name: string;
   placeholder: string;
   value?: string;
+  width?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }

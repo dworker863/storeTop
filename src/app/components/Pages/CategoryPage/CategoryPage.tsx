@@ -25,6 +25,9 @@ const Category: FC<ICategory> = ({ goods, title }) => {
             />
           ))}
           <StyledHiddenCard></StyledHiddenCard>
+          <StyledHiddenCard></StyledHiddenCard>
+          <StyledHiddenCard></StyledHiddenCard>
+          <StyledHiddenCard></StyledHiddenCard>
         </StyledGoodsWrapper>
       </StyledCategory>
     </Container>

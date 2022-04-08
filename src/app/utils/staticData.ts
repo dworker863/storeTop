@@ -23,3 +23,12 @@ export const navData: any[] = [
   ['contacts', 'контактная информация'],
   ['reviews', 'отзывы покупателей'],
 ];
+
+export const cabinetButtonsText: string[] = [
+  'Изменить изображение',
+  'X Удалить',
+];
+
+export const registrationButtonsText: string[] = [
+  'Добавить изображение профиля',
+];
