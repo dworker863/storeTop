@@ -5,11 +5,11 @@ export const StyledSearch = styled.div`
   display: inline-block;
   width: 730px;
   height: 60px;
-  margin-top: 47px;
   margin-left: 110px;
-  border: 1px solid #979797;
-  border-radius: 7px;
-  box-shadow: 0px 5px #d1d1d1;
+  border: 1px solid ${(props) => props.theme.colors.lightGrey};
+  border-bottom: none;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 
   @media (max-width: 1800px) {
     width: 585px;

@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { IStyledInput } from '../../Elements/Input/IInput';
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<IStyledInput>`
   display: block;
   width: 280px;
   padding: 10px;
@@ -16,6 +17,13 @@ export const StyledInput = styled.input`
   &:nth-child(6) {
     margin-bottom: 20px;
   }
+
+  ${({ inline }) =>
+    inline &&
+    css`
+      display: inline-block;
+      width: auto;
+    `}
 
   @media (max-width: 576px) {
     width: 280px;

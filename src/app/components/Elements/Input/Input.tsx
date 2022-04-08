@@ -2,7 +2,14 @@ import { FC } from 'react';
 import { IInput } from './IInput';
 import { StyledInput } from './StyledInput';
 
-const Input: FC<IInput> = ({ type, name, placeholder, width, onChange }) => {
+const Input: FC<IInput> = ({
+  type,
+  name,
+  placeholder,
+  width,
+  onChange,
+  inline,
+}) => {
   return (
     <StyledInput
       type={type}
@@ -10,6 +17,7 @@ const Input: FC<IInput> = ({ type, name, placeholder, width, onChange }) => {
       placeholder={placeholder}
       onChange={onChange}
       style={{ width }}
+      inline={inline || false}
     />
   );
 };

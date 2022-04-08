@@ -10,6 +10,7 @@ import searchIcon from '../../../../assets/images/search-icon.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSearch } from '../../../redux/reducers/search/searchReducer';
+import Filters from '../Filters/Filters';
 
 const Search: FC = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Search: FC = () => {
       <StyledButtonWrapper>
         <Button text="Поиск" />
       </StyledButtonWrapper>
+      <Filters />
     </StyledSearch>
   );
 };
