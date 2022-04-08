@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { IStyledUserCabinetBtnWrapper } from './IUserAvatar';
 
 export const StyledUserCabinetPhotoWrapper = styled.div`
   padding: 35px;
@@ -39,7 +40,13 @@ export const StyledUserCabinetPhoto = styled.div`
     height: 385px;
   }
 `;
-export const StyledUserCabinetBtnWrapper = styled.div`
+export const StyledUserCabinetBtnWrapper = styled.div<IStyledUserCabinetBtnWrapper>`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
+  ${({ mode }) =>
+    mode === 'center' &&
+    css`
+      justify-content: center;
+    `}
 `;

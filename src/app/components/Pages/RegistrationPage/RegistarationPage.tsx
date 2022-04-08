@@ -17,7 +17,7 @@ const RegistrationPage: FC = () => {
       <StyledRegistrationPage>
         <SectionTitle text="Регистрация" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar buttonsText={registrationButtonsText} />
+          <UserAvatar buttonsText={registrationButtonsText} mode="center" />
           <StyledInfo>
             <StyledRegistrationTitle>
               Звездочкой (*) отмечены поля обязательные к заполнению

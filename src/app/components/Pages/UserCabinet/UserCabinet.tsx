@@ -28,7 +28,7 @@ const UserCabinet: FC<IUserCabinet> = ({ user }) => {
       <StyledUserCabinet>
         <SectionTitle text="Личный кабинет" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar buttonsText={cabinetButtonsText} />
+          <UserAvatar buttonsText={cabinetButtonsText} mode="between" />
 
           <StyledInfo>
             <StyledUserCabinetName>{user.username}</StyledUserCabinetName>
