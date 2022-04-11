@@ -14,12 +14,11 @@ import * as Yup from 'yup';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import { StyledFormRegistrationLine } from './StyledFormRegistration';
+import { phoneRegExp } from '../../../utils/staticData';
 
 const FormRegistration: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const phoneRegExp = /^\+[1-9]{1}\s[0-9]{3}\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}$/;
 
   return (
     <Formik
