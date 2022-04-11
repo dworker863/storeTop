@@ -13,8 +13,8 @@ import { ErrorMessage, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
-import { StyledFormRegistrationLine } from './StyledFormRegistration';
 import { phoneRegExp } from '../../../utils/staticData';
+import { StyledBlockLine } from '../../../commonInterfaces/StyledBlockLine';
 
 const FormRegistration: FC = () => {
   const dispatch = useDispatch();
@@ -89,7 +89,7 @@ const FormRegistration: FC = () => {
         <ErrorMessage name="username">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
-        <StyledFormRegistrationLine></StyledFormRegistrationLine>
+        <StyledBlockLine></StyledBlockLine>
         <Label id="#email" text="Адрес электронной почты *" />
         <Note>Будет использоваться для авторизации на сайте</Note>
         <StyledField
@@ -101,7 +101,7 @@ const FormRegistration: FC = () => {
         <ErrorMessage name="email">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
-        <StyledFormRegistrationLine></StyledFormRegistrationLine>
+        <StyledBlockLine></StyledBlockLine>
         <Label id="#password" text="Пароль *" />
         <Note>
           Будет использоваться для авторизации на сайте. От 6 до 14 символов
@@ -125,7 +125,7 @@ const FormRegistration: FC = () => {
         <ErrorMessage name="passwordConfirm">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
-        <StyledFormRegistrationLine></StyledFormRegistrationLine>
+        <StyledBlockLine></StyledBlockLine>
         <Label id="#phone" text="Контактный номер телефона *" simple />
         <StyledField
           id="phone"
@@ -143,7 +143,7 @@ const FormRegistration: FC = () => {
           телефона используется только для связи с клиентом в целях подтвержения
           заказа товара.
         </Note>
-        <StyledFormRegistrationLine></StyledFormRegistrationLine>
+        <StyledBlockLine></StyledBlockLine>
         <TextOrange text="Адрес и почтовый индекс *" />
         <StyledTextSimple>Республика Казахстан</StyledTextSimple>
         <Label id="#city" text="Город или поселок" simple />
@@ -227,7 +227,7 @@ const FormRegistration: FC = () => {
           Адрес используется только для доставки курьером или опредения ближней
           почтовой точки для доставки.
         </Note>
-        <StyledFormRegistrationLine></StyledFormRegistrationLine>
+        <StyledBlockLine></StyledBlockLine>
         <Button type="submit" text="Зарегистрироваться" />
       </Form>
     </Formik>

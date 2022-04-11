@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledFormRegistrationLine = styled.div`
+export const StyledBlockLine = styled.div`
   width: 105px;
   height: 1px;
   margin-top: 20px;

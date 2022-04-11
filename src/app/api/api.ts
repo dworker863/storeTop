@@ -9,6 +9,8 @@ export const instance = axios.create({
 
 export const fetchGoods = (): Promise<IGoodsState> => {
   return instance.get('goods').then((res) => {
+    console.log(res.data);
+
     return res.data;
   });
 };

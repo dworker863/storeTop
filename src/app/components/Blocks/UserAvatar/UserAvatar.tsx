@@ -12,7 +12,7 @@ const UserAvatar: FC<IUserAvatar> = ({ buttonsText, mode }) => {
     <StyledUserCabinetPhotoWrapper>
       <StyledUserCabinetPhoto></StyledUserCabinetPhoto>
       <StyledUserCabinetBtnWrapper mode={mode}>
-        {buttonsText.map((text, index) => (
+        {buttonsText?.map((text, index) => (
           <Button key={index + text} text={text} />
         ))}
       </StyledUserCabinetBtnWrapper>

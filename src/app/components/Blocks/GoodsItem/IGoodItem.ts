@@ -1,6 +1,7 @@
 export interface IGoodItem {
   title: string;
   desc: string;
+  characteristics: string;
   price: string;
   favorite: boolean;
   discount: string;

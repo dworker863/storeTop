@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import { SwiperSlide } from 'swiper/react';
 import { ISection } from '../../../commonInterfaces/ISection';
 import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
@@ -40,6 +39,7 @@ const Goods: FC<ISection> = ({
               <GoodsItem
                 title={good.name}
                 desc={good.description}
+                characteristics={good.characteristics}
                 price={good.price}
                 favorite={false}
                 discount={good.discount}

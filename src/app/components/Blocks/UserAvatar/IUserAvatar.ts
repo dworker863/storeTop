@@ -1,6 +1,6 @@
 export interface IUserAvatar {
   mode: 'center' | 'between';
-  buttonsText: string[];
+  buttonsText?: string[];
 }
 
 export interface IStyledUserCabinetBtnWrapper {

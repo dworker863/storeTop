@@ -28,6 +28,7 @@ import { RootState } from '../../../redux/store';
 const GoodsItem: FC<IGoodItem> = ({
   title,
   desc,
+  characteristics,
   price,
   favorite,
   discount,
@@ -42,6 +43,7 @@ const GoodsItem: FC<IGoodItem> = ({
         setGoodCart({
           name: title,
           description: desc,
+          characteristics,
           price,
           discount,
           hit,
@@ -51,7 +53,14 @@ const GoodsItem: FC<IGoodItem> = ({
     } else {
       dispatch(
         setCartGoodCount(
-          { name: title, description: desc, price, discount, hit },
+          {
+            name: title,
+            description: desc,
+            characteristics,
+            price,
+            discount,
+            hit,
+          },
           cart.goods.filter((good) => good.name === title)[0].goodsCount + 1,
         ),
       );

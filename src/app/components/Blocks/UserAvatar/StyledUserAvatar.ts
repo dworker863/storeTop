@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { IStyledUserCabinetBtnWrapper } from './IUserAvatar';
+import goodPhoto from '../../../../assets/images/trimmer.png';
 
 export const StyledUserCabinetPhotoWrapper = styled.div`
   padding: 35px;
@@ -30,6 +31,8 @@ export const StyledUserCabinetPhoto = styled.div`
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
   border-radius: 4px;
   background-color: ${(props) => props.theme.colors.superLightGrey};
+  background-image: url(${goodPhoto});
+  background-size: cover;
 
   @media (max-width: 992px) {
     width: 345px;

@@ -18,6 +18,7 @@ const Category: FC<ICategory> = ({ goods, title }) => {
               key={index + good.name}
               title={good.name}
               desc={good.description}
+              characteristics={good.characteristics}
               price={good.price}
               favorite={false}
               discount={good.discount}
