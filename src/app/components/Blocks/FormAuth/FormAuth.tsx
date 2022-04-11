@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { StyledForm } from '../../../commonStyles/StyledForm';
 import { setLogin } from '../../../redux/reducers/auth/authReducer';
 import Button from '../../Elements/Button/Button';
-import Input from '../../Elements/Input/Input';
 import Label from '../../Elements/Label/Label';
 import { IFormAuth } from './IFormAuth';
 
@@ -32,23 +31,9 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
   return (
     <StyledForm>
       <Label id="#email" text="Email" />
-      <Input
-        id="email"
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={authValue.email}
-        onChange={emailChangeHandler}
-      />
+
       <Label id="#password" text="Пароль" />
-      <Input
-        id="password"
-        type="password"
-        name="password"
-        placeholder="Пароль"
-        value={authValue.password}
-        onChange={passwordChangeHandler}
-      />
+
       <Button text="Войти" clickHandler={authClickHandler} />
     </StyledForm>
   );

@@ -5,7 +5,7 @@ import { registrationButtonsText } from '../../../utils/staticData';
 import Container from '../../Blocks/Container/Container';
 import FormRegistration from '../../Blocks/FormRegistration/FormRegistration';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
-import UserAvatar from '../../Elements/UserAvatar/UserAvatar';
+import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
 import {
   StyledRegistrationPage,
   StyledRegistrationTitle,

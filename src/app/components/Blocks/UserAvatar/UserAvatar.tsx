@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Button from '../Button/Button';
+import Button from '../../Elements/Button/Button';
 import { IUserAvatar } from './IUserAvatar';
 import {
   StyledUserCabinetBtnWrapper,

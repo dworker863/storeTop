@@ -9,16 +9,13 @@ export const StyledAuthButtons = styled.ul`
 
   div li {
     padding-left: 20px;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 14px;
+    color: #797979;
 
     &:before {
       left: 10px;
-    }
-
-    a {
-      text-transform: capitalize;
-      font-weight: 400;
-      font-size: 14px;
-      color: #797979;
     }
   }
 

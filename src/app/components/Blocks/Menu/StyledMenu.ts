@@ -23,8 +23,12 @@ export const StyledMenu = styled.ul`
   margin: 0 auto;
   padding: 0 85px;
 
-  a:last-child li {
-    border: none;
+  a {
+    color: #fff;
+
+    &:last-child li {
+      border: none;
+    }
   }
 
   li {
@@ -35,10 +39,10 @@ export const StyledMenu = styled.ul`
 
     a {
       color: #fff;
+    }
 
-      &:hover {
-        color: #fff;
-      }
+    &:hover {
+      color: #fff;
     }
 
     @media (max-width: 992px) {

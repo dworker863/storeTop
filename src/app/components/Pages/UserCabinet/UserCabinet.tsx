@@ -15,7 +15,7 @@ import {
   StyledUserCabinetTel,
 } from './StyledUserCabinet';
 import eyeIcon from '../../../../assets/images/eye-icon.png';
-import UserAvatar from '../../Elements/UserAvatar/UserAvatar';
+import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
 import { cabinetButtonsText } from '../../../utils/staticData';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';

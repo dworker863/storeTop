@@ -1,7 +1,8 @@
+import { Field } from 'formik';
 import styled, { css } from 'styled-components';
-import { IStyledInput } from '../../Elements/Input/IInput';
+import { IStyledInput } from '../commonInterfaces/IInput';
 
-export const StyledInput = styled.input<IStyledInput>`
+export const StyledField = styled(Field)<IStyledInput>`
   display: block;
   width: 280px;
   padding: 10px;
@@ -23,6 +24,12 @@ export const StyledInput = styled.input<IStyledInput>`
     css`
       display: inline-block;
       width: auto;
+    `}
+
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width};
     `}
 
   @media (max-width: 576px) {

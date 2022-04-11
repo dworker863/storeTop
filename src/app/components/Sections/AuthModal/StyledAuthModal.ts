@@ -10,6 +10,7 @@ export const StyledAuthModal = styled.section<IStyledAuthModal>`
   width: 420px;
   padding-bottom: 40px;
   border-radius: 5px;
+  box-shadow: 0px 5px ${(props) => props.theme.colors.lightGrey};
   background-color: #fff;
   transform: translate(-50%, -50%);
 

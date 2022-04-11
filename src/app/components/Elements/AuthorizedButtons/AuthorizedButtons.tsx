@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setAuth } from '../../../redux/reducers/auth/authReducer';
 import NavItem from '../NavItem/NavItem';
 import TextOrange from '../TextOrange/TextOrange';
@@ -16,9 +16,14 @@ const AuthorizedButtons: FC<IAuthorizedButtons> = ({
   authButtonHandler,
 }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutClickHandler = () => {
+    const path = window.location.pathname;
     dispatch(setAuth({ userName: '', userEmail: '' }));
+    if (path === '/cabinet') {
+      navigate('/');
+    }
     authButtonHandler(false);
   };
 

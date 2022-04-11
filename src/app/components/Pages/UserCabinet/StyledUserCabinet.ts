@@ -10,7 +10,7 @@ export const StyledUserCabinetName = styled.h3`
   font-size: 24px;
 `;
 
-export const StyledUserCabinetDate = styled.p`
+export const StyledUserCabinetDate = styled.div`
   margin-top: 0;
   width: max-content;
 
@@ -29,7 +29,7 @@ export const StyledUserCabinetDate = styled.p`
   }
 `;
 
-export const StyledUserCabinetEmail = styled.p`
+export const StyledUserCabinetEmail = styled.div`
   &:after {
     content: '';
     display: block;
@@ -48,7 +48,7 @@ export const StyledUserCabinetSubtitle = styled.h4`
   color: ${(props) => props.theme.colors.primary};
 `;
 
-export const StyledUserCabinetTel = styled.p`
+export const StyledUserCabinetTel = styled.div`
   &:after {
     content: '';
     display: block;
