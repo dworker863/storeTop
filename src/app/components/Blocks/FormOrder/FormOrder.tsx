@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import { phoneRegExp } from '../../../utils/staticData';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
+import InputMask from 'react-input-mask';
 
 const FormOrder: FC = () => {
   return (
@@ -42,11 +43,17 @@ const FormOrder: FC = () => {
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
         <Label id="#phone" text="Номер мобильного телефона для связи" />
-        <StyledField
-          name="phone"
-          type="text"
-          placeholder="+7 (...) ...  ..  .."
-        />
+        <InputMask mask="+7 (799) 999 99 99">
+          {(inputProps: any) => (
+            <StyledField
+              name="phone"
+              type="text"
+              value={inputProps.value}
+              placeholder="+7 (...) ...  ..  .."
+            />
+          )}
+        </InputMask>
+
         <ErrorMessage name="phone">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
