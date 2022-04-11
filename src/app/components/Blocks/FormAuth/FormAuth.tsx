@@ -1,41 +1,49 @@
-import { ChangeEvent, MouseEvent, FC, useState } from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { StyledForm } from '../../../commonStyles/StyledForm';
 import { setLogin } from '../../../redux/reducers/auth/authReducer';
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
 import { IFormAuth } from './IFormAuth';
+import * as Yup from 'yup';
+import { StyledField } from '../../../commonStyles/StyledField';
+import { ErrorMessage, Form, Formik } from 'formik';
+import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 
 const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
-  const [authValue, setAuthValue] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
 
-  const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log(authValue.email);
-    setAuthValue({ ...authValue, email: event.target.value });
-  };
-
-  const passwordChangeHandler = (
-    event: ChangeEvent<HTMLInputElement>,
-  ): void => {
-    setAuthValue({ ...authValue, password: event.target.value });
-  };
-
-  const authClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    dispatch(setLogin(authValue.email, authValue.password));
-    authButtonHandler(false);
-  };
-
   return (
-    <StyledForm>
-      <Label id="#email" text="Email" />
-
-      <Label id="#password" text="Пароль" />
-
-      <Button text="Войти" clickHandler={authClickHandler} />
-    </StyledForm>
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      validationSchema={Yup.object({
+        email: Yup.string()
+          .email('Введите корректный email')
+          .required('Введите email'),
+        password: Yup.string().required('Введите пароль'),
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        dispatch(setLogin(values.email, values.password));
+        authButtonHandler(false);
+        setSubmitting(false);
+      }}
+    >
+      <Form>
+        <Label id="#email" text="Email" />
+        <StyledField id="email" name="email" type="text" />
+        <ErrorMessage name="email">
+          {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
+        </ErrorMessage>
+        <Label id="#password" text="Пароль" />
+        <StyledField id="password" name="password" type="text" />
+        <ErrorMessage name="password">
+          {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
+        </ErrorMessage>
+        <Button text="Войти" type="submit" />
+      </Form>
+    </Formik>
   );
 };
 

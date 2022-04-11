@@ -1,6 +1,6 @@
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
-import { MouseEvent, FC, useState, ChangeEvent } from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setRegistration } from '../../../redux/reducers/auth/authReducer';
