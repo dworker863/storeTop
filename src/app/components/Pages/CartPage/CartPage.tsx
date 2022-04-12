@@ -9,13 +9,10 @@ import CartItem from '../../Blocks/CartItem/CartItem';
 import Container from '../../Blocks/Container/Container';
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
+import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import Select from '../../Elements/Select/Select';
 import { ICartPage } from './ICartPage';
-import {
-  StyledCartPage,
-  StyledCartSum,
-  StyledCartTitle,
-} from './StyledCartPage';
+import { StyledCartPage, StyledCartSum } from './StyledCartPage';
 
 const CartPage: FC<ICartPage> = ({ goods, sum }) => {
   const dispatch = useDispatch();
@@ -67,7 +64,7 @@ const CartPage: FC<ICartPage> = ({ goods, sum }) => {
   return (
     <Container type="common">
       <StyledCartPage>
-        <StyledCartTitle>Корзина</StyledCartTitle>
+        <SectionTitle text="Корзина" primary={false} margin />
         {goods.map((good, index) => (
           <CartItem key={index + good.name} good={good} />
         ))}

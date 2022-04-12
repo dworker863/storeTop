@@ -8,6 +8,8 @@ export const StyledOrder = styled.section`
 
   @media (max-width: 576px) {
     width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
     margin-bottom: 80px;
     font-size: 14px;
   }

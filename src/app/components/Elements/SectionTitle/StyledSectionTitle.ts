@@ -13,6 +13,12 @@ export const StyledSectionTitle = styled.h2<IStyledSectionTitle>`
       color: ${(props) => props.theme.colors.red};
     `}
 
+  ${({ margin }) =>
+    margin &&
+    css`
+      margin-bottom: 40px;
+    `}
+
   @media (max-width: 576px) {
     text-align: center;
   }

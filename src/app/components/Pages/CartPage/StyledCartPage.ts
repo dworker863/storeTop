@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const StyledCartPage = styled.section``;
+export const StyledCartPage = styled.section`
+  width: 100%;
+  padding: 40px;
+`;
 
 export const StyledCartTitle = styled.h2``;
 
