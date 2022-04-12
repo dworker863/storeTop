@@ -33,7 +33,14 @@ export const cart = (state = initialState, action: NewType | any) => {
         ...cartState,
         sum:
           cartState.goods.reduce(
-            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            (sum, good) =>
+              (sum +=
+                good.discount.length === 0
+                  ? Number(good.price) * good.goodsCount
+                  : (Number(good.price) -
+                      Number(good.price) *
+                        (Number(good.discount.slice(0, -1)) / 100)) *
+                    good.goodsCount),
             0,
           ) + cartState.delivery,
       };
@@ -45,7 +52,14 @@ export const cart = (state = initialState, action: NewType | any) => {
         goods: [...state.goods, action.payload],
         sum:
           [...state.goods, action.payload].reduce(
-            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            (sum, good) =>
+              (sum +=
+                good.discount.length === 0
+                  ? Number(good.price) * good.goodsCount
+                  : (Number(good.price) -
+                      Number(good.price) *
+                        (Number(good.discount.slice(0, -1)) / 100)) *
+                    good.goodsCount),
             0,
           ) + state.delivery,
       };
@@ -69,7 +83,14 @@ export const cart = (state = initialState, action: NewType | any) => {
         ...cartState,
         sum:
           [...cartState.goods].reduce(
-            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            (sum, good) =>
+              (sum +=
+                good.discount.length === 0
+                  ? Number(good.price) * good.goodsCount
+                  : (Number(good.price) -
+                      Number(good.price) *
+                        (Number(good.discount.slice(0, -1)) / 100)) *
+                    good.goodsCount),
             0,
           ) + cartState.delivery,
       };
@@ -85,7 +106,14 @@ export const cart = (state = initialState, action: NewType | any) => {
         ...cartState,
         sum:
           cartState.goods.reduce(
-            (sum, good) => (sum += Number(good.price) * good.goodsCount),
+            (sum, good) =>
+              (sum +=
+                good.discount.length === 0
+                  ? Number(good.price) * good.goodsCount
+                  : (Number(good.price) -
+                      Number(good.price) *
+                        (Number(good.discount.slice(0, -1)) / 100)) *
+                    good.goodsCount),
             0,
           ) + cartState.delivery,
       };

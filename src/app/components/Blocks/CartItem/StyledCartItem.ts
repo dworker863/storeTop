@@ -13,6 +13,10 @@ export const StyledCartItemCount = styled.div``;
 
 export const StyledCartItemPrice = styled.div``;
 
+export const StyledCartItemDiscountPrice = styled.div`
+  text-decoration: line-through;
+`;
+
 export const StyledCartItemCounter = styled.div`
   cursor: pointer;
 `;

@@ -5,11 +5,16 @@ import {
   setCartGoodCount,
 } from '../../../redux/reducers/cart/cartReducer';
 import { RootState } from '../../../redux/store';
+import {
+  StyledGoodPageDiscountPrice,
+  StyledGoodPagePrice,
+} from '../../Pages/GoodPage/StyledGoodPage';
 import { ICartItem } from './ICartItem';
 import {
   StyledCartItem,
   StyledCartItemCount,
   StyledCartItemCounter,
+  StyledCartItemDiscountPrice,
   StyledCartItemName,
   StyledCartItemPrice,
   StyledCartItemRemoveBtn,
@@ -44,7 +49,19 @@ const CartItem: FC<ICartItem> = ({ good }) => {
       <StyledCartItemCounter onClick={incrementGoodsCount}>
         +
       </StyledCartItemCounter>
-      <StyledCartItemPrice>{good.price}</StyledCartItemPrice>
+      {good.discount.length === 0 ? (
+        <StyledCartItemPrice>{good.price}</StyledCartItemPrice>
+      ) : (
+        <>
+          <StyledCartItemDiscountPrice>
+            {good.price}
+          </StyledCartItemDiscountPrice>
+          <StyledCartItemPrice>
+            {Number(good.price) -
+              Number(good.price) * (Number(good.discount.slice(0, -1)) / 100)}
+          </StyledCartItemPrice>
+        </>
+      )}
       <StyledCartItemRemoveBtn onClick={removeGoodFromCart}>
         X
       </StyledCartItemRemoveBtn>
