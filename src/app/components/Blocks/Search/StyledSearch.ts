@@ -7,14 +7,15 @@ export const StyledSearch = styled.div`
   height: 60px;
   margin-left: 110px;
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
-  border-bottom: none;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  /* border-bottom: none; */
+  /* border-top-left-radius: 7px; */
+  /* border-top-right-radius: 7px; */
+  border-radius: 7px;
 
   @media (max-width: 1800px) {
     width: 890px;
     margin-top: 0px;
-    margin-bottom: 140px;
+    margin-bottom: 40px;
     margin-left: 0px;
   }
 
@@ -23,11 +24,11 @@ export const StyledSearch = styled.div`
   }
 
   @media (max-width: 992px) {
-    margin-bottom: 345px;
+    /* margin-bottom: 345px; */
   }
 
   @media (max-width: 576px) {
-    margin-bottom: 485px;
+    /* margin-bottom: 485px; */
     height: 48px;
   }
 `;

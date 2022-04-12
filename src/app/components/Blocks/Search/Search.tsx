@@ -10,13 +10,12 @@ import searchIcon from '../../../../assets/images/search-icon.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSearch } from '../../../redux/reducers/search/searchReducer';
-import Filters from '../Filters/Filters';
 
 const Search: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const searchBarKeyPressHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const searchGoods = (event: ChangeEvent<HTMLInputElement>) => {
     navigate('/search');
     dispatch(setSearch(event.target.value.trim()));
   };
@@ -27,12 +26,12 @@ const Search: FC = () => {
       <StyledSearchInput
         type="search"
         placeholder="Поиск товара"
-        onChange={searchBarKeyPressHandler}
+        onChange={searchGoods}
       />
       <StyledButtonWrapper>
         <Button text="Поиск" />
       </StyledButtonWrapper>
-      <Filters />
+      {/* <Filters /> */}
     </StyledSearch>
   );
 };

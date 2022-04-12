@@ -19,9 +19,7 @@ const FormOrder: FC = () => {
         username: Yup.string()
           .min(2, 'Введите корректное имя')
           .required('Введите имя'),
-        email: Yup.string()
-          .email('Введите корректный email')
-          .required('Введите email'),
+        email: Yup.string().email('Введите корректный email'),
         phone: Yup.string()
           .test('minLength', 'Введите корректный номер телефона', (val) => {
             const valLengthWithoutDashes = val?.replace(/-|_/g, '').length;

@@ -29,7 +29,7 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
   const cartGoods = useSelector((state: RootState) => state.cart.goods);
   const dispatch = useDispatch();
 
-  const addToCartClickHandler = () => {
+  const addGoodToCart = () => {
     if (!cartGoods.some((goodItem) => goodItem.name === good.name)) {
       dispatch(
         setGoodCart({
@@ -83,7 +83,7 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
           <br />
           <StyledGoodsItemWhite>{good.price}</StyledGoodsItemWhite>
         </StyledGoodsItemPrice>
-        <StyledGoodsItemCart onClick={addToCartClickHandler}>
+        <StyledGoodsItemCart onClick={addGoodToCart}>
           <StyledGoodsItemIcon src={cartIcon} alt="Сердце" />
         </StyledGoodsItemCart>
         <StyledGoodsItemFavorite>
