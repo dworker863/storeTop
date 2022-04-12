@@ -5,6 +5,10 @@ export const StyledCartItem = styled.div`
   justify-content: space-between;
   width: 320px;
   margin-bottom: 20px;
+
+  @media (max-width: 576px) {
+    max-width: 260px;
+  }
 `;
 
 export const StyledCartItemName = styled.div``;
