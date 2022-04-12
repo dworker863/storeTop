@@ -14,6 +14,8 @@ import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledBlockLine } from '../../../commonInterfaces/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
+import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
+import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 
 const GoodPage: FC<IGoodPage> = ({ goods }) => {
   const { goodName } = useParams();
@@ -28,7 +30,7 @@ const GoodPage: FC<IGoodPage> = ({ goods }) => {
       <StyledGoodPage>
         <SectionTitle text={good.name} primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="between" />
+          <UserAvatar mode="between" image={good.image} />
           <StyledInfo>
             <SectionTitle text={good.name} primary={false} />
             <StyledGoodPageSubTitle>Описание товара</StyledGoodPageSubTitle>
@@ -38,6 +40,8 @@ const GoodPage: FC<IGoodPage> = ({ goods }) => {
               Характеристики товара
             </StyledGoodPageSubTitle>
             <StyledGoodPageDesc>{good.characteristics}</StyledGoodPageDesc>
+            <StyledTextGrey>Страна-производитель</StyledTextGrey>
+            <StyledTextSimple>{good.country}</StyledTextSimple>
             <StyledBlockLine></StyledBlockLine>
 
             <StyledGoodPageSubTitle>Стоимость продукта</StyledGoodPageSubTitle>

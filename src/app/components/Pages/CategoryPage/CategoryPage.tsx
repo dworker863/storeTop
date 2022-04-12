@@ -19,10 +19,12 @@ const Category: FC<ICategory> = ({ goods, title }) => {
               title={good.name}
               desc={good.description}
               characteristics={good.characteristics}
+              country={good.country}
               price={good.price}
               favorite={false}
               discount={good.discount}
               hit={good.hit}
+              image={good.image}
             />
           ))}
           <StyledHiddenCard></StyledHiddenCard>

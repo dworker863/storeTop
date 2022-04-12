@@ -7,10 +7,10 @@ import {
   StyledUserCabinetPhotoWrapper,
 } from './StyledUserAvatar';
 
-const UserAvatar: FC<IUserAvatar> = ({ buttonsText, mode }) => {
+const UserAvatar: FC<IUserAvatar> = ({ buttonsText, mode, image }) => {
   return (
     <StyledUserCabinetPhotoWrapper>
-      <StyledUserCabinetPhoto></StyledUserCabinetPhoto>
+      <StyledUserCabinetPhoto image={image}></StyledUserCabinetPhoto>
       <StyledUserCabinetBtnWrapper mode={mode}>
         {buttonsText?.map((text, index) => (
           <Button key={index + text} text={text} />

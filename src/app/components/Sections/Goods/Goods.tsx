@@ -40,10 +40,12 @@ const Goods: FC<ISection> = ({
                 title={good.name}
                 desc={good.description}
                 characteristics={good.characteristics}
+                country={good.country}
                 price={good.price}
                 favorite={false}
                 discount={good.discount}
                 hit={good.hit}
+                image={good.image}
               />
             </SwiperSlide>
           ))}
