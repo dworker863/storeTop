@@ -5,6 +5,7 @@ import { IGoodPage } from './IGoodPage';
 import {
   StyledGoodPage,
   StyledGoodPageDesc,
+  StyledGoodPageDiscountPrice,
   StyledGoodPagePrice,
   StyledGoodPageSubTitle,
 } from './StyledGoodPage';
@@ -16,14 +17,55 @@ import { StyledBlockLine } from '../../../commonInterfaces/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import {
+  setCartGoodCount,
+  setGoodCart,
+} from '../../../redux/reducers/cart/cartReducer';
 
 const GoodPage: FC<IGoodPage> = ({ goods }) => {
+  const cart = useSelector((state: RootState) => state.cart);
   const { goodName } = useParams();
+  const dispatch = useDispatch();
   const [good] = [...goods.electronics, ...goods.cosmetics].filter(
     (good) => good.name === goodName,
   );
-  console.log(good);
-  console.log(good.characteristics);
+
+  const addToCartClickHandler = () => {
+    if (!cart.goods.some((goodItem) => goodItem.name === good.name)) {
+      dispatch(
+        setGoodCart({
+          name: good.name,
+          description: good.description,
+          characteristics: good.characteristics,
+          country: good.country,
+          price: good.price,
+          discount: good.discount,
+          hit: good.hit,
+          image: good.image,
+          goodsCount: 1,
+        }),
+      );
+    } else {
+      dispatch(
+        setCartGoodCount(
+          {
+            name: good.name,
+            description: good.description,
+            characteristics: good.characteristics,
+            country: good.country,
+            price: good.price,
+            discount: good.discount,
+            hit: good.hit,
+            image: good.image,
+          },
+          cart.goods.filter((goodItem) => goodItem.name === good.name)[0]
+            .goodsCount + 1,
+        ),
+      );
+    }
+  };
 
   return (
     <Container type="common">
@@ -45,9 +87,26 @@ const GoodPage: FC<IGoodPage> = ({ goods }) => {
             <StyledBlockLine></StyledBlockLine>
 
             <StyledGoodPageSubTitle>Стоимость продукта</StyledGoodPageSubTitle>
-            <StyledGoodPagePrice>{good.price}</StyledGoodPagePrice>
+            {good.discount.length === 0 ? (
+              <StyledGoodPageDiscountPrice>
+                {good.price}
+              </StyledGoodPageDiscountPrice>
+            ) : (
+              <>
+                <StyledGoodPagePrice>{good.price}</StyledGoodPagePrice>
+                <StyledGoodPageDiscountPrice>
+                  {Number(good.price) -
+                    Number(good.price) *
+                      (Number(good.discount.slice(0, -1)) / 100)}
+                </StyledGoodPageDiscountPrice>
+              </>
+            )}
+
             <StyledBlockLine></StyledBlockLine>
-            <Button text="Добавить в корзину" />
+            <Button
+              text="Добавить в корзину"
+              clickHandler={addToCartClickHandler}
+            />
           </StyledInfo>
         </StyledInfoWrapper>
         <div style={{ height: '20vh' }}></div>

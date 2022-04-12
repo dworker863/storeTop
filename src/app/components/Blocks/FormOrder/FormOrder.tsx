@@ -3,7 +3,6 @@ import { FC } from 'react';
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
 import * as Yup from 'yup';
-import { phoneRegExp } from '../../../utils/staticData';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import InputMask from 'react-input-mask';
@@ -24,7 +23,10 @@ const FormOrder: FC = () => {
           .email('Введите корректный email')
           .required('Введите email'),
         phone: Yup.string()
-          .matches(phoneRegExp, 'Неккоректный номер телефона')
+          .test('minLength', 'Введите корректный номер телефона', (val) => {
+            const valLengthWithoutDashes = val?.replace(/-|_/g, '').length;
+            return valLengthWithoutDashes === 18;
+          })
           .required('Введите номер телефона'),
       })}
       onSubmit={(values, { setSubmitting }) => {
@@ -32,38 +34,40 @@ const FormOrder: FC = () => {
         setSubmitting(false);
       }}
     >
-      <Form>
-        <Label id="#username" text="Ваше имя и фамилия" />
-        <StyledField
-          name="username"
-          type="text"
-          placeholder="Ваше имя и фамилия"
-        />
-        <ErrorMessage name="username">
-          {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
-        </ErrorMessage>
-        <Label id="#phone" text="Номер мобильного телефона для связи" />
-        <InputMask mask="+7 (799) 999 99 99">
-          {(inputProps: any) => (
+      {(props) => (
+        <Form>
+          <Label id="#username" text="Ваше имя и фамилия" />
+          <StyledField
+            name="username"
+            type="text"
+            placeholder="Ваше имя и фамилия"
+          />
+          <ErrorMessage name="username">
+            {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
+          </ErrorMessage>
+          <Label id="#phone" text="Номер мобильного телефона для связи" />
+          <InputMask
+            mask="+7 (799) 999 99 99"
+            value={props.values.phone}
+            onChange={props.handleChange}
+          >
             <StyledField
               name="phone"
               type="text"
-              value={inputProps.value}
               placeholder="+7 (...) ...  ..  .."
             />
-          )}
-        </InputMask>
-
-        <ErrorMessage name="phone">
-          {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
-        </ErrorMessage>
-        <Label id="#email" text="Адрес электронной почты" />
-        <StyledField name="email" type="email" placeholder="mail@email.kz" />
-        <ErrorMessage name="email">
-          {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
-        </ErrorMessage>
-        <Button type="submit" text="Отправить заявку" />
-      </Form>
+          </InputMask>
+          <ErrorMessage name="phone">
+            {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
+          </ErrorMessage>
+          <Label id="#email" text="Адрес электронной почты" />
+          <StyledField name="email" type="email" placeholder="mail@email.kz" />
+          <ErrorMessage name="email">
+            {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
+          </ErrorMessage>
+          <Button type="submit" text="Отправить заявку" />
+        </Form>
+      )}
     </Formik>
   );
 };

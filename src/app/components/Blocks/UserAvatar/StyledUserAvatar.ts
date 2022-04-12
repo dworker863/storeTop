@@ -3,7 +3,6 @@ import {
   IStyledUserCabinetBtnWrapper,
   IStyledUserCabinetPhoto,
 } from './IUserAvatar';
-import goodPhoto from '../../../../assets/images/trimmer.png';
 
 export const StyledUserCabinetPhotoWrapper = styled.div`
   padding: 35px;
