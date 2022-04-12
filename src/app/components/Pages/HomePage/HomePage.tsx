@@ -7,8 +7,6 @@ import Order from '../../Sections/Order/Order';
 import { IHomePage } from './IHomePage';
 
 const HomePage: FC<IHomePage> = ({ goods }) => {
-  const goodsArr = [...goods.cosmetics, ...goods.electronics];
-
   return (
     <main>
       <Container type="common">
@@ -16,7 +14,7 @@ const HomePage: FC<IHomePage> = ({ goods }) => {
         <Goods
           title="Популярные товары"
           desc="То, что выбирают люди"
-          goods={goodsArr}
+          goods={goods}
           hit={true}
           sliderClass={[
             'swiper-button-prev-custom1',
@@ -26,7 +24,7 @@ const HomePage: FC<IHomePage> = ({ goods }) => {
         <Goods
           title="Горячие скидки"
           desc="Избранные товары по новой цене"
-          goods={goodsArr}
+          goods={goods}
           discount={true}
           sliderClass={[
             'swiper-button-prev-custom2',
@@ -37,7 +35,7 @@ const HomePage: FC<IHomePage> = ({ goods }) => {
         <Goods
           title="Свежие новинки"
           desc="Новое поступление"
-          goods={goodsArr}
+          goods={goods}
           sliderClass={[
             'swiper-button-prev-custom3',
             'swiper-button-next-custom3',

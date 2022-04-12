@@ -1,7 +1,5 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { RootState } from '../../../redux/store';
 import AuthorizedButtons from '../../Elements/AuthorizedButtons/AuthorizedButtons';
 import Logo from '../../Elements/Logo/Logo';
 import UnauthorizedButtons from '../../Elements/UnauthorizedButtons/UnauthorizedButtons';
@@ -9,9 +7,7 @@ import Nav from '../Nav/Nav';
 import { ITopLine } from './ITopLine';
 import { StyledTopLine } from './StyledTopLine';
 
-const TopLine: FC<ITopLine> = ({ authButtonHandler }) => {
-  const username = useSelector((state: RootState) => state.auth.userName);
-
+const TopLine: FC<ITopLine> = ({ username, authButtonHandler }) => {
   return (
     <StyledTopLine>
       <Link to="/">

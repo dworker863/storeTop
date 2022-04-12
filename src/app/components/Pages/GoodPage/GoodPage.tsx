@@ -17,15 +17,13 @@ import { StyledBlockLine } from '../../../commonInterfaces/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { useDispatch } from 'react-redux';
 import {
   setCartGoodCount,
   setGoodCart,
 } from '../../../redux/reducers/cart/cartReducer';
 
-const GoodPage: FC<IGoodPage> = ({ goods }) => {
-  const cart = useSelector((state: RootState) => state.cart);
+const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   const { goodName } = useParams();
   const dispatch = useDispatch();
   const [good] = [...goods.electronics, ...goods.cosmetics].filter(

@@ -1,5 +1,5 @@
 import { ICartState } from '../../../redux/reducers/cart/IcartReducer';
 
-export interface ICartPage {
+export interface ICart {
   cart: ICartState;
 }

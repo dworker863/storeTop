@@ -1,10 +1,9 @@
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   setCart,
   setCartGoodCount,
 } from '../../../redux/reducers/cart/cartReducer';
-import { RootState } from '../../../redux/store';
 import { ICartItem } from './ICartItem';
 import {
   StyledCartItem,
@@ -16,8 +15,7 @@ import {
   StyledCartItemRemoveBtn,
 } from './StyledCartItem';
 
-const CartItem: FC<ICartItem> = ({ good }) => {
-  const cart = useSelector((state: RootState) => state.cart);
+const CartItem: FC<ICartItem> = ({ good, cart }) => {
   const dispatch = useDispatch();
 
   const [itemGood] = cart.goods.filter((item) => item.name === good.name);

@@ -5,6 +5,6 @@ export const StyledHeader = styled.header`
   overflow: hidden;
   z-index: 10;
   position: relative;
-  background-image: url(${headerBg});
   padding-bottom: 32px;
+  background-image: url(${headerBg});
 `;

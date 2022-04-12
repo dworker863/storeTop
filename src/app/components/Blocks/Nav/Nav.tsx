@@ -9,8 +9,8 @@ const Nav: FC = () => {
     <StyledNavWrapper>
       <StyledNav>
         {navData.map((item, index) => (
-          <Link key={item[1] + index} to={item[0]}>
-            <NavItem key={index + item[1]} text={item[1]} type="desktop" />
+          <Link key={item[0] + index} to={item[0]}>
+            <NavItem text={item[1]} type="desktop" />
           </Link>
         ))}
       </StyledNav>

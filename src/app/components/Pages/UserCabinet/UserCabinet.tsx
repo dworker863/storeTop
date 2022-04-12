@@ -3,7 +3,6 @@ import Container from '../../Blocks/Container/Container';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import TextOrange from '../../Elements/TextOrange/TextOrange';
-import { IUserCabinet } from './IUserCabainet';
 import {
   StyledEyeIcon,
   StyledUserCabinet,
@@ -21,8 +20,15 @@ import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import Note from '../../Elements/Note/Note';
+import { useSelector } from 'react-redux';
+import { IUser } from '../../../commonInterfaces/IUser';
+import { RootState } from '../../../redux/store';
 
-const UserCabinet: FC<IUserCabinet> = ({ user }) => {
+const UserCabinet: FC = () => {
+  const users: IUser[] = useSelector((state: RootState) => state.users.users);
+  const userEmail = useSelector((state: RootState) => state.auth.userEmail);
+  const user = users.filter((user) => user.email === userEmail)[0];
+
   return (
     <Container type="common">
       <StyledUserCabinet>

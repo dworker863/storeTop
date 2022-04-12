@@ -25,32 +25,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
 
-const GoodsItem: FC<IGoodItem> = ({
-  title,
-  desc,
-  characteristics,
-  country,
-  price,
-  favorite,
-  image,
-  discount,
-  hit,
-}) => {
-  const cart = useSelector((state: RootState) => state.cart);
+const GoodsItem: FC<IGoodItem> = ({ good }) => {
+  const cartGoods = useSelector((state: RootState) => state.cart.goods);
   const dispatch = useDispatch();
 
   const addToCartClickHandler = () => {
-    if (!cart.goods.some((good) => good.name === title)) {
+    if (!cartGoods.some((goodItem) => goodItem.name === good.name)) {
       dispatch(
         setGoodCart({
-          name: title,
-          description: desc,
-          characteristics,
-          country,
-          price,
-          discount,
-          hit,
-          image,
+          name: good.name,
+          description: good.description,
+          characteristics: good.characteristics,
+          country: good.country,
+          price: good.price,
+          discount: good.discount,
+          hit: good.hit,
+          image: good.image,
           goodsCount: 1,
         }),
       );
@@ -58,16 +48,17 @@ const GoodsItem: FC<IGoodItem> = ({
       dispatch(
         setCartGoodCount(
           {
-            name: title,
-            description: desc,
-            characteristics,
-            country,
-            price,
-            image,
-            discount,
-            hit,
+            name: good.name,
+            description: good.description,
+            characteristics: good.characteristics,
+            country: good.country,
+            price: good.price,
+            discount: good.discount,
+            hit: good.hit,
+            image: good.image,
           },
-          cart.goods.filter((good) => good.name === title)[0].goodsCount + 1,
+          cartGoods.filter((goodItem) => goodItem.name === good.name)[0]
+            .goodsCount + 1,
         ),
       );
     }
@@ -75,22 +66,22 @@ const GoodsItem: FC<IGoodItem> = ({
 
   return (
     <StyledGoodsItem>
-      {discount.length > 0 && (
-        <StyledSticker mode="discount">Скидка {discount}</StyledSticker>
+      {good.discount.length > 0 && (
+        <StyledSticker mode="discount">Скидка {good.discount}</StyledSticker>
       )}
-      {hit && <StyledSticker mode="hit">Хит продаж</StyledSticker>}
+      {good.hit && <StyledSticker mode="hit">Хит продаж</StyledSticker>}
       <StyledGoodsItemContentWrapper>
-        <Link to={`/goods/${title}`}>
+        <Link to={`/goods/${good.name}`}>
           <StyledGoodsItemPhoto />
         </Link>
-        <StyledGoodsItemTitle>{title}</StyledGoodsItemTitle>
-        <StyledGoodsItemDesc>{desc}</StyledGoodsItemDesc>
+        <StyledGoodsItemTitle>{good.name}</StyledGoodsItemTitle>
+        <StyledGoodsItemDesc>{good.description}</StyledGoodsItemDesc>
       </StyledGoodsItemContentWrapper>
       <StyledGoodsItemPriceWrapper>
         <StyledGoodsItemPrice>
           <StyledGoodsItemBlack>Купить за</StyledGoodsItemBlack>
           <br />
-          <StyledGoodsItemWhite>{price}</StyledGoodsItemWhite>
+          <StyledGoodsItemWhite>{good.price}</StyledGoodsItemWhite>
         </StyledGoodsItemPrice>
         <StyledGoodsItemCart onClick={addToCartClickHandler}>
           <StyledGoodsItemIcon src={cartIcon} alt="Сердце" />

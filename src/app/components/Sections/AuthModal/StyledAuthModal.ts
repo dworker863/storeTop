@@ -38,10 +38,10 @@ export const StyledAuthModal = styled.section<IStyledAuthModal>`
     `};
 `;
 
-export const StyledAuthModalCloseButton = styled.div<IStyledAuthModalCloseButton>`
+export const StyledAuthModalCloseButton = styled.button<IStyledAuthModalCloseButton>`
   cursor: pointer;
   position: absolute;
-  top: 25px;
+  top: 0px;
   right: 20px;
   width: 15px;
   height: 2px;

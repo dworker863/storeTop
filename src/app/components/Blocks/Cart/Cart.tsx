@@ -8,13 +8,12 @@ import {
 import cartIcon from '../../../../assets/images/cart-icon.png';
 import ContactsItem from '../../Elements/ContactsItem/ContactsItem';
 import { StyledRequest } from '../Contacts/StyledContacts';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
 import { Link } from 'react-router-dom';
 import { ICartGood } from '../../../redux/reducers/cart/IcartReducer';
+import { ICart } from './ICart';
 
-const Cart: FC = () => {
-  const good: ICartGood[] = useSelector((state: RootState) => state.cart.goods);
+const Cart: FC<ICart> = ({ cart }) => {
+  const goods = cart.goods;
 
   return (
     <StyledCartWrapper>
@@ -22,7 +21,7 @@ const Cart: FC = () => {
         <StyledCart>
           <StyledCartIcon src={cartIcon} alt="Корзина" />
           <StyledCartCount>
-            {good.reduce(
+            {goods.reduce(
               (count: number, good: ICartGood) => (count += good.goodsCount),
               0,
             )}

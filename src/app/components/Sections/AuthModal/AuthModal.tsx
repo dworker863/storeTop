@@ -24,7 +24,7 @@ const AuthModal: FC<IAuthModal> = ({ active, authButtonHandler }) => {
     };
   }, [authButtonHandler, modal]);
 
-  const closeButtonClickHandler = (event: MouseEvent<HTMLDivElement>) => {
+  const closeButtonClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
     authButtonHandler(false);
   };
 

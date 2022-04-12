@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { Link } from 'react-router-dom';
 import { navData } from '../../../utils/staticData';
 import AuthorizedButtons from '../../Elements/AuthorizedButtons/AuthorizedButtons';
 import NavItem from '../../Elements/NavItem/NavItem';
@@ -8,14 +7,18 @@ import UnauthorizedButtons from '../../Elements/UnauthorizedButtons/Unauthorized
 import { INavMobile } from './INavMobile';
 import { StyledNavMobile, StyledNavMobileWrapper } from './StyledNavMobile';
 
-const NavMobile: FC<INavMobile> = ({ isActive, authButtonHandler }) => {
-  const username = useSelector((state: RootState) => state.auth.userName);
-
+const NavMobile: FC<INavMobile> = ({
+  isActive,
+  username,
+  authButtonHandler,
+}) => {
   return (
     <StyledNavMobileWrapper isActive={isActive}>
       <StyledNavMobile>
         {navData.map((text, index) => (
-          <NavItem key={index + text[1]} text={text[1]} type="mobile" />
+          <Link key={index + text[0]} to={text[0]}>
+            <NavItem text={text[1]} type="mobile" />
+          </Link>
         ))}
         {username.length > 0 ? (
           <AuthorizedButtons

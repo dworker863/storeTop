@@ -11,5 +11,5 @@ export interface IStyledAuthModal {
 }
 
 export interface IStyledAuthModalCloseButton {
-  onClick: (event: MouseEvent<HTMLDivElement>) => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }

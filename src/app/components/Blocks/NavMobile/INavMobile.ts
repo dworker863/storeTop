@@ -1,5 +1,6 @@
 export interface INavMobile {
   isActive: boolean;
+  username: string;
   authButtonHandler: (mode: boolean) => void;
 }
 

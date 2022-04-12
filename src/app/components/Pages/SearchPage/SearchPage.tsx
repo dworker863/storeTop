@@ -13,18 +13,8 @@ const SearchPage: FC<ISearchPage> = ({ goods }) => {
       <StyledSearchPage>
         <SectionTitle text="SearchPage" primary={false} />
         <StyledGoodsWrapper>
-          {goods.map((good) => (
-            <GoodsItem
-              title={good.name}
-              desc={good.description}
-              characteristics={good.characteristics}
-              country={good.country}
-              price={good.price}
-              favorite={false}
-              discount={good.discount}
-              hit={good.hit}
-              image={good.image}
-            />
+          {goods.map((good, index) => (
+            <GoodsItem key={index + good.name} good={good} />
           ))}
           <StyledHiddenCard></StyledHiddenCard>
           <StyledHiddenCard></StyledHiddenCard>
