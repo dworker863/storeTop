@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledGoodPage = styled.section``;
+export const StyledGoodPage = styled.section`
+  width: 100%;
+`;
 
 export const StyledGoodPageSubTitle = styled.h3`
   color: ${(props) => props.theme.colors.primary};

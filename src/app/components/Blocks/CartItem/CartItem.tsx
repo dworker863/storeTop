@@ -5,10 +5,6 @@ import {
   setCartGoodCount,
 } from '../../../redux/reducers/cart/cartReducer';
 import { RootState } from '../../../redux/store';
-import {
-  StyledGoodPageDiscountPrice,
-  StyledGoodPagePrice,
-} from '../../Pages/GoodPage/StyledGoodPage';
 import { ICartItem } from './ICartItem';
 import {
   StyledCartItem,
