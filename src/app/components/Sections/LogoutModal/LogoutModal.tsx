@@ -7,7 +7,6 @@ import {
   StyledModalCloseButton,
 } from '../../../commonStyles/StyledModal';
 import { setAuth } from '../../../redux/reducers/auth/authReducer';
-import { StyledButtonWrapper } from '../../Blocks/Search/StyledSearch';
 import Button from '../../Elements/Button/Button';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import {

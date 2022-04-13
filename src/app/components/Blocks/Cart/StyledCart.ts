@@ -54,7 +54,7 @@ export const StyledCartCount = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 42px;
+  top: 35px;
   left: -8.5px;
   width: 25px;
   height: 25px;
