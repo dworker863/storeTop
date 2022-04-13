@@ -22,8 +22,10 @@ import { getUsers } from './app/redux/reducers/users/usersReducer';
 import Overlay from './app/components/Elements/Overlay/Overlay';
 import CategoryPage from './app/components/Pages/CategoryPage/CategoryPage';
 import OrderModal from './app/components/Sections/OrderModal/OrderModal';
+import LogoutModal from './app/components/Sections/LogoutModal/LogoutModal';
 
 export const OrderModalContext = createContext<any>(null);
+export const LogoutModalContext = createContext<any>(null);
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -33,6 +35,7 @@ function App() {
 
   const [authModal, setAuthModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
+  const [logoutModal, setLogoutModal] = useState(false);
   const dispatch = useDispatch();
 
   const searchRegExp = new RegExp(`^${searchStr}`);
@@ -48,6 +51,10 @@ function App() {
     setOrderModal(mode);
   };
 
+  const logoutButtonHandler = (mode: boolean) => {
+    setLogoutModal(mode);
+  };
+
   useEffect(() => {
     dispatch(getGoods());
     dispatch(getUsers());
@@ -57,10 +64,13 @@ function App() {
 
   return (
     <ThemeProvider theme={commonTheme}>
-      <Overlay active={authModal || orderModal} />
+      <Overlay active={authModal || orderModal || logoutModal} />
       <AuthModal active={authModal} buttonHandler={authButtonHandler} />
       <OrderModal active={orderModal} buttonHandler={orderButtonHandler} />
-      <Header authButtonHandler={authButtonHandler} cart={cart} />
+      <LogoutModal active={logoutModal} buttonHandler={logoutButtonHandler} />
+      <LogoutModalContext.Provider value={logoutButtonHandler}>
+        <Header authButtonHandler={authButtonHandler} cart={cart} />
+      </LogoutModalContext.Provider>
       <Menu categories={Object.keys(goods)} />
       <OrderModalContext.Provider value={orderButtonHandler}>
         <Routes>

@@ -21,10 +21,7 @@ const NavMobile: FC<INavMobile> = ({
           </Link>
         ))}
         {username?.length > 0 ? (
-          <AuthorizedButtons
-            username={username}
-            authButtonHandler={authButtonHandler}
-          />
+          <AuthorizedButtons username={username} />
         ) : (
           <UnauthorizedButtons authButtonHandler={authButtonHandler} />
         )}

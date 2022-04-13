@@ -45,7 +45,7 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
         <Label id="#password" text="Пароль" />
-        <StyledField id="password" name="password" type="text" />
+        <StyledField id="password" name="password" type="password" />
         <ErrorMessage name="password">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
