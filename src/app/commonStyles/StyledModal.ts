@@ -1,7 +1,8 @@
-import { IStyledAuthModal, IStyledAuthModalCloseButton } from './IAuthModal';
+import { IStyledModalCloseButton } from './../commonInterfaces/IModal';
 import styled, { css } from 'styled-components';
+import { IStyledModal } from '../commonInterfaces/IModal';
 
-export const StyledAuthModal = styled.section<IStyledAuthModal>`
+export const StyledModal = styled.section<IStyledModal>`
   z-index: 1000;
   display: none;
   position: absolute;
@@ -38,7 +39,7 @@ export const StyledAuthModal = styled.section<IStyledAuthModal>`
     `};
 `;
 
-export const StyledAuthModalCloseButton = styled.button<IStyledAuthModalCloseButton>`
+export const StyledModalCloseButton = styled.button<IStyledModalCloseButton>`
   cursor: pointer;
   position: absolute;
   top: 0px;

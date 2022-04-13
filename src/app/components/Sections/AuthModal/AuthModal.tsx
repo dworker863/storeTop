@@ -1,10 +1,13 @@
 import { FC, MouseEvent, useEffect, useRef } from 'react';
 import FormAuth from '../../Blocks/FormAuth/FormAuth';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
-import { IAuthModal } from './IAuthModal';
-import { StyledAuthModal, StyledAuthModalCloseButton } from './StyledAuthModal';
+import {
+  StyledModal,
+  StyledModalCloseButton,
+} from '../../../commonStyles/StyledModal';
+import { IModal } from '../../../commonInterfaces/IModal';
 
-const AuthModal: FC<IAuthModal> = ({ active, authButtonHandler }) => {
+const AuthModal: FC<IModal> = ({ active, authButtonHandler }) => {
   const modal = useRef(null);
 
   useEffect(() => {
@@ -29,13 +32,13 @@ const AuthModal: FC<IAuthModal> = ({ active, authButtonHandler }) => {
   };
 
   return (
-    <StyledAuthModal ref={modal} active={active}>
-      <StyledAuthModalCloseButton
+    <StyledModal ref={modal} active={active}>
+      <StyledModalCloseButton
         onClick={closeButtonClickHandler}
-      ></StyledAuthModalCloseButton>
+      ></StyledModalCloseButton>
       <SectionTitle text="Вход пользователя" primary={false} />
       <FormAuth authButtonHandler={authButtonHandler} />
-    </StyledAuthModal>
+    </StyledModal>
   );
 };
 

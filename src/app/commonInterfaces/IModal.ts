@@ -1,15 +1,15 @@
 import { MouseEvent } from 'react';
 
-export interface IAuthModal {
+export interface IModal {
   active: boolean;
   authButtonHandler: (mode: boolean) => void;
 }
 
-export interface IStyledAuthModal {
+export interface IStyledModal {
   active: boolean;
-  ref: any;
+  ref?: any;
 }
 
-export interface IStyledAuthModalCloseButton {
+export interface IStyledModalCloseButton {
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }
