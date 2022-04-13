@@ -2,7 +2,7 @@ import { IStyledModalCloseButton } from './../commonInterfaces/IModal';
 import styled, { css } from 'styled-components';
 import { IStyledModal } from '../commonInterfaces/IModal';
 
-export const StyledModal = styled.section<IStyledModal>`
+export const StyledModal = styled.div<IStyledModal>`
   z-index: 1000;
   display: none;
   position: absolute;

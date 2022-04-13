@@ -13,7 +13,7 @@ import {
 
 const Order: FC = () => {
   return (
-    <StyledOrder id="order">
+    <StyledOrder>
       <StyledOrderInfo>
         <SectionTitle text="О магазине" primary={false} />
         <StyledOrderDesc>

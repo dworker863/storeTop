@@ -6,14 +6,15 @@ import {
   StyledModalCloseButton,
 } from '../../../commonStyles/StyledModal';
 import { IModal } from '../../../commonInterfaces/IModal';
+import { StyledAuthModal } from './StyledAuthModal';
 
-const AuthModal: FC<IModal> = ({ active, authButtonHandler }) => {
+const AuthModal: FC<IModal> = ({ active, buttonHandler }) => {
   const modal = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (ref: any, event: MouseEvent<HTMLElement>) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        authButtonHandler(false);
+        buttonHandler(false);
       }
     };
 
@@ -25,20 +26,22 @@ const AuthModal: FC<IModal> = ({ active, authButtonHandler }) => {
         handleClickOutside(modal, event),
       );
     };
-  }, [authButtonHandler, modal]);
+  }, [buttonHandler, modal]);
 
   const closeButtonClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
-    authButtonHandler(false);
+    buttonHandler(false);
   };
 
   return (
-    <StyledModal ref={modal} active={active}>
-      <StyledModalCloseButton
-        onClick={closeButtonClickHandler}
-      ></StyledModalCloseButton>
-      <SectionTitle text="Вход пользователя" primary={false} />
-      <FormAuth authButtonHandler={authButtonHandler} />
-    </StyledModal>
+    <StyledAuthModal>
+      <StyledModal ref={modal} active={active}>
+        <StyledModalCloseButton
+          onClick={closeButtonClickHandler}
+        ></StyledModalCloseButton>
+        <SectionTitle text="Вход пользователя" primary={false} />
+        <FormAuth authButtonHandler={buttonHandler} />
+      </StyledModal>
+    </StyledAuthModal>
   );
 };
 

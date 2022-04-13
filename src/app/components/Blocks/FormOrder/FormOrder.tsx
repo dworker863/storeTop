@@ -1,13 +1,16 @@
 import { ErrorMessage, Form, Formik } from 'formik';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
 import * as Yup from 'yup';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import InputMask from 'react-input-mask';
+import { OrderModalContext } from '../../../../App';
 
 const FormOrder: FC = () => {
+  const setOrderModalActive = useContext(OrderModalContext);
+
   return (
     <Formik
       initialValues={{
@@ -28,6 +31,7 @@ const FormOrder: FC = () => {
           .required('Введите номер телефона'),
       })}
       onSubmit={(values, { setSubmitting }) => {
+        setOrderModalActive(true);
         console.log(values);
         setSubmitting(false);
       }}

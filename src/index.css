@@ -65,7 +65,7 @@ code {
     monospace;
 }
 
-.root {
+#root {
   position: relative;
 }
 

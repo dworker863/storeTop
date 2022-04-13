@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 
 export interface IModal {
   active: boolean;
-  authButtonHandler: (mode: boolean) => void;
+  buttonHandler: (mode: boolean) => void;
 }
 
 export interface IStyledModal {
