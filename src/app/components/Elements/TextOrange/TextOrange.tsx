@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { ITextOrange } from './ITextOrange';
+import { IText } from '../../../commonInterfaces/IText';
 import { StyledTextOrange } from './StyledTextOrange';
 
-const TextOrange: FC<ITextOrange> = ({ text }) => {
+const TextOrange: FC<IText> = ({ text }) => {
   return <StyledTextOrange>{text}</StyledTextOrange>;
 };
 

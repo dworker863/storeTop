@@ -20,7 +20,7 @@ const NavMobile: FC<INavMobile> = ({
             <NavItem text={text[1]} type="mobile" />
           </Link>
         ))}
-        {username.length > 0 ? (
+        {username?.length > 0 ? (
           <AuthorizedButtons
             username={username}
             authButtonHandler={authButtonHandler}

@@ -15,7 +15,9 @@ const Contacts: FC = () => {
           textCustom={/^П/.test(data.textFirst) && true}
         />
       ))}
-      <StyledRequest>Оставить заявку на звонок</StyledRequest>
+      <StyledRequest to="order" smooth={true}>
+        Оставить заявку на звонок
+      </StyledRequest>
     </StyledContacts>
   );
 };

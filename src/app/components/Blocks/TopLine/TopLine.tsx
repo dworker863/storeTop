@@ -14,7 +14,7 @@ const TopLine: FC<ITopLine> = ({ username, authButtonHandler }) => {
         <Logo />
       </Link>
       <Nav />
-      {username.length > 0 ? (
+      {username?.length > 0 ? (
         <AuthorizedButtons
           username={username}
           authButtonHandler={authButtonHandler}

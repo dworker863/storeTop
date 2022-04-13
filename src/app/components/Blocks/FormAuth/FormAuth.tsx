@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { setLogin } from '../../../redux/reducers/auth/authReducer';
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
@@ -8,9 +8,12 @@ import * as Yup from 'yup';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { ErrorMessage, Form, Formik } from 'formik';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
+import { RootState } from '../../../redux/store';
+import { useAppDispatch } from '../../../hooks';
 
 const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const error = useSelector((state: RootState) => state.auth.error);
 
   return (
     <Formik
@@ -25,8 +28,13 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
         password: Yup.string().required('Введите пароль'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch(setLogin(values.email, values.password));
-        authButtonHandler(false);
+        dispatch(setLogin(values.email, values.password)).then((res) => {
+          if (res.payload.error.length > 0) {
+            authButtonHandler(true);
+          } else {
+            authButtonHandler(false);
+          }
+        });
         setSubmitting(false);
       }}
     >
@@ -41,6 +49,7 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
         <ErrorMessage name="password">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
+        {error?.length > 0 && <StyledErrorMessage>{error}</StyledErrorMessage>}
         <Button text="Войти" type="submit" />
       </Form>
     </Formik>

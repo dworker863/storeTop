@@ -13,7 +13,7 @@ import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
-import { StyledBlockLine } from '../../../commonInterfaces/StyledBlockLine';
+import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
@@ -100,7 +100,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
               </>
             )}
 
-            <StyledBlockLine></StyledBlockLine>
+            {/* <StyledBlockLine></StyledBlockLine> */}
             <Button
               text="Добавить в корзину"
               clickHandler={addToCartClickHandler}

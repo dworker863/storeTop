@@ -22,10 +22,15 @@ export const fetchUsers = (): Promise<IUsersState> => {
 };
 
 export const login = (email: string, password: string): Promise<IUser> => {
-  return instance.post('auth/login', { email, password }).then((res) => {
-    localStorage.setItem('token', res.data.token);
-    return res.data.dataValues;
-  });
+  return instance
+    .post('auth/login', { email, password })
+    .then((res: any) => {
+      localStorage.setItem('token', res.data.token);
+      return res.data.dataValues;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
 };
 
 export const registration = (
@@ -58,5 +63,9 @@ export const registration = (
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       return res.data.dataValues;
+    })
+    .catch((e) => {
+      const error = new Error(e.response.data.message);
+      return error;
     });
 };

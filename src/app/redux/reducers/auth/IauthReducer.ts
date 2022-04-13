@@ -6,16 +6,12 @@ export interface IAuthState {
   userName: string;
   userEmail: string;
   auth: boolean;
-}
-
-export interface IAuthUser {
-  userName: string;
-  userEmail: string;
+  error: string;
 }
 
 export interface ISetAuthAction {
   type: EAuth.SET_AUTH;
-  payload: IAuthUser;
+  payload: IAuthState;
 }
 
 export type TAuthActionTypes = ISetAuthAction;

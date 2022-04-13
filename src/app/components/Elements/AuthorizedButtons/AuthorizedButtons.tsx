@@ -20,7 +20,7 @@ const AuthorizedButtons: FC<IAuthorizedButtons> = ({
 
   const logoutClickHandler = () => {
     const path = window.location.pathname;
-    dispatch(setAuth({ userName: '', userEmail: '' }));
+    dispatch(setAuth({ userName: '', userEmail: '', auth: false, error: '' }));
     if (path === '/cabinet') {
       navigate('/');
     }

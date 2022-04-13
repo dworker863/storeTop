@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-scroll';
 
 export const StyledContacts = styled.div`
   display: flex;
@@ -22,7 +23,8 @@ export const StyledContacts = styled.div`
   }
 `;
 
-export const StyledRequest = styled.span`
+export const StyledRequest = styled(Link)`
+  cursor: pointer;
   text-decoration: underline;
   font-size: 14px;
   font-weight: 400;

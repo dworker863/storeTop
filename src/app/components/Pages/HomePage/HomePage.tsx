@@ -4,9 +4,9 @@ import BannerFirst from '../../Sections/BannerFirst/BannerFirst';
 import Goods from '../../Sections/Goods/Goods';
 import BannerSecond from '../../Sections/BannerSecond/BannerSecond';
 import Order from '../../Sections/Order/Order';
-import { IHomePage } from './IHomePage';
+import { IGoods } from '../../../commonInterfaces/IGoods';
 
-const HomePage: FC<IHomePage> = ({ goods }) => {
+const HomePage: FC<IGoods> = ({ goods }) => {
   return (
     <main>
       <Container type="common">

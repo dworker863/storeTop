@@ -13,7 +13,7 @@ import { ErrorMessage, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
-import { StyledBlockLine } from '../../../commonInterfaces/StyledBlockLine';
+import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import InputMask from 'react-input-mask';
 
 const FormRegistration: FC = () => {

@@ -15,19 +15,19 @@ import {
 } from './StyledUserCabinet';
 import eyeIcon from '../../../../assets/images/eye-icon.png';
 import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
-import { cabinetButtonsText } from '../../../utils/staticData';
+import { cabinetButtonsText, months } from '../../../utils/staticData';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import Note from '../../Elements/Note/Note';
 import { useSelector } from 'react-redux';
-import { IUser } from '../../../commonInterfaces/IUser';
 import { RootState } from '../../../redux/store';
 
 const UserCabinet: FC = () => {
-  const users: IUser[] = useSelector((state: RootState) => state.users.users);
+  const users = useSelector((state: RootState) => state.users.users);
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
-  const user = users.filter((user) => user.email === userEmail)[0];
+  const user = users.filter((user: any) => user.email === userEmail)[0];
+  const dateArr = String(new Date(user.createdAt)).split(' ');
 
   return (
     <Container type="common">
@@ -40,7 +40,9 @@ const UserCabinet: FC = () => {
             <StyledUserCabinetName>{user.username}</StyledUserCabinetName>
             <StyledUserCabinetDate>
               <TextOrange text="Дата регистрации на сайте: " />
-              <span>20 сентября 2022 г.</span>
+              <span>{`${dateArr[2]} ${months[dateArr[1].toLowerCase()]} ${
+                dateArr[3]
+              } г.`}</span>
             </StyledUserCabinetDate>
             <StyledUserCabinetEmail>
               <StyledUserCabinetSubtitle>
