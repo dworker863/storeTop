@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import Container from '../../Blocks/Container/Container';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
@@ -26,8 +26,17 @@ import { RootState } from '../../../redux/store';
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
+  const [showPhone, setShowPhone] = useState(false);
   const user = users.filter((user: any) => user.email === userEmail)[0];
   const dateArr = String(new Date(user.createdAt)).split(' ');
+
+  const eyeIconMouseDownHandler = (event: MouseEvent<HTMLImageElement>) => {
+    setShowPhone(true);
+  };
+
+  const eyeIconMouseUpHandler = (event: MouseEvent<HTMLImageElement>) => {
+    setShowPhone(false);
+  };
 
   return (
     <Container type="common">
@@ -54,8 +63,12 @@ const UserCabinet: FC = () => {
               <StyledUserCabinetSubtitle>
                 Контактный номер телефона
               </StyledUserCabinetSubtitle>
-              {user.phone}
-              <StyledEyeIcon src={eyeIcon} />
+              {showPhone ? user.phone : `+7 (7XX) XXX X${user.phone.slice(-4)}`}
+              <StyledEyeIcon
+                src={eyeIcon}
+                onMouseDown={eyeIconMouseDownHandler}
+                onMouseUp={eyeIconMouseUpHandler}
+              />
               <Note>
                 <StyledTextGrey>Примечание:</StyledTextGrey>
                 <br />
