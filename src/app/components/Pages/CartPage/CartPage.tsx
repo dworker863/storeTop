@@ -1,5 +1,6 @@
-import { FC, ChangeEvent } from 'react';
+import { FC, ChangeEvent, useContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { OrderModalContext } from '../../../../App';
 import {
   setCartDelivery,
   setCartSelect,
@@ -14,7 +15,13 @@ import { ICartPage } from './ICartPage';
 import { StyledCartPage, StyledCartSum } from './StyledCartPage';
 
 const CartPage: FC<ICartPage> = ({ cart }) => {
+  const setOrderModalActive = useContext(OrderModalContext);
+
   const dispatch = useDispatch();
+
+  const orderSubmitHandler = () => {
+    setOrderModalActive(true);
+  };
 
   const optionChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     switch (event.target.value) {
@@ -86,7 +93,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
           optionValue={['наличными', 'банковской картой']}
         />
         <StyledCartSum>{cart.sum}</StyledCartSum>
-        <Button text="Оформить заказ" />
+        <Button text="Оформить заказ" clickHandler={orderSubmitHandler} />
       </StyledCartPage>
     </Container>
   );

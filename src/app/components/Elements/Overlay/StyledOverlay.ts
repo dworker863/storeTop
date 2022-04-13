@@ -6,10 +6,10 @@ export const StyledOverlay = styled.div<IOverlay>`
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   display: none;
   opacity: 0.5;
+  width: 100%;
+  height: 100vh;
   background-color: #000;
 
   ${({ active }) =>

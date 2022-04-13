@@ -1,9 +1,12 @@
 import { FC, MouseEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { IModal } from '../../../commonInterfaces/IModal';
 import {
   StyledModal,
   StyledModalCloseButton,
 } from '../../../commonStyles/StyledModal';
+import { setCart } from '../../../redux/reducers/cart/cartReducer';
+import { RootState } from '../../../redux/store';
 import Button from '../../Elements/Button/Button';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import {
@@ -12,16 +15,25 @@ import {
 } from './StyledOrderModal';
 
 const OrderModal: FC<IModal> = ({ active, buttonHandler }) => {
+  const cartGoods = useSelector((state: RootState) => state.cart.goods);
+  const dispatch = useDispatch();
+
   const buttonsClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
+    dispatch(setCart([]));
     buttonHandler(false);
   };
 
   return (
     <StyledOrderModalWrapper>
       <StyledModal active={active}>
-        <SectionTitle text="Спасибо за заявку!" primary={false} />
+        <SectionTitle
+          text={cartGoods.length > 0 ? 'Спасибо за заявку!' : ''}
+          primary={false}
+        />
         <StyledOrderModalText>
-          Операторы свяжутся с Вами в ближайшее время
+          {cartGoods.length > 0
+            ? 'Операторы свяжутся с Вами в ближайшее время'
+            : 'Добавьте товары в корзину'}
         </StyledOrderModalText>
         <StyledModalCloseButton
           onClick={buttonsClickHandler}
