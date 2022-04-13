@@ -80,9 +80,9 @@ export const setRegistration =
     flatNumber: string,
     postIndex: string,
     role: string,
-  ): ThunkAction<void, IAuthState, unknown, AnyAction> =>
-  (dispatch: Dispatch<any>) => {
-    registration(
+  ): ThunkAction<Promise<ISetAuthAction>, RootState, unknown, AnyAction> =>
+  (dispatch: Dispatch<any>): Promise<ISetAuthAction> => {
+    return registration(
       username,
       email,
       password,
@@ -97,7 +97,7 @@ export const setRegistration =
     )
       .then((user) => {
         dispatch(getUsers());
-        dispatch(
+        return dispatch(
           setAuth({
             userName: user.username,
             userEmail: user.email,
@@ -107,7 +107,7 @@ export const setRegistration =
         );
       })
       .catch((e) => {
-        dispatch(
+        return dispatch(
           setAuth({
             userName: '',
             userEmail: '',

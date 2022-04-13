@@ -65,7 +65,6 @@ export const registration = (
       return res.data.dataValues;
     })
     .catch((e) => {
-      const error = new Error(e.response.data.message);
-      return error;
+      throw new Error(e.response.data.message);
     });
 };

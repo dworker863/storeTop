@@ -1,7 +1,7 @@
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setRegistration } from '../../../redux/reducers/auth/authReducer';
 import TextOrange from '../../Elements/TextOrange/TextOrange';
@@ -15,9 +15,12 @@ import { StyledField } from '../../../commonStyles/StyledField';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import InputMask from 'react-input-mask';
+import { RootState } from '../../../redux/store';
+import { useAppDispatch } from '../../../hooks';
 
 const FormRegistration: FC = () => {
-  const dispatch = useDispatch();
+  const error = useSelector((state: RootState) => state.auth.error);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (
@@ -62,8 +65,6 @@ const FormRegistration: FC = () => {
         postIndex: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        console.log(values.phone.length);
-
         dispatch(
           setRegistration(
             values.username,
@@ -78,8 +79,12 @@ const FormRegistration: FC = () => {
             values.postIndex,
             'User',
           ),
-        );
-        navigate('/');
+        ).then((res) => {
+          if (res.payload.error.length === 0) {
+            navigate('/');
+          }
+        });
+
         setSubmitting(false);
       }}
     >
@@ -239,6 +244,9 @@ const FormRegistration: FC = () => {
             ближней почтовой точки для доставки.
           </Note>
           <StyledBlockLine></StyledBlockLine>
+          {error?.length > 0 && (
+            <StyledErrorMessage>{error}</StyledErrorMessage>
+          )}
           <Button type="submit" text="Зарегистрироваться" />
         </Form>
       )}
