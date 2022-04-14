@@ -4,7 +4,6 @@ import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import TextOrange from '../../Elements/TextOrange/TextOrange';
 import {
-  StyledEyeIcon,
   StyledUserCabinet,
   StyledUserCabinetAddressWrapper,
   StyledUserCabinetDate,
@@ -22,6 +21,7 @@ import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import Note from '../../Elements/Note/Note';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
+import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
 
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
@@ -65,6 +65,7 @@ const UserCabinet: FC = () => {
               </StyledUserCabinetSubtitle>
               {showPhone ? user.phone : `+7 (7XX) XXX X${user.phone.slice(-4)}`}
               <StyledEyeIcon
+                position="static"
                 src={eyeIcon}
                 onMouseDown={eyeIconMouseDownHandler}
                 onMouseUp={eyeIconMouseUpHandler}

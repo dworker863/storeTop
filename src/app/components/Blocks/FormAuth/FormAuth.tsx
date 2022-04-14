@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   setLogin,
@@ -14,10 +14,21 @@ import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import { RootState } from '../../../redux/store';
 import { useAppDispatch } from '../../../hooks';
 import { StyledFormAuthFlexWrapper } from './StyledFormAuth';
+import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
+import eyeIcon from '../../../../assets/images/eye-icon.png';
 
 const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
-  const dispatch = useAppDispatch();
   const error = useSelector((state: RootState) => state.auth.error);
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const eyeIconMouseDownHandler = (event: MouseEvent<HTMLImageElement>) => {
+    setShowPassword(true);
+  };
+
+  const eyeIconMouseUpHandler = (event: MouseEvent<HTMLImageElement>) => {
+    setShowPassword(false);
+  };
 
   return (
     <Formik
@@ -52,7 +63,19 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
         <Label id="password" text="Пароль" />
-        <StyledField id="password" name="password" type="password" />
+        <StyledFormAuthFlexWrapper>
+          <StyledField
+            id="password"
+            name="password"
+            type={showPassword ? 'text' : 'password'}
+          />
+          <StyledEyeIcon
+            src={eyeIcon}
+            position="absolute"
+            onMouseDown={eyeIconMouseDownHandler}
+            onMouseUp={eyeIconMouseUpHandler}
+          />
+        </StyledFormAuthFlexWrapper>
         <ErrorMessage name="password">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>

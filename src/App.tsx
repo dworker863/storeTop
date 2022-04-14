@@ -23,7 +23,6 @@ import Overlay from './app/components/Elements/Overlay/Overlay';
 import CategoryPage from './app/components/Pages/CategoryPage/CategoryPage';
 import OrderModal from './app/components/Sections/OrderModal/OrderModal';
 import LogoutModal from './app/components/Sections/LogoutModal/LogoutModal';
-import { loginWithToken } from './app/api/api';
 import { setLoginWithToken } from './app/redux/reducers/auth/authReducer';
 
 export const OrderModalContext = createContext<any>(null);

@@ -59,9 +59,4 @@ export const StyledUserCabinetTel = styled.div`
   }
 `;
 
-export const StyledEyeIcon = styled.img`
-  cursor: pointer;
-  margin-left: 10px;
-`;
-
 export const StyledUserCabinetAddressWrapper = styled.div``;
