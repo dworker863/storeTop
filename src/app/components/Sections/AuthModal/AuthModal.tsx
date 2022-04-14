@@ -38,7 +38,7 @@ const AuthModal: FC<IModal> = ({ active, buttonHandler }) => {
         <StyledModalCloseButton
           onClick={closeButtonClickHandler}
         ></StyledModalCloseButton>
-        <SectionTitle text="Вход пользователя" primary={false} />
+        <SectionTitle text="Вход пользователя" primary={false} margin={true} />
         <FormAuth authButtonHandler={buttonHandler} />
       </StyledModal>
     </StyledAuthModal>

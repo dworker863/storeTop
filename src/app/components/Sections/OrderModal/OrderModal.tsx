@@ -27,13 +27,17 @@ const OrderModal: FC<IModal> = ({ active, buttonHandler }) => {
     <StyledOrderModalWrapper>
       <StyledModal active={active}>
         <SectionTitle
-          text={cartGoods.length > 0 ? 'Спасибо за заявку!' : ''}
+          text={
+            cartGoods.length === 0 && window.location.pathname === '/cart'
+              ? ''
+              : 'Спасибо за заявку!'
+          }
           primary={false}
         />
         <StyledOrderModalText>
-          {cartGoods.length > 0
-            ? 'Операторы свяжутся с Вами в ближайшее время'
-            : 'Добавьте товары в корзину'}
+          {cartGoods.length === 0 && window.location.pathname === '/cart'
+            ? 'Добавьте товары в корзину'
+            : 'Операторы свяжутся с Вами в ближайшее время'}
         </StyledOrderModalText>
         <StyledModalCloseButton
           onClick={buttonsClickHandler}

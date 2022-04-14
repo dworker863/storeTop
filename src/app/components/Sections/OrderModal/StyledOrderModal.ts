@@ -8,5 +8,5 @@ export const StyledOrderModalWrapper = styled.div`
 `;
 
 export const StyledOrderModalText = styled.p`
-  margin-bottom: 0;
+  text-align: center;
 `;

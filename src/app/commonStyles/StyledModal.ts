@@ -9,15 +9,14 @@ export const StyledModal = styled.div<IStyledModal>`
   top: 50%;
   left: 50%;
   width: 420px;
-  padding-top: 60px;
-  padding-bottom: 40px;
+  padding: 60px 20px;
   border-radius: 5px;
   box-shadow: 0px 5px ${(props) => props.theme.colors.lightGrey};
   background-color: #fff;
   transform: translate(-50%, -50%);
 
-  @media (max-width: 420px) {
-    width: 100%;
+  form {
+    margin: 0 auto;
   }
 
   h2 {
@@ -33,10 +32,13 @@ export const StyledModal = styled.div<IStyledModal>`
   ${({ active }) =>
     active &&
     css`
-      display: grid;
-      grid-template-rows: 1fr 4fr;
-      justify-items: center;
+      display: flex;
+      flex-direction: column;
     `};
+
+  @media (max-width: 420px) {
+    width: 100%;
+  }
 `;
 
 export const StyledModalCloseButton = styled.button<IStyledModalCloseButton>`

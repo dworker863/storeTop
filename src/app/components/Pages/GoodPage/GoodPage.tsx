@@ -68,34 +68,34 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   return (
     <Container type="common">
       <StyledGoodPage>
-        <SectionTitle text={good.name} primary={false} />
+        <SectionTitle text={good?.name} primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="between" image={good.image} />
+          <UserAvatar mode="between" image={good?.image} />
           <StyledInfo>
-            <SectionTitle text={good.name} primary={false} />
+            <SectionTitle text={good?.name} primary={false} />
             <StyledGoodPageSubTitle>Описание товара</StyledGoodPageSubTitle>
-            <StyledGoodPageDesc>{good.description}</StyledGoodPageDesc>
+            <StyledGoodPageDesc>{good?.description}</StyledGoodPageDesc>
             <StyledBlockLine></StyledBlockLine>
             <StyledGoodPageSubTitle>
               Характеристики товара
             </StyledGoodPageSubTitle>
-            <StyledGoodPageDesc>{good.characteristics}</StyledGoodPageDesc>
+            <StyledGoodPageDesc>{good?.characteristics}</StyledGoodPageDesc>
             <StyledTextGrey>Страна-производитель</StyledTextGrey>
-            <StyledTextSimple>{good.country}</StyledTextSimple>
+            <StyledTextSimple>{good?.country}</StyledTextSimple>
             <StyledBlockLine></StyledBlockLine>
 
             <StyledGoodPageSubTitle>Стоимость продукта</StyledGoodPageSubTitle>
-            {good.discount.length === 0 ? (
+            {good?.discount.length === 0 ? (
               <StyledGoodPageDiscountPrice>
-                {good.price}
+                {good?.price}
               </StyledGoodPageDiscountPrice>
             ) : (
               <>
-                <StyledGoodPagePrice>{good.price}</StyledGoodPagePrice>
+                <StyledGoodPagePrice>{good?.price}</StyledGoodPagePrice>
                 <StyledGoodPageDiscountPrice>
-                  {Number(good.price) -
-                    Number(good.price) *
-                      (Number(good.discount.slice(0, -1)) / 100)}
+                  {Number(good?.price) -
+                    Number(good?.price) *
+                      (Number(good?.discount.slice(0, -1)) / 100)}
                 </StyledGoodPageDiscountPrice>
               </>
             )}

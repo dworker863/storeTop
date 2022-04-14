@@ -1,7 +1,7 @@
 import Header from './app/components/Sections/Header/Header';
 import { ThemeProvider } from 'styled-components';
 import { commonTheme } from './app/commonStyles/theme';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './app/components/Pages/HomePage/HomePage';
 import CartPage from './app/components/Pages/CartPage/CartPage';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,6 +30,7 @@ export const LogoutModalContext = createContext<any>(null);
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
   const goods = useSelector((state: RootState) => state.goods);
+  const auth = useSelector((state: RootState) => state.auth.auth);
   const searchStr = useSelector((state: RootState) => state.search.value);
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
 
@@ -64,7 +65,10 @@ function App() {
 
   return (
     <ThemeProvider theme={commonTheme}>
-      <Overlay active={authModal || orderModal || logoutModal} />
+      <Overlay
+        active={authModal || orderModal || logoutModal}
+        mode={window.location.pathname === '/cart' ? 'cart' : 'common'}
+      />
       <AuthModal active={authModal} buttonHandler={authButtonHandler} />
       <OrderModal active={orderModal} buttonHandler={orderButtonHandler} />
       <LogoutModal active={logoutModal} buttonHandler={logoutButtonHandler} />
@@ -81,7 +85,10 @@ function App() {
           <Route path="cart" element={<CartPage cart={cart} />} />
           <Route path="search" element={<SearchPage goods={searchGoods} />} />
           <Route path="registration" element={<RegistrationPage />} />
-          <Route path="cabinet" element={<UserCabinet />} />
+          <Route
+            path="cabinet"
+            element={auth ? <UserCabinet /> : <Navigate to="/" replace />}
+          />
           <Route
             path="goods/electronics"
             element={

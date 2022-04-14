@@ -8,11 +8,18 @@ export const StyledLogoutModalWrapper = styled.div`
 `;
 
 export const StyledLogoutModalText = styled.p`
-  margin-bottom: 0;
+  text-align: center;
+  margin-bottom: 20px;
 `;
 
 export const StyledLogoutModalButtonWrapper = styled.div`
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 40px;
   height: 80px;
+
+  button {
+    margin: 0;
+    margin-top: 30px;
+  }
 `;

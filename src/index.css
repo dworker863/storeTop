@@ -67,6 +67,8 @@ code {
 
 #root {
   position: relative;
+  min-height: 100vh;
+  height: max-content;
 }
 
 .swiper-button-next-custom.swiper-button-disabled,
