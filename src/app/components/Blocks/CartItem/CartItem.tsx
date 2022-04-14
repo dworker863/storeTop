@@ -37,7 +37,7 @@ const CartItem: FC<ICartItem> = ({ good, cart }) => {
     <StyledCartItem>
       <StyledCartItemName>{good.name}</StyledCartItemName>
       <StyledCartItemCounter onClick={decrementGoodsCount}>
-        -
+        {itemGood.goodsCount > 0 && '-'}
       </StyledCartItemCounter>
       <StyledCartItemCount>{good.goodsCount}</StyledCartItemCount>
       <StyledCartItemCounter onClick={incrementGoodsCount}>
