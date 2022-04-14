@@ -10,6 +10,7 @@ import { ErrorMessage, Form, Formik } from 'formik';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import { RootState } from '../../../redux/store';
 import { useAppDispatch } from '../../../hooks';
+import { StyledFormAuthFlexWrapper } from './StyledFormAuth';
 
 const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
   const dispatch = useAppDispatch();
@@ -39,17 +40,21 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
       }}
     >
       <Form>
-        <Label id="#email" text="Email" />
+        <Label id="email" text="Email" />
         <StyledField id="email" name="email" type="text" />
         <ErrorMessage name="email">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
-        <Label id="#password" text="Пароль" />
+        <Label id="password" text="Пароль" />
         <StyledField id="password" name="password" type="password" />
         <ErrorMessage name="password">
           {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
         </ErrorMessage>
         {error?.length > 0 && <StyledErrorMessage>{error}</StyledErrorMessage>}
+        <StyledFormAuthFlexWrapper>
+          <StyledField id="remember" name="remember" type="checkbox" inline />
+          <Label id="remember" text="Запомнить меня" simple />
+        </StyledFormAuthFlexWrapper>
         <Button text="Войти" type="submit" />
       </Form>
     </Formik>

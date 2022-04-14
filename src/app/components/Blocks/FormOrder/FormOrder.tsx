@@ -38,7 +38,7 @@ const FormOrder: FC = () => {
     >
       {(props) => (
         <Form>
-          <Label id="#username" text="Ваше имя и фамилия" />
+          <Label id="username" text="Ваше имя и фамилия" />
           <StyledField
             name="username"
             type="text"
@@ -47,7 +47,7 @@ const FormOrder: FC = () => {
           <ErrorMessage name="username">
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
-          <Label id="#phone" text="Номер мобильного телефона для связи" />
+          <Label id="phone" text="Номер мобильного телефона для связи" />
           <InputMask
             mask="+7 (799) 999 99 99"
             value={props.values.phone}
@@ -62,7 +62,7 @@ const FormOrder: FC = () => {
           <ErrorMessage name="phone">
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
-          <Label id="#email" text="Адрес электронной почты" />
+          <Label id="email" text="Адрес электронной почты" />
           <StyledField name="email" type="email" placeholder="mail@email.kz" />
           <ErrorMessage name="email">
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}

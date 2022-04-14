@@ -90,7 +90,7 @@ const FormRegistration: FC = () => {
     >
       {(props) => (
         <Form>
-          <Label id="#username" text="Имя и Фамилия *" />
+          <Label id="username" text="Имя и Фамилия *" />
           <StyledField
             id="username"
             name="username"
@@ -101,7 +101,7 @@ const FormRegistration: FC = () => {
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
           <StyledBlockLine></StyledBlockLine>
-          <Label id="#email" text="Адрес электронной почты *" />
+          <Label id="email" text="Адрес электронной почты *" />
           <Note>Будет использоваться для авторизации на сайте</Note>
           <StyledField
             id="email"
@@ -113,7 +113,7 @@ const FormRegistration: FC = () => {
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
           <StyledBlockLine></StyledBlockLine>
-          <Label id="#password" text="Пароль *" />
+          <Label id="password" text="Пароль *" />
           <Note>
             Будет использоваться для авторизации на сайте. От 6 до 14 символов
           </Note>
@@ -126,7 +126,7 @@ const FormRegistration: FC = () => {
           <ErrorMessage name="password">
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
-          <Label id="#passwordConfirm" text="Повторите пароль *" simple />
+          <Label id="passwordConfirm" text="Повторите пароль *" simple />
           <StyledField
             id="passwordConfirm"
             name="passwordConfirm"
@@ -137,7 +137,7 @@ const FormRegistration: FC = () => {
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
           <StyledBlockLine></StyledBlockLine>
-          <Label id="#phone" text="Контактный номер телефона *" simple />
+          <Label id="phone" text="Контактный номер телефона *" simple />
           <InputMask
             mask="+7 (799) 999 99 99"
             value={props.values.phone}
@@ -162,7 +162,7 @@ const FormRegistration: FC = () => {
           <StyledBlockLine></StyledBlockLine>
           <TextOrange text="Адрес и почтовый индекс *" />
           <StyledTextSimple>Республика Казахстан</StyledTextSimple>
-          <Label id="#city" text="Город или поселок" simple />
+          <Label id="city" text="Город или поселок" simple />
           <StyledField
             id="city"
             name="city"
@@ -174,7 +174,7 @@ const FormRegistration: FC = () => {
           </ErrorMessage>
           <StyledFlexWrapper>
             <div>
-              <Label id="#street" text="Улица" simple />
+              <Label id="street" text="Улица" simple />
               <StyledField
                 id="street"
                 name="street"
@@ -186,7 +186,7 @@ const FormRegistration: FC = () => {
               </ErrorMessage>
             </div>
             <div>
-              <Label id="#houseNumber" text="Номер дома" simple />
+              <Label id="houseNumber" text="Номер дома" simple />
               <StyledField
                 id="houseNumber"
                 name="houseNumber"
@@ -201,7 +201,7 @@ const FormRegistration: FC = () => {
           </StyledFlexWrapper>
           <StyledFlexWrapper>
             <div>
-              <Label id="#floor" text="Этаж" simple />
+              <Label id="floor" text="Этаж" simple />
               <StyledField
                 id="floor"
                 name="floor"
@@ -214,7 +214,7 @@ const FormRegistration: FC = () => {
               </ErrorMessage>
             </div>
             <div>
-              <Label id="#flatNumber" text="Номер квартиры" simple />
+              <Label id="flatNumber" text="Номер квартиры" simple />
               <StyledField
                 id="flatNumber"
                 name="flatNumber"
@@ -227,7 +227,7 @@ const FormRegistration: FC = () => {
               </ErrorMessage>
             </div>
           </StyledFlexWrapper>
-          <Label id="#postIndex" text="Почтовый индекс" simple />
+          <Label id="postIndex" text="Почтовый индекс" simple />
           <StyledField
             id="postIndex"
             name="postIndex"
