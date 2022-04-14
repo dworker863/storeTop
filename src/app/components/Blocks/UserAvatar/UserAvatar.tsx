@@ -13,7 +13,11 @@ const UserAvatar: FC<IUserAvatar> = ({ buttonsText, mode, image }) => {
       <StyledUserCabinetPhoto image={image}></StyledUserCabinetPhoto>
       <StyledUserCabinetBtnWrapper mode={mode}>
         {buttonsText?.map((text, index) => (
-          <Button key={index + text} text={text} />
+          <Button
+            key={index + text}
+            text={text}
+            simple={index === 1 ? true : false}
+          />
         ))}
       </StyledUserCabinetBtnWrapper>
     </StyledUserCabinetPhotoWrapper>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import pencilIcon from '../../../../assets/images/pencil-icon.png';
 
 export const StyledUserCabinet = styled.section`
   width: 100%;
@@ -60,3 +61,20 @@ export const StyledUserCabinetTel = styled.div`
 `;
 
 export const StyledUserCabinetAddressWrapper = styled.div``;
+
+export const StyledUserCabinetEditButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  padding-left: 40px;
+  border-bottom-left-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: ${(props) => props.theme.colors.primary};
+  background-image: url(${pencilIcon});
+  background-repeat: no-repeat;
+  background-position: 20px 16px;
+`;

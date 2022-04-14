@@ -7,6 +7,7 @@ import {
   StyledUserCabinet,
   StyledUserCabinetAddressWrapper,
   StyledUserCabinetDate,
+  StyledUserCabinetEditButton,
   StyledUserCabinetEmail,
   StyledUserCabinetName,
   StyledUserCabinetSubtitle,
@@ -46,6 +47,9 @@ const UserCabinet: FC = () => {
           <UserAvatar buttonsText={cabinetButtonsText} mode="between" />
 
           <StyledInfo>
+            <StyledUserCabinetEditButton>
+              Изменить или редактировать данные
+            </StyledUserCabinetEditButton>
             <StyledUserCabinetName>{user.username}</StyledUserCabinetName>
             <StyledUserCabinetDate>
               <TextOrange text="Дата регистрации на сайте: " />

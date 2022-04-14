@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledInfo = styled.div`
+  position: relative;
+  width: 100%;
   padding: 30px 45px;
   padding-bottom: 19px;
   border-top-right-radius: 6px;
