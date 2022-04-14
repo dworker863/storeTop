@@ -1,6 +1,6 @@
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
-import { FC } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setRegistration } from '../../../redux/reducers/auth/authReducer';
@@ -17,11 +17,36 @@ import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import InputMask from 'react-input-mask';
 import { RootState } from '../../../redux/store';
 import { useAppDispatch } from '../../../hooks';
+import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
+import eyeIcon from '../../../../assets/images/eye-icon.png';
+import { StyledFormRegistrTextWrapper } from './StyledFormRegistration';
 
 const FormRegistration: FC = () => {
   const error = useSelector((state: RootState) => state.auth.error);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const passwordEyeIconMouseDownHandler = (
+    event: MouseEvent<HTMLImageElement>,
+  ) => {
+    setShowPassword(true);
+  };
+
+  const passwordEyeIconMouseUpHandler = (
+    event: MouseEvent<HTMLImageElement>,
+  ) => {
+    setShowPassword(false);
+  };
+
+  const eyeIconMouseDownHandler = (event: MouseEvent<HTMLImageElement>) => {
+    setShowConfirmPassword(true);
+  };
+
+  const eyeIconMouseUpHandler = (event: MouseEvent<HTMLImageElement>) => {
+    setShowConfirmPassword(false);
+  };
 
   return (
     <Formik
@@ -117,22 +142,39 @@ const FormRegistration: FC = () => {
           <Note>
             Будет использоваться для авторизации на сайте. От 6 до 14 символов
           </Note>
-          <StyledField
-            id="password"
-            name="password"
-            type="password"
-            placeholder="********"
-          />
+          <StyledFormRegistrTextWrapper>
+            <StyledField
+              id="password"
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="********"
+            />
+            <StyledEyeIcon
+              src={eyeIcon}
+              position="absolute"
+              onMouseDown={passwordEyeIconMouseDownHandler}
+              onMouseUp={passwordEyeIconMouseUpHandler}
+            />
+          </StyledFormRegistrTextWrapper>
           <ErrorMessage name="password">
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
           <Label id="passwordConfirm" text="Повторите пароль *" simple />
-          <StyledField
-            id="passwordConfirm"
-            name="passwordConfirm"
-            type="password"
-            placeholder="********"
-          />
+          <StyledFormRegistrTextWrapper>
+            <StyledField
+              id="passwordConfirm"
+              name="passwordConfirm"
+              type={showConfirmPassword ? 'text' : 'password'}
+              placeholder="********"
+            />
+            <StyledEyeIcon
+              src={eyeIcon}
+              position="absolute"
+              onMouseDown={eyeIconMouseDownHandler}
+              onMouseUp={eyeIconMouseUpHandler}
+            />
+          </StyledFormRegistrTextWrapper>
+
           <ErrorMessage name="passwordConfirm">
             {(msg) => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
