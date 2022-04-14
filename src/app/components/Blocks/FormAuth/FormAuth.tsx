@@ -1,6 +1,9 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { setLogin } from '../../../redux/reducers/auth/authReducer';
+import {
+  setLogin,
+  setRemember,
+} from '../../../redux/reducers/auth/authReducer';
 import Button from '../../Elements/Button/Button';
 import Label from '../../Elements/Label/Label';
 import { IFormAuth } from './IFormAuth';
@@ -21,14 +24,17 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
       initialValues={{
         email: '',
         password: '',
+        remember: false,
       }}
       validationSchema={Yup.object({
         email: Yup.string()
           .email('Введите корректный email')
           .required('Введите email'),
         password: Yup.string().required('Введите пароль'),
+        remember: Yup.boolean(),
       })}
       onSubmit={(values, { setSubmitting }) => {
+        dispatch(setRemember(values.remember));
         dispatch(setLogin(values.email, values.password)).then((res) => {
           if (res.payload.error.length > 0) {
             authButtonHandler(true);

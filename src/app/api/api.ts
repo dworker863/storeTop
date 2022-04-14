@@ -9,8 +9,6 @@ export const instance = axios.create({
 
 export const fetchGoods = (): Promise<IGoodsState> => {
   return instance.get('goods').then((res) => {
-    console.log(res.data);
-
     return res.data;
   });
 };
@@ -27,6 +25,22 @@ export const login = (email: string, password: string): Promise<IUser> => {
     .then((res: any) => {
       localStorage.setItem('token', res.data.token);
       return res.data.dataValues;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};
+
+export const loginWithToken = (): Promise<IUser> => {
+  return instance
+    .get('auth', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    .then((res: any) => {
+      console.log(res.data);
+      return res.data;
     })
     .catch((e) => {
       throw new Error(e.response.data.message);
