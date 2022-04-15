@@ -24,15 +24,6 @@ export const navData: any[] = [
   ['reviews', 'отзывы покупателей'],
 ];
 
-export const cabinetButtonsText: string[] = [
-  'Изменить изображение',
-  'X Удалить',
-];
-
-export const registrationButtonsText: string[] = [
-  'Добавить изображение профиля',
-];
-
 export const months: any = {
   jan: 'января',
   feb: 'февраля',

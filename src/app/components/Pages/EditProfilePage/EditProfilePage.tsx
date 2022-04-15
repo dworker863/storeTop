@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
-import { cabinetButtonsText } from '../../../utils/staticData';
 import Container from '../../Blocks/Container/Container';
 import FormEditProfile from '../../Blocks/FormEditProfile/FormEditProfile';
 import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
@@ -14,7 +13,7 @@ const EditProfilePage: FC = () => {
       <StyledUserCabinet>
         <SectionTitle text="Редактировать профиль" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar buttonsText={cabinetButtonsText} mode="between" />
+          <UserAvatar mode="between" />
 
           <StyledInfo>
             <FormEditProfile />

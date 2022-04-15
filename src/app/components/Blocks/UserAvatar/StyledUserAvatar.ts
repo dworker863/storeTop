@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components';
-import {
-  IStyledUserCabinetBtnWrapper,
-  IStyledUserCabinetPhoto,
-} from './IUserAvatar';
+import { IStyledUserCabinetBtnWrapper } from './IUserAvatar';
 
 export const StyledUserCabinetPhotoWrapper = styled.div`
   padding: 35px;
@@ -26,14 +23,17 @@ export const StyledUserCabinetPhotoWrapper = styled.div`
   }
 `;
 
-export const StyledUserCabinetPhoto = styled.div<IStyledUserCabinetPhoto>`
+export const StyledUserCabinetPhoto = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 378px;
   height: 455px;
   margin-bottom: 20px;
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
   border-radius: 4px;
   background-color: ${(props) => props.theme.colors.superLightGrey};
-  background-image: url(${({ image }) => image});
   background-size: cover;
 
   @media (max-width: 992px) {

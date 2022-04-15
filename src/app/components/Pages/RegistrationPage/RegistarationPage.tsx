@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
-import { registrationButtonsText } from '../../../utils/staticData';
 import Container from '../../Blocks/Container/Container';
 import FormRegistration from '../../Blocks/FormRegistration/FormRegistration';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
@@ -17,7 +16,7 @@ const RegistrationPage: FC = () => {
       <StyledRegistrationPage>
         <SectionTitle text="Регистрация" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar buttonsText={registrationButtonsText} mode="center" />
+          <UserAvatar mode="center" />
           <StyledInfo>
             <StyledRegistrationTitle>
               Звездочкой (*) отмечены поля обязательные к заполнению
