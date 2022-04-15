@@ -7,7 +7,6 @@ import {
   EUsers,
   ISetUsersAction,
 } from './IusersReducer';
-import { IEditUser } from '../../../commonInterfaces/IEditUser';
 
 const initialState: IUsersState = {
   users: [],
@@ -37,7 +36,7 @@ export const getUsers =
   };
 
 export const updateUserInfo =
-  (user: IEditUser): ThunkAction<void, IUsersState, unknown, AnyAction> =>
+  (user: IUser): ThunkAction<void, IUsersState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): any => {
     updateUser(user).then((users) => {
       dispatch(setUsers(users));

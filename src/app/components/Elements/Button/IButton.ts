@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 
 export interface IButton {
   text: string;
-  type?: string;
+  type?: 'button' | 'submit' | 'reset';
   simple?: boolean;
   clickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
 }

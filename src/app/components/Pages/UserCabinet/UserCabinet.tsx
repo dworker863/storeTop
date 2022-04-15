@@ -15,7 +15,7 @@ import {
 } from './StyledUserCabinet';
 import eyeIcon from '../../../../assets/images/eye-icon.png';
 import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
-import { cabinetButtonsText, months } from '../../../utils/staticData';
+import { months } from '../../../utils/staticData';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
@@ -23,7 +23,7 @@ import Note from '../../Elements/Note/Note';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);

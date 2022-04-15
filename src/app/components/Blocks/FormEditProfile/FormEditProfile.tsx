@@ -1,6 +1,6 @@
 import { ErrorMessage, Form, Formik } from 'formik';
-import { FC, MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import InputMask from 'react-input-mask';
 import * as Yup from 'yup';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
@@ -20,6 +20,7 @@ import { updateUserInfo } from '../../../redux/reducers/users/usersReducer';
 const FormEditProfile: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
+  const dispatch = useDispatch();
   const user = users.filter((user: any) => user.email === userEmail)[0];
 
   return (
@@ -59,18 +60,23 @@ const FormEditProfile: FC = () => {
         postIndex: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        updateUserInfo({
-          id: user.id,
-          username: values.username,
-          email: values.email,
-          phone: values.phone,
-          city: values.city,
-          street: values.street,
-          houseNumber: values.houseNumber,
-          floor: values.floor,
-          flatNumber: values.flatNumber,
-          postIndex: values.postIndex,
-        });
+        console.log(111);
+
+        dispatch(
+          updateUserInfo({
+            id: user.id,
+            username: values.username,
+            email: values.email,
+            password: user.password,
+            phone: values.phone,
+            city: values.city,
+            street: values.street,
+            houseNumber: values.houseNumber,
+            floor: values.floor,
+            flatNumber: values.flatNumber,
+            postIndex: values.postIndex,
+          }),
+        );
 
         setSubmitting(false);
       }}
@@ -209,7 +215,12 @@ const FormEditProfile: FC = () => {
           <StyledBlockLine></StyledBlockLine>
           <StyledEditProfileButtonsWrapper>
             <Button type="submit" text="Сохранить изменения" />
-            <Button type="reset" text="Х Отмена" simple />
+            <Button
+              type="reset"
+              text="Х Отмена"
+              clickHandler={props.handleReset}
+              simple
+            />
           </StyledEditProfileButtonsWrapper>
         </Form>
       )}

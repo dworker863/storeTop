@@ -2,7 +2,6 @@ import { IUsersState } from './../redux/reducers/users/IusersReducer';
 import axios from 'axios';
 import { IUser } from '../commonInterfaces/IUser';
 import { IGoodsState } from '../redux/reducers/goods/IgoodsReducer';
-import { IEditUser } from '../commonInterfaces/IEditUser';
 
 export const instance = axios.create({
   baseURL: 'http://localhost:5000/',
@@ -83,10 +82,11 @@ export const registration = (
     });
 };
 
-export const updateUser = (user: IEditUser) => {
+export const updateUser = (user: IUser) => {
   return instance
-    .put(`users/${user.id}`)
+    .put(`users/${user.id}`, user)
     .then((res) => {
+      console.log(res.data);
       return res.data;
     })
     .catch((e) => {
