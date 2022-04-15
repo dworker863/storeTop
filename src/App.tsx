@@ -24,6 +24,7 @@ import CategoryPage from './app/components/Pages/CategoryPage/CategoryPage';
 import OrderModal from './app/components/Sections/OrderModal/OrderModal';
 import LogoutModal from './app/components/Sections/LogoutModal/LogoutModal';
 import { setLoginWithToken } from './app/redux/reducers/auth/authReducer';
+import EditProfilePage from './app/components/Pages/EditProfilePage/EditProfilePage';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
@@ -91,6 +92,7 @@ function App() {
             path="cabinet"
             element={auth ? <UserCabinet /> : <Navigate to="/" replace />}
           />
+          <Route path="editprofile" element={<EditProfilePage />} />
           <Route
             path="goods/electronics"
             element={

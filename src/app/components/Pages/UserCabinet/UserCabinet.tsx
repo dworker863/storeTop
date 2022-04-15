@@ -23,6 +23,7 @@ import Note from '../../Elements/Note/Note';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
@@ -30,6 +31,7 @@ const UserCabinet: FC = () => {
   const [showPhone, setShowPhone] = useState(false);
   const user = users.filter((user: any) => user.email === userEmail)[0];
   const dateArr = String(new Date(user.createdAt)).split(' ');
+  const navigate = useNavigate();
 
   const eyeIconMouseDownHandler = (event: MouseEvent<HTMLImageElement>) => {
     setShowPhone(true);
@@ -39,15 +41,19 @@ const UserCabinet: FC = () => {
     setShowPhone(false);
   };
 
+  const editProfileButtonHandler = () => {
+    navigate('/editprofile');
+  };
+
   return (
     <Container type="common">
       <StyledUserCabinet>
         <SectionTitle text="Личный кабинет" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar buttonsText={cabinetButtonsText} mode="between" />
+          <UserAvatar mode="between" />
 
           <StyledInfo>
-            <StyledUserCabinetEditButton>
+            <StyledUserCabinetEditButton onClick={editProfileButtonHandler}>
               Изменить или редактировать данные
             </StyledUserCabinetEditButton>
             <StyledUserCabinetName>{user.username}</StyledUserCabinetName>

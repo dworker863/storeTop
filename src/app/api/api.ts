@@ -2,6 +2,7 @@ import { IUsersState } from './../redux/reducers/users/IusersReducer';
 import axios from 'axios';
 import { IUser } from '../commonInterfaces/IUser';
 import { IGoodsState } from '../redux/reducers/goods/IgoodsReducer';
+import { IEditUser } from '../commonInterfaces/IEditUser';
 
 export const instance = axios.create({
   baseURL: 'http://localhost:5000/',
@@ -39,7 +40,6 @@ export const loginWithToken = (): Promise<IUser> => {
       },
     })
     .then((res: any) => {
-      console.log(res.data);
       return res.data;
     })
     .catch((e) => {
@@ -77,6 +77,17 @@ export const registration = (
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       return res.data.dataValues;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};
+
+export const updateUser = (user: IEditUser) => {
+  return instance
+    .put(`users/${user.id}`)
+    .then((res) => {
+      return res.data;
     })
     .catch((e) => {
       throw new Error(e.response.data.message);

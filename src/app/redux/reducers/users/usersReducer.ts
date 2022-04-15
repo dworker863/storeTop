@@ -1,12 +1,13 @@
-import { fetchUsers } from './../../../api/api';
+import { IUser } from './../../../commonInterfaces/IUser';
+import { fetchUsers, updateUser } from './../../../api/api';
 import { ThunkAction, AnyAction, Dispatch } from '@reduxjs/toolkit';
-import { IUser } from '../../../commonInterfaces/IUser';
 import {
   IUsersState,
   TUsersActionTypes,
   EUsers,
   ISetUsersAction,
 } from './IusersReducer';
+import { IEditUser } from '../../../commonInterfaces/IEditUser';
 
 const initialState: IUsersState = {
   users: [],
@@ -31,6 +32,14 @@ export const getUsers =
   (): ThunkAction<void, IUsersState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): void => {
     fetchUsers().then((users: any) => {
+      dispatch(setUsers(users));
+    });
+  };
+
+export const updateUserInfo =
+  (user: IEditUser): ThunkAction<void, IUsersState, unknown, AnyAction> =>
+  (dispatch: Dispatch<any>): any => {
+    updateUser(user).then((users) => {
       dispatch(setUsers(users));
     });
   };
