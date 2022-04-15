@@ -19,10 +19,19 @@ const UserAvatar: FC<IUserAvatar> = ({ mode }) => {
   };
   return (
     <StyledUserCabinetPhotoWrapper>
-      <Dropzone>
-        {({ getRootProps, getInputProps }) => (
+      <Dropzone
+        onDrop={(acceptedFiles) => {
+          setImage(URL.createObjectURL(acceptedFiles[0]));
+        }}
+      >
+        {({ getRootProps, getInputProps, acceptedFiles }) => (
           <>
-            <StyledUserCabinetPhoto {...getRootProps()}>
+            <StyledUserCabinetPhoto
+              {...getRootProps()}
+              onInput={() => {
+                setImage(URL.createObjectURL(acceptedFiles[0]));
+              }}
+            >
               {image === '' && (
                 <img
                   src={plusIcon}
@@ -39,10 +48,7 @@ const UserAvatar: FC<IUserAvatar> = ({ mode }) => {
               )}
             </StyledUserCabinetPhoto>
             <StyledUserCabinetBtnWrapper mode={mode}>
-              <ButtonUpload
-                {...getInputProps()}
-                changeHandler={(e) => handleChange(e)}
-              />
+              <ButtonUpload {...getInputProps()} changeHandler={handleChange} />
             </StyledUserCabinetBtnWrapper>
           </>
         )}
