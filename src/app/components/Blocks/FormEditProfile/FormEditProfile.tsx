@@ -1,5 +1,5 @@
 import { ErrorMessage, Form, Formik } from 'formik';
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InputMask from 'react-input-mask';
 import * as Yup from 'yup';
@@ -16,12 +16,15 @@ import TextOrange from '../../Elements/TextOrange/TextOrange';
 import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import { StyledEditProfileButtonsWrapper } from './StyledEditProfilePage';
 import { updateUserInfo } from '../../../redux/reducers/users/usersReducer';
+import { useNavigate } from 'react-router-dom';
 
 const FormEditProfile: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
+  const [buttonMode, setButtonMode] = useState(true);
   const dispatch = useDispatch();
   const user = users.filter((user: any) => user.email === userEmail)[0];
+  const navigate = useNavigate();
 
   return (
     <Formik
@@ -78,11 +81,17 @@ const FormEditProfile: FC = () => {
           }),
         );
 
+        navigate('/cabinet');
         setSubmitting(false);
       }}
     >
       {(props) => (
-        <Form>
+        <Form
+          onChange={(e: ChangeEvent<any>) => {
+            setButtonMode(false);
+            props.handleChange(e);
+          }}
+        >
           <Label id="username" text="Имя и Фамилия *" />
           <StyledField
             id="username"
@@ -218,8 +227,11 @@ const FormEditProfile: FC = () => {
             <Button
               type="reset"
               text="Х Отмена"
-              clickHandler={props.handleReset}
-              simple
+              clickHandler={(e: ChangeEvent<any>) => {
+                setButtonMode(true);
+                props.handleReset();
+              }}
+              simple={buttonMode}
             />
           </StyledEditProfileButtonsWrapper>
         </Form>
