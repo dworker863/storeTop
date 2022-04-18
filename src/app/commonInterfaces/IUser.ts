@@ -11,4 +11,5 @@ export interface IUser {
   flatNumber: string;
   postIndex: string;
   role?: 'User';
+  image: any;
 }

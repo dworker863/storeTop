@@ -1,12 +1,11 @@
 import { ErrorMessage, Form, Formik } from 'formik';
 import { ChangeEvent, FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import InputMask from 'react-input-mask';
 import * as Yup from 'yup';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import { StyledErrorMessage } from '../../../commonStyles/StyledErrorMessage';
 import { StyledField } from '../../../commonStyles/StyledField';
-import { RootState } from '../../../redux/store';
 import Label from '../../Elements/Label/Label';
 import Note from '../../Elements/Note/Note';
 import { StyledFlexWrapper } from '../../../commonStyles/StyledFlexWrapper';
@@ -17,13 +16,11 @@ import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import { StyledEditProfileButtonsWrapper } from './StyledEditProfilePage';
 import { updateUserInfo } from '../../../redux/reducers/users/usersReducer';
 import { useNavigate } from 'react-router-dom';
+import { IFormEditProfile } from './IFormEditProfile';
 
-const FormEditProfile: FC = () => {
-  const users = useSelector((state: RootState) => state.users.users);
-  const userEmail = useSelector((state: RootState) => state.auth.userEmail);
+const FormEditProfile: FC<IFormEditProfile> = ({ user, image }) => {
   const [buttonMode, setButtonMode] = useState(true);
   const dispatch = useDispatch();
-  const user = users.filter((user: any) => user.email === userEmail)[0];
   const navigate = useNavigate();
 
   return (
@@ -32,8 +29,6 @@ const FormEditProfile: FC = () => {
       initialValues={{
         username: user?.username,
         email: user?.email,
-        password: user?.password,
-        passwordConfirm: user?.passwordConfirm,
         phone: user?.phone,
         city: user?.city,
         street: user?.street,
@@ -78,6 +73,7 @@ const FormEditProfile: FC = () => {
             floor: values.floor,
             flatNumber: values.flatNumber,
             postIndex: values.postIndex,
+            image: image,
           }),
         );
 

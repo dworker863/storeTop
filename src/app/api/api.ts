@@ -96,8 +96,23 @@ export const registration = (
 };
 
 export const updateUser = (user: IUser) => {
+  console.log(user.image.name);
+
+  const formData = new FormData();
+  formData.append('image', user.image, user.image.name);
+
+  for (let key in user) {
+    if (key !== 'image') {
+      formData.append(key, user[key as keyof typeof user]);
+    }
+  }
+
   return instance
-    .put(`users/${user.id}`, user)
+    .put(`users/${user.id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
     .then((res) => {
       console.log(res.data);
       return res.data;
