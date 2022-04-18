@@ -110,6 +110,12 @@ export const StyledGoodCountChanger = styled.span`
 export const StyledGoodBtnWrapper = styled.div`
   display: inline-flex;
   gap: 15px;
+
+  button {
+    @media (max-width: 992px) {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const StyledGoodPagePrice = styled.p`

@@ -24,6 +24,11 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
 import { useNavigate } from 'react-router-dom';
+import {
+  StyledCategoryGoodsTitle,
+  StyledCategoryGoodsWrapper,
+} from '../GoodPage/StyledGoodPage';
+import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
@@ -107,6 +112,15 @@ const UserCabinet: FC = () => {
             </StyledUserCabinetAddressWrapper>
           </StyledInfo>
         </StyledInfoWrapper>
+        <StyledCategoryGoodsTitle>Последние товары</StyledCategoryGoodsTitle>
+        <StyledCategoryGoodsWrapper>
+          <GoodPageItem />
+          <GoodPageItem />
+          <GoodPageItem />
+          <GoodPageItem />
+          <GoodPageItem />
+        </StyledCategoryGoodsWrapper>
+        <div style={{ height: '20vh' }}></div>
       </StyledUserCabinet>
     </Container>
   );

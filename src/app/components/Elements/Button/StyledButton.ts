@@ -46,10 +46,6 @@ export const StyledButton = styled.button<IStyledButton>`
       }
     `}
 
-  /* @media (max-width: 992px) {
-    font-size: 16px;
-  } */
-
   @media (max-width: 576px) {
     font-size: 14px;
   }
