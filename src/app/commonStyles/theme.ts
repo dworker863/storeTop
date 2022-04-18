@@ -11,8 +11,11 @@ export const commonTheme: ITheme = {
     lightYellow: '#ffca67',
     yellow: '#ffac3a',
     red: '#c82429',
+    lightRed: '#9c3636',
     brown: '#70544f',
     lightBrown: '#a69895',
+    green: '#36B600',
+    lightGreen: '#82b563',
   },
 
   media: {

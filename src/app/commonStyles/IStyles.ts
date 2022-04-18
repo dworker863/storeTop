@@ -8,9 +8,12 @@ export interface ITheme {
     lightYellow: string;
     yellow: string;
     red: string;
+    lightRed: string;
     superLightGrey: string;
     brown: string;
     lightBrown: string;
+    green: string;
+    lightGreen: string;
   };
 
   media: {

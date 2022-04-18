@@ -3,11 +3,20 @@ import { useParams } from 'react-router-dom';
 import Container from '../../Blocks/Container/Container';
 import { IGoodPage } from './IGoodPage';
 import {
+  StyledCharacteristicsItem,
+  StyledCharacteristicsTitle,
+  StyledGoodBtnWrapper,
+  StyledGoodCount,
+  StyledGoodCountChanger,
+  StyledGoodCounterWrapper,
   StyledGoodPage,
   StyledGoodPageDesc,
   StyledGoodPageDiscountPrice,
   StyledGoodPagePrice,
   StyledGoodPageSubTitle,
+  StyledGoodSerial,
+  StyledGoodSerialWrapper,
+  StyledGoodStock,
 } from './StyledGoodPage';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import Image from '../../Blocks/Image/Image';
@@ -73,6 +82,11 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
           <Image mode="good" buttonMode="between" image={good?.image} />
           <StyledInfo>
             <SectionTitle text={good?.name} primary={false} />
+            <StyledGoodSerialWrapper>
+              <StyledGoodSerial>Серийный номер: </StyledGoodSerial>
+              <span>000001</span>
+              <StyledGoodStock>В наличии</StyledGoodStock>
+            </StyledGoodSerialWrapper>
             <StyledGoodPageSubTitle>Описание товара</StyledGoodPageSubTitle>
             <StyledGoodPageDesc>{good?.description}</StyledGoodPageDesc>
             <StyledBlockLine></StyledBlockLine>
@@ -80,18 +94,31 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
               Характеристики товара
             </StyledGoodPageSubTitle>
             <StyledGoodPageDesc>{good?.characteristics}</StyledGoodPageDesc>
-            <StyledTextGrey>Страна-производитель</StyledTextGrey>
-            <StyledTextSimple>{good?.country}</StyledTextSimple>
+            <StyledCharacteristicsItem>
+              <StyledCharacteristicsTitle>Состав:</StyledCharacteristicsTitle>
+              {` ${good?.country}`}
+            </StyledCharacteristicsItem>
+            <StyledCharacteristicsItem>
+              <StyledCharacteristicsTitle>
+                Технические характеристики:
+              </StyledCharacteristicsTitle>
+              {` ${good?.country}`}
+            </StyledCharacteristicsItem>
+            <StyledCharacteristicsItem>
+              <StyledCharacteristicsTitle>
+                Страна-производитель:
+              </StyledCharacteristicsTitle>
+              {` ${good?.country}`}
+            </StyledCharacteristicsItem>
             <StyledBlockLine></StyledBlockLine>
-
             <StyledGoodPageSubTitle>Стоимость продукта</StyledGoodPageSubTitle>
             {good?.discount.length === 0 ? (
               <StyledGoodPageDiscountPrice>
-                {good?.price}
+                {`${good?.price} тг.`}
               </StyledGoodPageDiscountPrice>
             ) : (
               <>
-                <StyledGoodPagePrice>{good?.price}</StyledGoodPagePrice>
+                <StyledGoodPagePrice>{`${good?.price} тг.`}</StyledGoodPagePrice>
                 <StyledGoodPageDiscountPrice>
                   {Number(good?.price) -
                     Number(good?.price) *
@@ -99,12 +126,24 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
                 </StyledGoodPageDiscountPrice>
               </>
             )}
-
             {/* <StyledBlockLine></StyledBlockLine> */}
-            <Button
-              text="Добавить в корзину"
-              clickHandler={addToCartClickHandler}
-            />
+            <StyledGoodBtnWrapper>
+              <StyledGoodCounterWrapper>
+                <StyledGoodCount>1шт.</StyledGoodCount>
+                <StyledGoodCountChanger>-</StyledGoodCountChanger>
+                <StyledGoodCountChanger>+</StyledGoodCountChanger>
+              </StyledGoodCounterWrapper>
+              <Button
+                text="Добавить в корзину"
+                clickHandler={addToCartClickHandler}
+                mode="good"
+              />
+              <Button
+                text="Добавить в список желаний"
+                clickHandler={addToCartClickHandler}
+                mode="favorite"
+              />
+            </StyledGoodBtnWrapper>
           </StyledInfo>
         </StyledInfoWrapper>
         <div style={{ height: '20vh' }}></div>

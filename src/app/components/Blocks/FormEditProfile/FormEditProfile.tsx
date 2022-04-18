@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import { IFormEditProfile } from './IFormEditProfile';
 
 const FormEditProfile: FC<IFormEditProfile> = ({ user, image }) => {
-  const [buttonMode, setButtonMode] = useState(true);
+  const [buttonMode, setButtonMode] = useState('simple');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -84,7 +84,7 @@ const FormEditProfile: FC<IFormEditProfile> = ({ user, image }) => {
       {(props) => (
         <Form
           onChange={(e: ChangeEvent<any>) => {
-            setButtonMode(false);
+            setButtonMode('');
             props.handleChange(e);
           }}
         >
@@ -224,10 +224,10 @@ const FormEditProfile: FC<IFormEditProfile> = ({ user, image }) => {
               type="reset"
               text="Х Отмена"
               clickHandler={(e: ChangeEvent<any>) => {
-                setButtonMode(true);
+                setButtonMode('simple');
                 props.handleReset();
               }}
-              simple={buttonMode}
+              mode={buttonMode}
             />
           </StyledEditProfileButtonsWrapper>
         </Form>
