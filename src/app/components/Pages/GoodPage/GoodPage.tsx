@@ -183,6 +183,10 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
         </StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
           <GoodPageItem />
+          <GoodPageItem />
+          <GoodPageItem />
+          <GoodPageItem />
+          <GoodPageItem />
         </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>
       </StyledGoodPage>

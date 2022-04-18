@@ -125,8 +125,11 @@ export const StyledGoodPageDiscountPrice = styled.p`
   font-weight: 700;
 `;
 
-export const StyledCategoryGoodsTitle = styled.h3``;
+export const StyledCategoryGoodsTitle = styled.h3`
+  margin-top: 55px;
+`;
 
 export const StyledCategoryGoodsWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
