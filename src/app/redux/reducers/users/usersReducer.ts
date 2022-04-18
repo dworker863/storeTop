@@ -39,6 +39,7 @@ export const updateUserInfo =
   (user: IUser): ThunkAction<void, IUsersState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): any => {
     updateUser(user).then((users) => {
+      console.log(users);
       dispatch(setUsers(users));
     });
   };

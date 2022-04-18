@@ -1,15 +1,15 @@
 import { ChangeEvent, FC, useState } from 'react';
 import ButtonUpload from '../../Elements/ButtonUpload/ButtonUpload';
-import { IUserAvatar } from './IUserAvatar';
 import {
-  StyledUserCabinetBtnWrapper,
-  StyledUserCabinetPhoto,
-  StyledUserCabinetPhotoWrapper,
-} from './StyledUserAvatar';
+  StyledImageBtnWrapper,
+  StyledImage,
+  StyledImageWrapper,
+} from './StyledImage';
 import Dropzone from 'react-dropzone';
 import plusIcon from '../../../../assets/images/plus-icon.png';
+import { IImage } from './IImage';
 
-const UserAvatar: FC<IUserAvatar> = ({ mode, image, changeHandler }) => {
+const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
   const [userAvatarUrl, setUserAvatarUrl] = useState('');
 
   const handleChange = (e: ChangeEvent<any>) => {
@@ -20,8 +20,9 @@ const UserAvatar: FC<IUserAvatar> = ({ mode, image, changeHandler }) => {
   };
 
   return (
-    <StyledUserCabinetPhotoWrapper>
+    <StyledImageWrapper>
       <Dropzone
+        disabled={(mode === 'good' || mode === 'profile') && true}
         onDrop={(acceptedFiles) => {
           changeHandler && changeHandler(acceptedFiles[0]);
           setUserAvatarUrl(URL.createObjectURL(acceptedFiles[0]));
@@ -29,7 +30,7 @@ const UserAvatar: FC<IUserAvatar> = ({ mode, image, changeHandler }) => {
       >
         {({ getRootProps, getInputProps, acceptedFiles }) => (
           <>
-            <StyledUserCabinetPhoto
+            <StyledImage
               {...getRootProps()}
               onInput={() => {
                 changeHandler && changeHandler(acceptedFiles[0]);
@@ -50,15 +51,20 @@ const UserAvatar: FC<IUserAvatar> = ({ mode, image, changeHandler }) => {
                   style={{ width: '100%', height: '100%' }}
                 />
               )}
-            </StyledUserCabinetPhoto>
-            <StyledUserCabinetBtnWrapper mode={mode}>
-              <ButtonUpload {...getInputProps()} changeHandler={handleChange} />
-            </StyledUserCabinetBtnWrapper>
+            </StyledImage>
+            {(mode === 'edit' || mode === 'registration') && (
+              <StyledImageBtnWrapper mode={buttonMode}>
+                <ButtonUpload
+                  {...getInputProps()}
+                  changeHandler={handleChange}
+                />
+              </StyledImageBtnWrapper>
+            )}
           </>
         )}
       </Dropzone>
-    </StyledUserCabinetPhotoWrapper>
+    </StyledImageWrapper>
   );
 };
 
-export default UserAvatar;
+export default Image;

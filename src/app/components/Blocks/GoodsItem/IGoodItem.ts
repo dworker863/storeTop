@@ -7,3 +7,7 @@ export interface IGoodItem {
 export interface IStyledSticker {
   mode?: 'discount' | 'hit';
 }
+
+export interface IStyledGoodPhoto {
+  image: string;
+}

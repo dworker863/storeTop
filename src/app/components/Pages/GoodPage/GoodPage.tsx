@@ -10,7 +10,7 @@ import {
   StyledGoodPageSubTitle,
 } from './StyledGoodPage';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
-import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
+import UserAvatar from '../../Blocks/Image/Image';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
@@ -70,7 +70,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
       <StyledGoodPage>
         <SectionTitle text={good?.name} primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="between" image={good?.image} />
+          <UserAvatar mode="good" buttonMode="between" image={good?.image} />
           <StyledInfo>
             <SectionTitle text={good?.name} primary={false} />
             <StyledGoodPageSubTitle>Описание товара</StyledGoodPageSubTitle>

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { IStyledUserCabinetBtnWrapper } from './IUserAvatar';
+import { IStyledUserCabinetBtnWrapper } from './IImage';
 
-export const StyledUserCabinetPhotoWrapper = styled.div`
+export const StyledImageWrapper = styled.div`
   padding: 35px;
   height: 600px;
   border-top-left-radius: 6px;
@@ -23,7 +23,7 @@ export const StyledUserCabinetPhotoWrapper = styled.div`
   }
 `;
 
-export const StyledUserCabinetPhoto = styled.div`
+export const StyledImage = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -46,7 +46,7 @@ export const StyledUserCabinetPhoto = styled.div`
     height: 385px;
   }
 `;
-export const StyledUserCabinetBtnWrapper = styled.div<IStyledUserCabinetBtnWrapper>`
+export const StyledImageBtnWrapper = styled.div<IStyledUserCabinetBtnWrapper>`
   display: flex;
   justify-content: space-between;
 

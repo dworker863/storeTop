@@ -112,12 +112,6 @@ export const setLoginWithToken =
       });
   };
 
-// export const setUserImage = (image: any, imageUrl: string) => {
-//   const formData = new FormData();
-//   formData.append('image', image, imageUrl);
-//   return formData;
-// };
-
 export const setRegistration =
   (
     username: string,

@@ -72,7 +72,7 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
       {good.hit && <StyledSticker mode="hit">Хит продаж</StyledSticker>}
       <StyledGoodsItemContentWrapper>
         <Link to={`/goods/${good.name}`}>
-          <StyledGoodsItemPhoto />
+          <StyledGoodsItemPhoto image={good.image} />
         </Link>
         <StyledGoodsItemTitle>{good.name}</StyledGoodsItemTitle>
         <StyledGoodsItemDesc>{good.description}</StyledGoodsItemDesc>

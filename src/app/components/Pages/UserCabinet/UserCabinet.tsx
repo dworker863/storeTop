@@ -14,7 +14,7 @@ import {
   StyledUserCabinetTel,
 } from './StyledUserCabinet';
 import eyeIcon from '../../../../assets/images/eye-icon.png';
-import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
+import Image from '../../Blocks/Image/Image';
 import { months } from '../../../utils/staticData';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
@@ -50,7 +50,7 @@ const UserCabinet: FC = () => {
       <StyledUserCabinet>
         <SectionTitle text="Личный кабинет" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="between" image={user.image} />
+          <Image mode="profile" buttonMode="between" image={user.image} />
 
           <StyledInfo>
             <StyledUserCabinetEditButton onClick={editProfileButtonHandler}>
@@ -93,7 +93,7 @@ const UserCabinet: FC = () => {
                 Адрес и почтовый индекс
               </StyledUserCabinetSubtitle>
               <StyledTextSimple>Республика Казахстан,</StyledTextSimple>
-              <StyledTextSimple>{user.street}</StyledTextSimple>
+              <StyledTextSimple>{user.city}</StyledTextSimple>
               <StyledTextSimple>
                 {`${user.street}, д.${user.houseNumber}, кв.${user.flatNumber}, ${user.floor} этаж`}
               </StyledTextSimple>

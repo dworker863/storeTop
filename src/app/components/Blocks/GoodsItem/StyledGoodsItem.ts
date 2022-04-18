@@ -1,4 +1,4 @@
-import { IStyledSticker } from './IGoodItem';
+import { IStyledSticker, IStyledGoodPhoto } from './IGoodItem';
 import styled, { css } from 'styled-components';
 import trimmer from '../../../../assets/images/trimmer.png';
 
@@ -41,13 +41,18 @@ export const StyledGoodsItemContentWrapper = styled.div`
   padding: 12px;
 `;
 
-export const StyledGoodsItemPhoto = styled.div`
+export const StyledGoodsItemPhoto = styled.div<IStyledGoodPhoto>`
   width: 200px;
   height: 200px;
   border-radius: 6px;
-  background-image: url(${trimmer});
   background-size: cover;
   background-color: #e8e8e8;
+
+  ${({ image }) =>
+    image &&
+    css`
+      background-image: url(${image});
+    `}
 `;
 
 export const StyledGoodsItemTitle = styled.h3`

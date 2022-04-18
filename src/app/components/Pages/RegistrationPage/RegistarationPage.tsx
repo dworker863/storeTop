@@ -4,11 +4,11 @@ import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import Container from '../../Blocks/Container/Container';
 import FormRegistration from '../../Blocks/FormRegistration/FormRegistration';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
-import UserAvatar from '../../Blocks/UserAvatar/UserAvatar';
 import {
   StyledRegistrationPage,
   StyledRegistrationTitle,
 } from './StyledRegistrationPage';
+import Image from '../../Blocks/Image/Image';
 
 const RegistrationPage: FC = () => {
   const [userAvatar, setUserAvatar] = useState(null);
@@ -18,7 +18,11 @@ const RegistrationPage: FC = () => {
       <StyledRegistrationPage>
         <SectionTitle text="Регистрация" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="center" changeHandler={setUserAvatar} />
+          <Image
+            mode="registration"
+            buttonMode="center"
+            changeHandler={setUserAvatar}
+          />
           <StyledInfo>
             <StyledRegistrationTitle>
               Звездочкой (*) отмечены поля обязательные к заполнению
