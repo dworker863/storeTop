@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import Container from '../../Blocks/Container/Container';
 import { IGoodPage } from './IGoodPage';
 import {
+  StyledCategoryGoodsTitle,
+  StyledCategoryGoodsWrapper,
   StyledCharacteristicsItem,
   StyledCharacteristicsTitle,
   StyledGoodBtnWrapper,
@@ -19,9 +21,9 @@ import {
   StyledGoodRatingIconsWrapper,
   StyledGoodRatingText,
   StyledGoodRatingTextBig,
-  StyledGoodSerial,
   StyledGoodSerialWrapper,
   StyledGoodStock,
+  StyledGoodSubTitle,
 } from './StyledGoodPage';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import Image from '../../Blocks/Image/Image';
@@ -36,6 +38,7 @@ import {
   setCartGoodCount,
   setGoodCart,
 } from '../../../redux/reducers/cart/cartReducer';
+import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 
 const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   const { goodName } = useParams();
@@ -102,7 +105,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
                 ></StyledGoodRatingIcon>
                 <StyledGoodRatingIcon src={ratingIcon}></StyledGoodRatingIcon>
               </StyledGoodRatingIconsWrapper>
-              <StyledGoodSerial>Рейтинг товара:</StyledGoodSerial>
+              <StyledGoodSubTitle>Рейтинг товара:</StyledGoodSubTitle>
               <StyledGoodRatingText>
                 <StyledGoodRatingTextBig>4</StyledGoodRatingTextBig>/5
               </StyledGoodRatingText>{' '}
@@ -112,7 +115,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
           <StyledInfo>
             <SectionTitle text={good?.name} primary={false} />
             <StyledGoodSerialWrapper>
-              <StyledGoodSerial>Серийный номер: </StyledGoodSerial>
+              <StyledGoodSubTitle>Серийный номер: </StyledGoodSubTitle>
               <span>000001</span>
               <StyledGoodStock>В наличии</StyledGoodStock>
             </StyledGoodSerialWrapper>
@@ -175,6 +178,12 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
             </StyledGoodBtnWrapper>
           </StyledInfo>
         </StyledInfoWrapper>
+        <StyledCategoryGoodsTitle>
+          Другие продукты из категории “Косметика”
+        </StyledCategoryGoodsTitle>
+        <StyledCategoryGoodsWrapper>
+          <GoodPageItem />
+        </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>
       </StyledGoodPage>
     </Container>

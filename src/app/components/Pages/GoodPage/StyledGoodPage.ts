@@ -49,7 +49,7 @@ export const StyledGoodSerialWrapper = styled.div`
   }
 `;
 
-export const StyledGoodSerial = styled.div`
+export const StyledGoodSubTitle = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: ${(props) => props.theme.colors.primary};
@@ -123,4 +123,10 @@ export const StyledGoodPageDiscountPrice = styled.p`
   margin-top: -15px;
   font-size: 30px;
   font-weight: 700;
+`;
+
+export const StyledCategoryGoodsTitle = styled.h3``;
+
+export const StyledCategoryGoodsWrapper = styled.div`
+  display: flex;
 `;
