@@ -1,6 +1,7 @@
 export enum EAuth {
   SET_AUTH = 'SET_AUTH',
   SET_REMEMBER = 'SET_REMEMBER',
+  SET_USER_IMAGE = 'SET_USER_IMAGE',
 }
 
 export interface IAuthState {
@@ -28,4 +29,12 @@ export interface ISetRememberAction {
   payload: boolean;
 }
 
-export type TAuthActionTypes = ISetAuthAction | ISetRememberAction;
+export interface ISetUserImage {
+  type: EAuth.SET_USER_IMAGE;
+  payload: any;
+}
+
+export type TAuthActionTypes =
+  | ISetAuthAction
+  | ISetRememberAction
+  | ISetUserImage;

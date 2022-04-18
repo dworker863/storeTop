@@ -20,8 +20,9 @@ import { useAppDispatch } from '../../../hooks';
 import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
 import eyeIcon from '../../../../assets/images/eye-icon.png';
 import { StyledFormRegistrTextWrapper } from './StyledFormRegistration';
+import { IFormRegistration } from './IFormRegistration';
 
-const FormRegistration: FC = () => {
+const FormRegistration: FC<IFormRegistration> = ({ image }) => {
   const error = useSelector((state: RootState) => state.auth.error);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -103,6 +104,7 @@ const FormRegistration: FC = () => {
             values.flatNumber,
             values.postIndex,
             'User',
+            image,
           ),
         ).then((res) => {
           if (res.payload.error.length === 0) {

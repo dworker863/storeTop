@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import Container from '../../Blocks/Container/Container';
@@ -11,17 +11,19 @@ import {
 } from './StyledRegistrationPage';
 
 const RegistrationPage: FC = () => {
+  const [userAvatar, setUserAvatar] = useState(null);
+
   return (
     <Container type="common">
       <StyledRegistrationPage>
         <SectionTitle text="Регистрация" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="center" />
+          <UserAvatar mode="center" changeHandler={setUserAvatar} />
           <StyledInfo>
             <StyledRegistrationTitle>
               Звездочкой (*) отмечены поля обязательные к заполнению
             </StyledRegistrationTitle>
-            <FormRegistration />
+            <FormRegistration image={userAvatar} />
           </StyledInfo>
         </StyledInfoWrapper>
       </StyledRegistrationPage>

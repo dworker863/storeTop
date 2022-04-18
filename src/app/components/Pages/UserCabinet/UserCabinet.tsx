@@ -50,7 +50,7 @@ const UserCabinet: FC = () => {
       <StyledUserCabinet>
         <SectionTitle text="Личный кабинет" primary={false} />
         <StyledInfoWrapper>
-          <UserAvatar mode="between" />
+          <UserAvatar mode="between" image={user.image} />
 
           <StyledInfo>
             <StyledUserCabinetEditButton onClick={editProfileButtonHandler}>

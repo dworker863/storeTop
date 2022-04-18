@@ -58,20 +58,33 @@ export const registration = (
   flatNumber: string,
   postIndex: string,
   role: string,
+  image: any,
 ): Promise<IUser> => {
+  const formData = new FormData();
+  formData.append('image', image, image.name);
+  const user = {
+    username,
+    email,
+    password,
+    phone,
+    city,
+    street,
+    houseNumber,
+    floor,
+    flatNumber,
+    postIndex,
+    role,
+  };
+
+  for (let key in user) {
+    formData.append(key, user[key as keyof typeof user]);
+  }
+
   return instance
-    .post('auth/registration', {
-      username,
-      email,
-      password,
-      phone,
-      role,
-      city,
-      street,
-      houseNumber,
-      floor,
-      flatNumber,
-      postIndex,
+    .post('auth/registration', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     })
     .then((res) => {
       localStorage.setItem('token', res.data.token);

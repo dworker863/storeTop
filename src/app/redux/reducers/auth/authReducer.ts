@@ -112,6 +112,12 @@ export const setLoginWithToken =
       });
   };
 
+// export const setUserImage = (image: any, imageUrl: string) => {
+//   const formData = new FormData();
+//   formData.append('image', image, imageUrl);
+//   return formData;
+// };
+
 export const setRegistration =
   (
     username: string,
@@ -125,6 +131,7 @@ export const setRegistration =
     flatNumber: string,
     postIndex: string,
     role: string,
+    image: any,
   ): ThunkAction<Promise<ISetAuthAction>, RootState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): Promise<ISetAuthAction> => {
     return registration(
@@ -139,6 +146,7 @@ export const setRegistration =
       flatNumber,
       postIndex,
       role,
+      image,
     )
       .then((user) => {
         dispatch(getUsers());

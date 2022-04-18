@@ -9,19 +9,22 @@ import {
 import Dropzone from 'react-dropzone';
 import plusIcon from '../../../../assets/images/plus-icon.png';
 
-const UserAvatar: FC<IUserAvatar> = ({ mode }) => {
-  const [image, setImage] = useState('');
+const UserAvatar: FC<IUserAvatar> = ({ mode, image, changeHandler }) => {
+  const [userAvatarUrl, setUserAvatarUrl] = useState('');
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(111);
+  const handleChange = (e: ChangeEvent<any>) => {
+    console.log(e.target.files[0]);
 
-    e.target.files && setImage(URL.createObjectURL(e.target.files[0]));
+    changeHandler && changeHandler(e.target.files[0]);
+    e.target.files && setUserAvatarUrl(URL.createObjectURL(e.target.files[0]));
   };
+
   return (
     <StyledUserCabinetPhotoWrapper>
       <Dropzone
         onDrop={(acceptedFiles) => {
-          setImage(URL.createObjectURL(acceptedFiles[0]));
+          changeHandler && changeHandler(acceptedFiles[0]);
+          setUserAvatarUrl(URL.createObjectURL(acceptedFiles[0]));
         }}
       >
         {({ getRootProps, getInputProps, acceptedFiles }) => (
@@ -29,19 +32,20 @@ const UserAvatar: FC<IUserAvatar> = ({ mode }) => {
             <StyledUserCabinetPhoto
               {...getRootProps()}
               onInput={() => {
-                setImage(URL.createObjectURL(acceptedFiles[0]));
+                changeHandler && changeHandler(acceptedFiles[0]);
+                setUserAvatarUrl(URL.createObjectURL(acceptedFiles[0]));
               }}
             >
-              {image === '' && (
+              {userAvatarUrl === '' && !image && (
                 <img
                   src={plusIcon}
                   alt="Иконка знака плюс"
                   style={{ width: 40 }}
                 />
               )}
-              {image !== '' && (
+              {(userAvatarUrl !== '' || image) && (
                 <img
-                  src={image}
+                  src={userAvatarUrl || image}
                   alt="Аватар"
                   style={{ width: '100%', height: '100%' }}
                 />
