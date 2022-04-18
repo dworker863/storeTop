@@ -20,7 +20,7 @@ const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
   };
 
   return (
-    <StyledImageWrapper>
+    <StyledImageWrapper mode={mode}>
       <Dropzone
         disabled={(mode === 'good' || mode === 'profile') && true}
         onDrop={(acceptedFiles) => {

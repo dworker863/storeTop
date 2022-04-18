@@ -86,7 +86,7 @@ export const StyledGoodCountChanger = styled.span`
 
 export const StyledGoodBtnWrapper = styled.div`
   display: inline-flex;
-  gap: 8px;
+  gap: 15px;
 `;
 
 export const StyledGoodPagePrice = styled.p`

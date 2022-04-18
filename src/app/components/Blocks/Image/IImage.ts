@@ -8,3 +8,7 @@ export interface IImage {
 export interface IStyledUserCabinetBtnWrapper {
   mode?: 'center' | 'between';
 }
+
+export interface IStyledGoodImage {
+  mode?: 'registration' | 'edit' | 'profile' | 'good';
+}

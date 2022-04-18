@@ -20,15 +20,15 @@ export const StyledButton = styled.button<IStyledButton>`
   ${({ mode }) =>
     mode === 'good' &&
     css`
-      padding: 16px 20px;
+      padding: 18px 28px;
     `}
 
     ${({ mode }) =>
     mode === 'favorite' &&
     css`
       position: relative;
-      padding: 16px 20px;
-      padding-left: 32px;
+      padding: 18px 28px;
+      padding-left: 55px;
       background: linear-gradient(#f5cf2f, #eba21e);
 
       &:before {
@@ -36,9 +36,9 @@ export const StyledButton = styled.button<IStyledButton>`
         position: absolute;
         display: block;
         top: 50%;
-        left: 10px;
-        width: 16px;
-        height: 16px;
+        left: 18px;
+        width: 20px;
+        height: 20px;
         background-image: url(${favoriteIcon});
         background-size: contain;
         background-repeat: no-repeat;

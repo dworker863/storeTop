@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { IStyledUserCabinetBtnWrapper } from './IImage';
+import { IStyledUserCabinetBtnWrapper, IStyledGoodImage } from './IImage';
 
-export const StyledImageWrapper = styled.div`
+export const StyledImageWrapper = styled.div<IStyledGoodImage>`
   padding: 35px;
   height: 600px;
   border-top-left-radius: 6px;
@@ -9,6 +9,17 @@ export const StyledImageWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
   border-right: none;
   box-shadow: 0px 5px #d1d1d1;
+
+  ${({ mode }) =>
+    mode === 'good' &&
+    css`
+      height: min-content;
+      padding: 0;
+
+      div {
+        margin-bottom: 0;
+      }
+    `}
 
   @media (max-width: 768px) {
     padding: 20px;
