@@ -8,6 +8,29 @@ export const StyledGoodPageSubTitle = styled.h3`
   color: ${(props) => props.theme.colors.primary};
 `;
 
+export const StyledGoodRating = styled.div`
+  margin-top: 30px;
+`;
+
+export const StyledGoodRatingIconsWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+`;
+
+export const StyledGoodRatingIcon = styled.img``;
+
+export const StyledGoodRatingText = styled.div`
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const StyledGoodRatingTextBig = styled.span`
+  font-size: 30px;
+`;
+
 export const StyledGoodSerialWrapper = styled.div`
   position: relative;
   display: flex;

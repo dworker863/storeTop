@@ -14,6 +14,11 @@ import {
   StyledGoodPageDiscountPrice,
   StyledGoodPagePrice,
   StyledGoodPageSubTitle,
+  StyledGoodRating,
+  StyledGoodRatingIcon,
+  StyledGoodRatingIconsWrapper,
+  StyledGoodRatingText,
+  StyledGoodRatingTextBig,
   StyledGoodSerial,
   StyledGoodSerialWrapper,
   StyledGoodStock,
@@ -24,9 +29,9 @@ import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
-import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
-import { StyledTextSimple } from '../../../commonStyles/StyledTextSimple';
 import { useDispatch } from 'react-redux';
+import ratingIcon from '../../../../assets/images/rating-grey-icon.png';
+import ratingPrimaryIcon from '../../../../assets/images/rating-primary-icon.png';
 import {
   setCartGoodCount,
   setGoodCart,
@@ -79,7 +84,31 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
       <StyledGoodPage>
         <SectionTitle text={good?.name} primary={false} />
         <StyledInfoWrapper>
-          <Image mode="good" buttonMode="between" image={good?.image} />
+          <div>
+            <Image mode="good" buttonMode="between" image={good?.image} />
+            <StyledGoodRating>
+              <StyledGoodRatingIconsWrapper>
+                <StyledGoodRatingIcon
+                  src={ratingPrimaryIcon}
+                ></StyledGoodRatingIcon>
+                <StyledGoodRatingIcon
+                  src={ratingPrimaryIcon}
+                ></StyledGoodRatingIcon>
+                <StyledGoodRatingIcon
+                  src={ratingPrimaryIcon}
+                ></StyledGoodRatingIcon>
+                <StyledGoodRatingIcon
+                  src={ratingPrimaryIcon}
+                ></StyledGoodRatingIcon>
+                <StyledGoodRatingIcon src={ratingIcon}></StyledGoodRatingIcon>
+              </StyledGoodRatingIconsWrapper>
+              <StyledGoodSerial>Рейтинг товара:</StyledGoodSerial>
+              <StyledGoodRatingText>
+                <StyledGoodRatingTextBig>4</StyledGoodRatingTextBig>/5
+              </StyledGoodRatingText>{' '}
+              (Хороший)
+            </StyledGoodRating>
+          </div>
           <StyledInfo>
             <SectionTitle text={good?.name} primary={false} />
             <StyledGoodSerialWrapper>

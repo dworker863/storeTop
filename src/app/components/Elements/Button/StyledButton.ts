@@ -42,7 +42,7 @@ export const StyledButton = styled.button<IStyledButton>`
         background-image: url(${favoriteIcon});
         background-size: contain;
         background-repeat: no-repeat;
-        transform: translateY(-50%);
+        transform: translateY(-45%);
       }
     `}
 
