@@ -44,8 +44,14 @@ export const StyledImageWrapper = styled.div<IStyledGoodImage>`
   ${({ mode }) =>
     mode === 'profile' &&
     css`
-      @media (max-width: 880px) {
-        height: 100%;
+      height: 530px;
+
+      @media (max-width: 768px) {
+        height: 500px;
+      }
+
+      @media (max-width: 576px) {
+        height: 385px;
       }
     `}
 `;
