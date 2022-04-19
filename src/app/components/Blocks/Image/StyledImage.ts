@@ -10,17 +10,6 @@ export const StyledImageWrapper = styled.div<IStyledGoodImage>`
   border-right: none;
   box-shadow: 0px 5px #d1d1d1;
 
-  ${({ mode }) =>
-    mode === 'good' &&
-    css`
-      height: min-content;
-      padding: 0;
-
-      div {
-        margin-bottom: 0;
-      }
-    `}
-
   @media (max-width: 768px) {
     padding: 20px;
     border-radius: 6px;
@@ -32,6 +21,25 @@ export const StyledImageWrapper = styled.div<IStyledGoodImage>`
     height: 480px;
     border-bottom: none;
   }
+
+  ${({ mode }) =>
+    mode === 'good' &&
+    css`
+      height: min-content;
+      padding: 0;
+
+      div {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 768px) {
+        padding: 0px;
+      }
+
+      @media (max-width: 576px) {
+        height: max-content;
+      }
+    `}
 `;
 
 export const StyledImage = styled.div`

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Container from '../../Blocks/Container/Container';
 import { IGoodPage } from './IGoodPage';
@@ -11,6 +11,8 @@ import {
   StyledGoodCount,
   StyledGoodCountChanger,
   StyledGoodCounterWrapper,
+  StyledGoodInfo,
+  StyledGoodInfoWrapper,
   StyledGoodPage,
   StyledGoodPageDesc,
   StyledGoodPageDiscountPrice,
@@ -41,11 +43,21 @@ import {
 import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 
 const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 800px)').matches,
+  );
+
   const { goodName } = useParams();
   const dispatch = useDispatch();
   const [good] = [...goods.electronics, ...goods.cosmetics].filter(
     (good) => good.name === goodName,
   );
+
+  useEffect(() => {
+    window
+      .matchMedia('(min-width: 800px)')
+      .addEventListener('change', (e) => setMatches(e.matches));
+  }, []);
 
   const addToCartClickHandler = () => {
     if (!cart.goods.some((goodItem) => goodItem.name === good.name)) {
@@ -86,7 +98,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
     <Container type="common">
       <StyledGoodPage>
         <SectionTitle text={good?.name} primary={false} />
-        <StyledInfoWrapper>
+        <StyledGoodInfoWrapper>
           <div>
             <Image mode="good" buttonMode="between" image={good?.image} />
             <StyledGoodRating>
@@ -112,7 +124,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
               (Хороший)
             </StyledGoodRating>
           </div>
-          <StyledInfo>
+          <StyledGoodInfo>
             <SectionTitle text={good?.name} primary={false} />
             <StyledGoodSerialWrapper>
               <StyledGoodSubTitle>Серийный номер: </StyledGoodSubTitle>
@@ -166,18 +178,18 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
                 <StyledGoodCountChanger>+</StyledGoodCountChanger>
               </StyledGoodCounterWrapper>
               <Button
-                text="Добавить в корзину"
+                text={matches ? 'Добавить в корзину' : ''}
                 clickHandler={addToCartClickHandler}
                 mode="good"
               />
               <Button
-                text="Добавить в список желаний"
+                text={matches ? 'Добавить в список желаний' : ''}
                 clickHandler={addToCartClickHandler}
                 mode="favorite"
               />
             </StyledGoodBtnWrapper>
-          </StyledInfo>
-        </StyledInfoWrapper>
+          </StyledGoodInfo>
+        </StyledGoodInfoWrapper>
         <StyledCategoryGoodsTitle>
           Другие продукты из категории “Косметика”
         </StyledCategoryGoodsTitle>
