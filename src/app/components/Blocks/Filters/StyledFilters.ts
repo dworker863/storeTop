@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import checkIcon from '../../../../assets/images/check-icon.png';
 
 export const StyledFilters = styled.div`
   display: flex;
@@ -11,12 +12,16 @@ export const StyledFilters = styled.div`
   background-color: #f9f9f9;
 
   input {
-    margin-right: 8px;
+    margin-right: 12px;
     margin-bottom: 5px;
   }
 
   @media (max-width: 1800px) {
     padding: 20px 50px;
+
+    label {
+      margin-right: 40px;
+    }
   }
 
   @media (max-width: 1200px) {
@@ -27,11 +32,15 @@ export const StyledFilters = styled.div`
     flex-wrap: wrap;
     padding: 20px 35px;
   }
+
+  @media (max-width: 360px) {
+    padding: 15px;
+  }
 `;
 
 export const StyledFiltersTitle = styled.h3`
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 5px;
   font-size: 14px;
 
   @media (max-width: 992px) {
@@ -61,16 +70,16 @@ export const StyledFiltersBlock = styled.div`
 
     @media (max-width: 576px) {
       display: inline-block;
-      width: 90%;
+      width: 81%;
       font-size: 12px;
     }
 
     @media (max-width: 470px) {
-      width: 88%;
+      width: 75%;
     }
 
     @media (max-width: 410px) {
-      width: 82%;
+      width: 72%;
     }
   }
 
@@ -79,7 +88,7 @@ export const StyledFiltersBlock = styled.div`
   }
 
   @media (max-width: 1200px) {
-    padding: 0 65px;
+    padding: 0 45px;
   }
 
   @media (max-width: 992px) {
@@ -101,6 +110,37 @@ export const StyledFiltersBlock = styled.div`
       &:after {
         display: none;
       }
+    }
+  }
+`;
+
+export const StyledFilterCheckbox = styled.input`
+  position: relative;
+  display: inline-block;
+  width: auto;
+  margin-left: 0;
+  margin-right: 15px;
+
+  &[type='checkbox'] {
+    visibility: hidden;
+
+    &:before {
+      visibility: visible;
+      content: '';
+      position: absolute;
+      /* top: -4px; */
+      display: block;
+      width: 14px;
+      height: 14px;
+      border: 1px solid ${(props) => props.theme.colors.lightGrey};
+    }
+  }
+
+  &[type='checkbox']:checked {
+    &:before {
+      background-color: ${(props) => props.theme.colors.primary};
+      background-image: url(${checkIcon});
+      background-size: contain;
     }
   }
 `;

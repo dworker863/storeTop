@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledCartWrapper = styled.div`
-  @media (max-width: 1600px) {
+  @media (max-width: 1800px) {
     order: 3;
   }
 `;
@@ -17,7 +17,7 @@ export const StyledCart = styled.div`
   }
 
   @media (max-width: 1600px) {
-    order: 3;
+    /* order: 3; */
     align-self: start;
     margin-left: 0;
   }

@@ -13,9 +13,10 @@ export const StyledSearch = styled.div`
   border-radius: 7px;
 
   @media (max-width: 1800px) {
-    width: 890px;
+    width: 100%;
+    width: 970px;
     margin-top: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 160px;
     margin-left: 0px;
   }
 
@@ -24,7 +25,7 @@ export const StyledSearch = styled.div`
   }
 
   @media (max-width: 992px) {
-    /* margin-bottom: 345px; */
+    margin-bottom: 345px;
   }
 
   @media (max-width: 576px) {
