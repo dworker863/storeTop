@@ -9,6 +9,10 @@ export const StyledUserCabinetName = styled.h3`
   margin-top: 0;
   margin-bottom: 15px;
   font-size: 24px;
+
+  @media (max-width: 840px) {
+    margin-top: 40px;
+  }
 `;
 
 export const StyledUserCabinetDate = styled.div`
@@ -70,6 +74,7 @@ export const StyledUserCabinetEditButton = styled.button`
   padding: 15px;
   padding-left: 40px;
   border-bottom-left-radius: 4px;
+  border-top-right-radius: 6px;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
@@ -77,4 +82,12 @@ export const StyledUserCabinetEditButton = styled.button`
   background-image: url(${pencilIcon});
   background-repeat: no-repeat;
   background-position: 20px 16px;
+
+  @media (max-width: 992px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 840px) {
+    width: 100%;
+  }
 `;

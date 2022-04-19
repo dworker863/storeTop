@@ -189,14 +189,14 @@ export const StyledGoodBtnWrapper = styled.div`
     @media (max-width: 800px) {
       width: 100px;
       background-image: url(${addCartIcon});
-      background-size: 40px;
+      background-size: 35px;
       background-repeat: no-repeat;
       background-position: 45% 50%;
 
       &:last-child {
         background-image: url(${favoriteIcon}),
           linear-gradient(#f5cf2f, #eba21e);
-        background-size: auto 35px, auto auto;
+        background-size: auto 30px, auto auto;
         background-repeat: no-repeat;
         background-position: 50%;
       }
@@ -209,11 +209,6 @@ export const StyledGoodBtnWrapper = styled.div`
     @media (max-width: 576px) {
       width: 70px;
       padding: 15px;
-      background-size: 35px;
-
-      &:last-child {
-        background-size: auto 30px, auto auto;
-      }
     }
   }
 

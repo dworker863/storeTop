@@ -40,6 +40,14 @@ export const StyledImageWrapper = styled.div<IStyledGoodImage>`
         height: max-content;
       }
     `}
+
+  ${({ mode }) =>
+    mode === 'profile' &&
+    css`
+      @media (max-width: 880px) {
+        height: 100%;
+      }
+    `}
 `;
 
 export const StyledImage = styled.div`
