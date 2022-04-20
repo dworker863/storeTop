@@ -6,7 +6,8 @@ import {
   IGoodsState,
   ISetGoodsAction,
 } from './IgoodsReducer';
-const initialState = {
+
+const initialState: IGoodsState = {
   cosmetics: [],
   electronics: [],
 };

@@ -25,14 +25,20 @@ import OrderModal from './app/components/Sections/OrderModal/OrderModal';
 import LogoutModal from './app/components/Sections/LogoutModal/LogoutModal';
 import { setLoginWithToken } from './app/redux/reducers/auth/authReducer';
 import EditProfilePage from './app/components/Pages/EditProfilePage/EditProfilePage';
+import { setFilterGoods } from './app/redux/reducers/filter/filtersReducer';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
+export const SearchFilterContext = createContext<any>(null);
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
   const goods = useSelector((state: RootState) => state.goods);
   const auth = useSelector((state: RootState) => state.auth.auth);
+  const filterGoods = useSelector(
+    (state: RootState) => state.filters.filterGoods,
+  );
+
   const searchStr = useSelector((state: RootState) => state.search.value);
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
 
@@ -42,9 +48,53 @@ function App() {
   const dispatch = useDispatch();
 
   const searchRegExp = new RegExp(`^${searchStr}`);
-  const searchGoods = searchStr.length
+  let searchGoods = searchStr.length
     ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
     : [];
+
+  const setfilterGoods = (
+    startBy: string,
+    inStock: boolean,
+    highRating: boolean,
+  ) => {
+    console.log(highRating);
+
+    if (highRating) {
+      searchGoods = searchGoods.filter((good) => good.rating > 4);
+      dispatch(setFilterGoods(searchGoods));
+    }
+
+    switch (startBy) {
+      case 'rich': {
+        searchGoods.sort(
+          (goodFirst, goodSecond) =>
+            Number(goodSecond.price) - Number(goodFirst.price),
+        );
+
+        return dispatch(setFilterGoods(searchGoods));
+      }
+
+      case 'cheap': {
+        searchGoods.sort(
+          (goodFirst, goodSecond) =>
+            Number(goodFirst.price) - Number(goodSecond.price),
+        );
+
+        return dispatch(setFilterGoods(searchGoods));
+      }
+
+      case 'popular': {
+        break;
+      }
+
+      case 'new': {
+        break;
+      }
+
+      default:
+        return searchGoods;
+    }
+  };
 
   const authButtonHandler = (mode: boolean) => {
     setAuthModal(mode);
@@ -76,7 +126,9 @@ function App() {
       <OrderModal active={orderModal} buttonHandler={orderButtonHandler} />
       <LogoutModal active={logoutModal} buttonHandler={logoutButtonHandler} />
       <LogoutModalContext.Provider value={logoutButtonHandler}>
-        <Header authButtonHandler={authButtonHandler} cart={cart} />
+        <SearchFilterContext.Provider value={setfilterGoods}>
+          <Header authButtonHandler={authButtonHandler} cart={cart} />
+        </SearchFilterContext.Provider>
       </LogoutModalContext.Provider>
       <Menu categories={Object.keys(goods)} />
       <OrderModalContext.Provider value={orderButtonHandler}>
@@ -86,7 +138,14 @@ function App() {
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="reviews" element={<ReviewsPage />} />
           <Route path="cart" element={<CartPage cart={cart} />} />
-          <Route path="search" element={<SearchPage goods={searchGoods} />} />
+          <Route
+            path="search"
+            element={
+              <SearchPage
+                goods={filterGoods.length ? filterGoods : searchGoods}
+              />
+            }
+          />
           <Route path="registration" element={<RegistrationPage />} />
           <Route
             path="cabinet"

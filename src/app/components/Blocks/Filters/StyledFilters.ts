@@ -1,3 +1,4 @@
+import { Field } from 'formik';
 import styled from 'styled-components';
 import checkIcon from '../../../../assets/images/check-icon.png';
 
@@ -114,13 +115,14 @@ export const StyledFiltersBlock = styled.div`
   }
 `;
 
-export const StyledFilterCheckbox = styled.input`
+export const StyledFilterCheckbox = styled(Field)`
   position: relative;
   display: inline-block;
   width: auto;
   margin-left: 0;
   margin-right: 15px;
 
+  &[type='radio'],
   &[type='checkbox'] {
     visibility: hidden;
 
@@ -136,6 +138,7 @@ export const StyledFilterCheckbox = styled.input`
     }
   }
 
+  &[type='radio']:checked,
   &[type='checkbox']:checked {
     &:before {
       background-color: ${(props) => props.theme.colors.primary};

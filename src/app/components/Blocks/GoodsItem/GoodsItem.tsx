@@ -41,6 +41,7 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
           discount: good.discount,
           hit: good.hit,
           image: good.image,
+          rating: good.rating,
           goodsCount: 1,
         }),
       );
@@ -56,6 +57,7 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
             discount: good.discount,
             hit: good.hit,
             image: good.image,
+            rating: good.rating,
           },
           cartGoods.filter((goodItem) => goodItem.name === good.name)[0]
             .goodsCount + 1,

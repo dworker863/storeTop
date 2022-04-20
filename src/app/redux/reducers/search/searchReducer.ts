@@ -7,6 +7,8 @@ const initialState: ISearchState = {
 const search = (state = initialState, action: TSearchActionTypes | any) => {
   switch (action.type) {
     case ESearch.SET_SEARCH: {
+      console.log(action.payload);
+
       return { value: action.payload };
     }
     default:
