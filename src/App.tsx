@@ -89,16 +89,17 @@ function App() {
             Number(goodSecond.buysCount) - Number(goodFirst.buysCount),
         );
 
-        // searchGoods.sort(
-        //   (goodFirst, goodSecond) =>
-        //     Number(goodFirst.buysCount) - Number(goodSecond.buysCount),
-        // );
-
         return dispatch(setFilterGoods(searchGoods));
       }
 
       case 'new': {
-        break;
+        searchGoods.sort(
+          (goodFirst, goodSecond) =>
+            new Date(goodFirst.createdAt).getTime() -
+            new Date(goodSecond.createdAt).getTime(),
+        );
+
+        return dispatch(setFilterGoods(searchGoods));
       }
 
       default:
