@@ -127,7 +127,7 @@ export const StyledGoodCount = styled.span`
   }
 `;
 
-export const StyledGoodCountChanger = styled.span`
+export const StyledGoodCountChanger = styled.button`
   cursor: pointer;
   font-family: 'Arial';
   padding: 20px;

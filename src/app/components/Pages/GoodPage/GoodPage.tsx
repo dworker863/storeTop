@@ -29,11 +29,9 @@ import {
 } from './StyledGoodPage';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import Image from '../../Blocks/Image/Image';
-import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
-import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ratingIcon from '../../../../assets/images/rating-grey-icon.png';
 import ratingPrimaryIcon from '../../../../assets/images/rating-primary-icon.png';
 import {
@@ -46,12 +44,21 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 800px)').matches,
   );
+  const [goodCount, setGoodCount] = useState(0);
 
   const { goodName } = useParams();
   const dispatch = useDispatch();
   const [good] = [...goods.electronics, ...goods.cosmetics].filter(
     (good) => good.name === goodName,
   );
+
+  const decrementGoodsCount = () => {
+    goodCount > 0 && setGoodCount(goodCount - 1);
+  };
+
+  const incrementGoodsCount = () => {
+    setGoodCount(goodCount + 1);
+  };
 
   useEffect(() => {
     window
@@ -91,8 +98,12 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
             rating: good.rating,
             buysCount: good.buysCount,
           },
-          cart.goods.filter((goodItem) => goodItem.name === good.name)[0]
-            .goodsCount + 1,
+          goodCount > 0
+            ? goodCount +
+                cart.goods.filter((goodItem) => goodItem.name === good.name)[0]
+                  .goodsCount
+            : cart.goods.filter((goodItem) => goodItem.name === good.name)[0]
+                .goodsCount + 1,
         ),
       );
     }
@@ -177,9 +188,13 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
             {/* <StyledBlockLine></StyledBlockLine> */}
             <StyledGoodBtnWrapper>
               <StyledGoodCounterWrapper>
-                <StyledGoodCount>1шт.</StyledGoodCount>
-                <StyledGoodCountChanger>-</StyledGoodCountChanger>
-                <StyledGoodCountChanger>+</StyledGoodCountChanger>
+                <StyledGoodCount>{`${goodCount}шт.`}</StyledGoodCount>
+                <StyledGoodCountChanger onClick={decrementGoodsCount}>
+                  -
+                </StyledGoodCountChanger>
+                <StyledGoodCountChanger onClick={incrementGoodsCount}>
+                  +
+                </StyledGoodCountChanger>
               </StyledGoodCounterWrapper>
               <Button
                 text={matches ? 'Добавить в корзину' : ''}
