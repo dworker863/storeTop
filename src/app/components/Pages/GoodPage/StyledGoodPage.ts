@@ -47,6 +47,10 @@ export const StyledGoodRatingIconsWrapper = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+
+  img {
+    margin-right: 6px;
+  }
 `;
 
 export const StyledGoodRatingIcon = styled.img``;

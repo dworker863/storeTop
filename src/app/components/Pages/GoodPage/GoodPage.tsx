@@ -19,7 +19,6 @@ import {
   StyledGoodPagePrice,
   StyledGoodPageSubTitle,
   StyledGoodRating,
-  StyledGoodRatingIcon,
   StyledGoodRatingIconsWrapper,
   StyledGoodRatingText,
   StyledGoodRatingTextBig,
@@ -39,18 +38,21 @@ import {
   setGoodCart,
 } from '../../../redux/reducers/cart/cartReducer';
 import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
+import Rating from 'react-rating';
 
 const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 800px)').matches,
   );
-  const [goodCount, setGoodCount] = useState(0);
 
   const { goodName } = useParams();
   const dispatch = useDispatch();
   const [good] = [...goods.electronics, ...goods.cosmetics].filter(
     (good) => good.name === goodName,
   );
+
+  const [goodCount, setGoodCount] = useState(0);
+  const [goodRating, setGoodRating] = useState(good.rating);
 
   const decrementGoodsCount = () => {
     goodCount > 0 && setGoodCount(goodCount - 1);
@@ -118,23 +120,17 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
             <Image mode="good" buttonMode="between" image={good?.image} />
             <StyledGoodRating>
               <StyledGoodRatingIconsWrapper>
-                <StyledGoodRatingIcon
-                  src={ratingPrimaryIcon}
-                ></StyledGoodRatingIcon>
-                <StyledGoodRatingIcon
-                  src={ratingPrimaryIcon}
-                ></StyledGoodRatingIcon>
-                <StyledGoodRatingIcon
-                  src={ratingPrimaryIcon}
-                ></StyledGoodRatingIcon>
-                <StyledGoodRatingIcon
-                  src={ratingPrimaryIcon}
-                ></StyledGoodRatingIcon>
-                <StyledGoodRatingIcon src={ratingIcon}></StyledGoodRatingIcon>
+                <Rating
+                  emptySymbol={<img src={ratingIcon} className="icon" />}
+                  fullSymbol={<img src={ratingPrimaryIcon} className="icon" />}
+                  initialRating={goodRating}
+                  onClick={(value) => setGoodRating(value)}
+                />
               </StyledGoodRatingIconsWrapper>
               <StyledGoodSubTitle>Рейтинг товара:</StyledGoodSubTitle>
               <StyledGoodRatingText>
-                <StyledGoodRatingTextBig>4</StyledGoodRatingTextBig>/5
+                <StyledGoodRatingTextBig>{goodRating}</StyledGoodRatingTextBig>
+                /5
               </StyledGoodRatingText>{' '}
               (Хороший)
             </StyledGoodRating>
