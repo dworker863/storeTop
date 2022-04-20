@@ -13,6 +13,7 @@ const initialState: IFilters = {
 const filters = (state = initialState, action: TFiltersActionTypes | any) => {
   switch (action.type) {
     case EFilters.SET_FILTERS: {
+      console.log(action.payload);
       return { filterGoods: action.payload };
     }
 

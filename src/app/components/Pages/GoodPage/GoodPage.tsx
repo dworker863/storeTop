@@ -72,6 +72,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
           hit: good.hit,
           image: good.image,
           rating: good.rating,
+          buysCount: good.buysCount,
           goodsCount: 1,
         }),
       );
@@ -86,8 +87,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
             price: good.price,
             discount: good.discount,
             hit: good.hit,
-            rating: good.rating,
             image: good.image,
+            rating: good.rating,
+            buysCount: good.buysCount,
           },
           cart.goods.filter((goodItem) => goodItem.name === good.name)[0]
             .goodsCount + 1,

@@ -8,4 +8,5 @@ export interface IGood {
   hit: boolean;
   image: any;
   rating: number;
+  buysCount: number;
 }

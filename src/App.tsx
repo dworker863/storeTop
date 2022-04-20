@@ -84,7 +84,17 @@ function App() {
       }
 
       case 'popular': {
-        break;
+        searchGoods.sort(
+          (goodFirst, goodSecond) =>
+            Number(goodSecond.buysCount) - Number(goodFirst.buysCount),
+        );
+
+        // searchGoods.sort(
+        //   (goodFirst, goodSecond) =>
+        //     Number(goodFirst.buysCount) - Number(goodSecond.buysCount),
+        // );
+
+        return dispatch(setFilterGoods(searchGoods));
       }
 
       case 'new': {

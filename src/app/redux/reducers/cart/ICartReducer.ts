@@ -16,6 +16,7 @@ export interface ICartGood {
   hit: boolean;
   image: any;
   rating: number;
+  buysCount: number;
   goodsCount: number;
 }
 
