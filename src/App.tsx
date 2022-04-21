@@ -13,7 +13,6 @@ import GoodPage from './app/components/Pages/GoodPage/GoodPage';
 import PaymentConditionsPage from './app/components/Pages/PaymentConditionsPage/PaymentConditionsPage';
 import ContactsPage from './app/components/Pages/ContactsPage/ContactsPage';
 import ReviewsPage from './app/components/Pages/ReviewsPage/ReviewsPage';
-import { IGood } from './app/commonInterfaces/IGood';
 import SearchPage from './app/components/Pages/SearchPage/SearchPage';
 import AuthModal from './app/components/Sections/AuthModal/AuthModal';
 import RegistrationPage from './app/components/Pages/RegistrationPage/RegistarationPage';
@@ -25,8 +24,8 @@ import OrderModal from './app/components/Sections/OrderModal/OrderModal';
 import LogoutModal from './app/components/Sections/LogoutModal/LogoutModal';
 import { setLoginWithToken } from './app/redux/reducers/auth/authReducer';
 import EditProfilePage from './app/components/Pages/EditProfilePage/EditProfilePage';
-import { setFilterGoods } from './app/redux/reducers/filter/filtersReducer';
 import { calculateRating } from './app/commonFunctions/commonFunctions';
+import { setSearchGoods } from './app/redux/reducers/search/searchReducer';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
@@ -38,11 +37,10 @@ function App() {
   const auth = useSelector((state: RootState) => state.auth);
   const users = useSelector((state: RootState) => state.users.users);
   const user = users.filter((user: any) => user.email === auth.userEmail)[0];
-  const filterGoods = useSelector(
-    (state: RootState) => state.filters.filterGoods,
+  const searchGoods: any[] = useSelector(
+    (state: RootState) => state.search.searchGoods,
   );
 
-  const searchStr = useSelector((state: RootState) => state.search.value);
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
 
   const [authModal, setAuthModal] = useState(false);
@@ -50,10 +48,9 @@ function App() {
   const [logoutModal, setLogoutModal] = useState(false);
   const dispatch = useDispatch();
 
-  const searchRegExp = new RegExp(`^${searchStr}`);
-  let searchGoods = searchStr.length
-    ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
-    : [];
+  // let searchGoods = searchStr.length
+  //   ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
+  //   : [];
 
   const setfilterGoods = (
     startBy: string,
@@ -63,48 +60,50 @@ function App() {
     console.log(highRating);
 
     if (highRating) {
-      searchGoods = searchGoods.filter((good) => {
+      const filterGoods = searchGoods.filter((good) => {
         return calculateRating(good.rating) >= 4;
       });
-      dispatch(setFilterGoods(searchGoods));
+      console.log(filterGoods);
+
+      return dispatch(setSearchGoods(filterGoods));
     }
 
     switch (startBy) {
       case 'rich': {
-        searchGoods.sort(
+        const filterGoods = [...searchGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodSecond.price) - Number(goodFirst.price),
         );
 
-        return dispatch(setFilterGoods(searchGoods));
+        return dispatch(setSearchGoods(filterGoods));
       }
 
       case 'cheap': {
-        searchGoods.sort(
+        const filterGoods = [...searchGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodFirst.price) - Number(goodSecond.price),
         );
 
-        return dispatch(setFilterGoods(searchGoods));
+        return dispatch(setSearchGoods(filterGoods));
       }
 
       case 'popular': {
-        searchGoods.sort(
+        const filterGoods = [...searchGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodSecond.buysCount) - Number(goodFirst.buysCount),
         );
 
-        return dispatch(setFilterGoods(searchGoods));
+        return dispatch(setSearchGoods(filterGoods));
       }
 
       case 'new': {
-        searchGoods.sort(
+        const filterGoods = [...searchGoods].sort(
           (goodFirst, goodSecond) =>
             new Date(goodFirst.createdAt).getTime() -
             new Date(goodSecond.createdAt).getTime(),
         );
 
-        return dispatch(setFilterGoods(searchGoods));
+        return dispatch(setSearchGoods(filterGoods));
       }
 
       default:
@@ -154,14 +153,7 @@ function App() {
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="reviews" element={<ReviewsPage />} />
           <Route path="cart" element={<CartPage cart={cart} />} />
-          <Route
-            path="search"
-            element={
-              <SearchPage
-                goods={filterGoods.length ? filterGoods : searchGoods}
-              />
-            }
-          />
+          <Route path="search" element={<SearchPage goods={searchGoods} />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route
             path="cabinet"

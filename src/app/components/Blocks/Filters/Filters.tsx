@@ -10,7 +10,6 @@ import {
 } from './StyledFilters';
 
 const Filters: FC = () => {
-  const formValues = useRef(null);
   const setFilters = useContext(SearchFilterContext);
 
   const handleChange = (values: any) => {
