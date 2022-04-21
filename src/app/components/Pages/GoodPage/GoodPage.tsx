@@ -41,8 +41,9 @@ import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 import Rating from 'react-rating';
 import { calculateRating } from '../../../commonFunctions/commonFunctions';
 import { setGoodRating } from '../../../redux/reducers/goods/goodsReducer';
+import { setViewedGood } from '../../../redux/reducers/users/usersReducer';
 
-const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
+const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 800px)').matches,
   );
@@ -75,7 +76,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
     window
       .matchMedia('(min-width: 800px)')
       .addEventListener('change', (e) => setMatches(e.matches));
-  }, []);
+
+    dispatch(setViewedGood(user?.email, good?.name));
+  }, [good.name]);
 
   const addToCartClickHandler = () => {
     if (!cart.goods.some((goodItem) => goodItem.name === good.name)) {

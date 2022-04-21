@@ -35,7 +35,9 @@ export const SearchFilterContext = createContext<any>(null);
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
   const goods = useSelector((state: RootState) => state.goods);
-  const auth = useSelector((state: RootState) => state.auth.auth);
+  const auth = useSelector((state: RootState) => state.auth);
+  const users = useSelector((state: RootState) => state.users.users);
+  const user = users.filter((user: any) => user.email === auth.userEmail)[0];
   const filterGoods = useSelector(
     (state: RootState) => state.filters.filterGoods,
   );
@@ -178,7 +180,7 @@ function App() {
           />
           <Route
             path="goods/:goodName"
-            element={<GoodPage goods={goods} cart={cart} />}
+            element={<GoodPage goods={goods} cart={cart} user={user} />}
           />
         </Routes>
       </OrderModalContext.Provider>

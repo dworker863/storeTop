@@ -56,6 +56,10 @@ const UserCabinet: FC = () => {
     navigate('/editprofile');
   };
 
+  // useEffect(() => {
+  //   first;
+  // }, [third]);
+
   console.log(userWithGoods);
 
   return (

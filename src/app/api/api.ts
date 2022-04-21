@@ -140,8 +140,10 @@ export const sendRating = (
 };
 
 export const addGoodToViewed = (email: string, goodName: string) => {
+  console.log(email);
+
   return instance
-    .put(`users/viewed`, { email, goodName })
+    .post(`users/viewed`, { email, goodName })
     .then((res) => {
       console.log(res.data);
       return res.data;

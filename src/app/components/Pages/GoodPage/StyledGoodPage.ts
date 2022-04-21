@@ -245,13 +245,8 @@ export const StyledCategoryGoodsTitle = styled.h3`
 export const StyledCategoryGoodsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-
-  @media (max-width: 1200px) {
-    /* padding: 18px 28px; */
-    gap: 18px;
-    justify-content: flex-start;
-  }
+  justify-content: flex-start;
+  gap: 18px;
 
   @media (max-width: 470px) {
     justify-content: center;
