@@ -54,8 +54,10 @@ function App() {
   ) => {
     console.log(highRating);
 
+    let filterGoods = [];
+
     if (highRating) {
-      const filterGoods = search.searchGoods.filter((good: IGood) => {
+      filterGoods = search.searchGoods.filter((good: IGood) => {
         return calculateRating(good.rating) >= 4;
       });
       console.log(filterGoods);
@@ -65,16 +67,12 @@ function App() {
 
     if (!highRating) {
       const searchRegExp = new RegExp(`^${search.value}`);
-      const filterGoods = goodsArr.filter((good) =>
-        searchRegExp.test(good.name),
-      );
-
-      return dispatch(setSearchGoods(filterGoods));
+      filterGoods = goodsArr.filter((good) => searchRegExp.test(good.name));
     }
 
     switch (startBy) {
       case 'rich': {
-        const filterGoods = [...search.searchGoods].sort(
+        filterGoods = [...filterGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodSecond.price) - Number(goodFirst.price),
         );
@@ -83,7 +81,7 @@ function App() {
       }
 
       case 'cheap': {
-        const filterGoods = [...search.searchGoods].sort(
+        filterGoods = [...filterGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodFirst.price) - Number(goodSecond.price),
         );
@@ -92,7 +90,7 @@ function App() {
       }
 
       case 'popular': {
-        const filterGoods = [...search.searchGoods].sort(
+        filterGoods = [...filterGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodSecond.buysCount) - Number(goodFirst.buysCount),
         );
@@ -101,7 +99,7 @@ function App() {
       }
 
       case 'new': {
-        const filterGoods = [...search.searchGoods].sort(
+        filterGoods = [...filterGoods].sort(
           (goodFirst, goodSecond) =>
             new Date(goodFirst.createdAt).getTime() -
             new Date(goodSecond.createdAt).getTime(),
