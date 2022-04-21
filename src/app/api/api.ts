@@ -9,6 +9,7 @@ export const instance = axios.create({
 
 export const fetchGoods = (): Promise<IGoodsState> => {
   return instance.get('goods').then((res) => {
+    // console.log(res.data);
     return res.data;
   });
 };
@@ -113,6 +114,22 @@ export const updateUser = (user: IUser) => {
         'Content-Type': 'multipart/form-data',
       },
     })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};
+
+export const sendRating = (
+  rating: number,
+  goodId: string,
+  category: string,
+) => {
+  return instance
+    .put(`goods/${category}/rating/${goodId}`, { rating: rating })
     .then((res) => {
       console.log(res.data);
       return res.data;

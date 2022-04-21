@@ -139,7 +139,7 @@ export const setGoodCart = (good: ICartGood): ISetGoodCartAction => ({
 });
 
 export const setCartGoodCount = (
-  good: IGood,
+  good: ICartGood,
   goodsCount: number,
 ): ISetCartGoodCountAction => ({
   type: ECart.SET_CART_GOODS_COUNT,

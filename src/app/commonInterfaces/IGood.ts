@@ -1,4 +1,5 @@
 export interface IGood {
+  id: string;
   name: string;
   description: string;
   characteristics: string;
@@ -7,6 +8,6 @@ export interface IGood {
   discount: string;
   hit: boolean;
   image: any;
-  rating: number;
+  rating: number[];
   buysCount: number;
 }

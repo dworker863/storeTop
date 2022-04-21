@@ -30,7 +30,7 @@ import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import Image from '../../Blocks/Image/Image';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ratingIcon from '../../../../assets/images/rating-grey-icon.png';
 import ratingPrimaryIcon from '../../../../assets/images/rating-primary-icon.png';
 import {
@@ -39,6 +39,8 @@ import {
 } from '../../../redux/reducers/cart/cartReducer';
 import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 import Rating from 'react-rating';
+import { calculateRating } from '../../../commonFunctions/commonFunctions';
+import { setGoodRating } from '../../../redux/reducers/goods/goodsReducer';
 
 const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   const [matches, setMatches] = useState(
@@ -50,9 +52,17 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
   const [good] = [...goods.electronics, ...goods.cosmetics].filter(
     (good) => good.name === goodName,
   );
+  const category = goods.electronics.some(
+    (electronic) => electronic.name === goodName,
+  )
+    ? 'electronics'
+    : 'cosmetics';
+
+  const goodRating = calculateRating(good?.rating);
+
+  console.log(goodRating);
 
   const [goodCount, setGoodCount] = useState(0);
-  const [goodRating, setGoodRating] = useState(good.rating);
 
   const decrementGoodsCount = () => {
     goodCount > 0 && setGoodCount(goodCount - 1);
@@ -80,9 +90,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
           discount: good.discount,
           hit: good.hit,
           image: good.image,
-          rating: good.rating,
+          rating: goodRating,
           buysCount: good.buysCount,
-          goodsCount: 1,
+          goodsCount: goodCount > 0 ? goodCount : 1,
         }),
       );
     } else {
@@ -97,8 +107,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
             discount: good.discount,
             hit: good.hit,
             image: good.image,
-            rating: good.rating,
+            rating: goodRating,
             buysCount: good.buysCount,
+            goodsCount: 0,
           },
           goodCount > 0
             ? goodCount +
@@ -123,13 +134,17 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
                 <Rating
                   emptySymbol={<img src={ratingIcon} className="icon" />}
                   fullSymbol={<img src={ratingPrimaryIcon} className="icon" />}
-                  initialRating={goodRating}
-                  onClick={(value) => setGoodRating(value)}
+                  initialRating={goodRating || 5}
+                  onClick={(value) => {
+                    dispatch(setGoodRating(value, good.id, category));
+                  }}
                 />
               </StyledGoodRatingIconsWrapper>
               <StyledGoodSubTitle>Рейтинг товара:</StyledGoodSubTitle>
               <StyledGoodRatingText>
-                <StyledGoodRatingTextBig>{goodRating}</StyledGoodRatingTextBig>
+                <StyledGoodRatingTextBig>
+                  {goodRating || 5}
+                </StyledGoodRatingTextBig>
                 /5
               </StyledGoodRatingText>{' '}
               (Хороший)

@@ -24,10 +24,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
+import { calculateRating } from '../../../commonFunctions/commonFunctions';
 
 const GoodsItem: FC<IGoodItem> = ({ good }) => {
   const cartGoods = useSelector((state: RootState) => state.cart.goods);
   const dispatch = useDispatch();
+  const rating = calculateRating(good.rating);
 
   const addGoodToCart = () => {
     if (!cartGoods.some((goodItem) => goodItem.name === good.name)) {
@@ -41,7 +43,7 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
           discount: good.discount,
           hit: good.hit,
           image: good.image,
-          rating: good.rating,
+          rating,
           buysCount: good.buysCount,
           goodsCount: 1,
         }),
@@ -58,8 +60,9 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
             discount: good.discount,
             hit: good.hit,
             image: good.image,
-            rating: good.rating,
+            rating,
             buysCount: good.buysCount,
+            goodsCount: 0,
           },
           cartGoods.filter((goodItem) => goodItem.name === good.name)[0]
             .goodsCount + 1,
