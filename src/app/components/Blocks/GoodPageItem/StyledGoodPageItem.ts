@@ -1,3 +1,4 @@
+import { IStyledGoodPageItemPhoto } from './IGoodPageItem';
 import styled from 'styled-components';
 
 export const StyledGoodPageItem = styled.div`
@@ -11,11 +12,13 @@ export const StyledGoodPageItem = styled.div`
   box-shadow: 0px 5px #d1d1d1;
 `;
 
-export const StyledGoodPageItemPhoto = styled.div`
+export const StyledGoodPageItemPhoto = styled.div<IStyledGoodPageItemPhoto>`
   width: 200px;
   height: 200px;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors.superLightGrey};
+  background-image: url(${({ image }) => image});
+  background-size: cover;
 `;
 
 export const StyledGoodPageItemTitle = styled.h4`

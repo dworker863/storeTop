@@ -49,9 +49,8 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
 
   const { goodName } = useParams();
   const dispatch = useDispatch();
-  const [good] = [...goods.electronics, ...goods.cosmetics].filter(
-    (good) => good.name === goodName,
-  );
+  const goodsArr = [...goods.electronics, ...goods.cosmetics];
+  const [good] = goodsArr.filter((good) => good.name === goodName);
   const category = goods.electronics.some(
     (electronic) => electronic.name === goodName,
   )
@@ -221,14 +220,19 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
           </StyledGoodInfo>
         </StyledGoodInfoWrapper>
         <StyledCategoryGoodsTitle>
-          Другие продукты из категории “Косметика”
+          {`Другие продукты из категории ${
+            category[0].toUpperCase() + category.slice(1)
+          }`}
         </StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
-          <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem />
+          {goodsArr.slice(0, 5).map((good, index) => (
+            <GoodPageItem
+              key={good.name + index}
+              photo={good.image}
+              name={good.name}
+              desc={good.description}
+            />
+          ))}
         </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>
       </StyledGoodPage>

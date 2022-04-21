@@ -26,6 +26,7 @@ import LogoutModal from './app/components/Sections/LogoutModal/LogoutModal';
 import { setLoginWithToken } from './app/redux/reducers/auth/authReducer';
 import EditProfilePage from './app/components/Pages/EditProfilePage/EditProfilePage';
 import { setFilterGoods } from './app/redux/reducers/filter/filtersReducer';
+import { calculateRating } from './app/commonFunctions/commonFunctions';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
@@ -60,7 +61,9 @@ function App() {
     console.log(highRating);
 
     if (highRating) {
-      searchGoods = searchGoods.filter((good) => good.rating > 4);
+      searchGoods = searchGoods.filter((good) => {
+        return calculateRating(good.rating) >= 4;
+      });
       dispatch(setFilterGoods(searchGoods));
     }
 

@@ -114,11 +114,11 @@ const UserCabinet: FC = () => {
         </StyledInfoWrapper>
         <StyledCategoryGoodsTitle>Последние товары</StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
+          {/* <GoodPageItem />
           <GoodPageItem />
           <GoodPageItem />
           <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem />
+          <GoodPageItem /> */}
         </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>
       </StyledUserCabinet>

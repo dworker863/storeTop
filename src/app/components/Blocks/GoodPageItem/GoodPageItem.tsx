@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { IGoodPageItem } from './IGoodPageItem';
 import {
   StyledGoodPageItem,
   StyledGoodPageItemDesc,
@@ -6,12 +7,12 @@ import {
   StyledGoodPageItemTitle,
 } from './StyledGoodPageItem';
 
-const GoodPageItem: FC = () => {
+const GoodPageItem: FC<IGoodPageItem> = ({ photo, name, desc }) => {
   return (
     <StyledGoodPageItem>
-      <StyledGoodPageItemPhoto></StyledGoodPageItemPhoto>
-      <StyledGoodPageItemTitle>Наименование товара</StyledGoodPageItemTitle>
-      <StyledGoodPageItemDesc>Дополнительное описание</StyledGoodPageItemDesc>
+      <StyledGoodPageItemPhoto image={photo}></StyledGoodPageItemPhoto>
+      <StyledGoodPageItemTitle>{name}</StyledGoodPageItemTitle>
+      <StyledGoodPageItemDesc>{desc}</StyledGoodPageItemDesc>
     </StyledGoodPageItem>
   );
 };
