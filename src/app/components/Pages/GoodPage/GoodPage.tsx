@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Container from '../../Blocks/Container/Container';
 import { IGoodPage } from './IGoodPage';
 import {
@@ -226,12 +226,13 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart }) => {
         </StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
           {goodsArr.slice(0, 5).map((good, index) => (
-            <GoodPageItem
-              key={good.name + index}
-              photo={good.image}
-              name={good.name}
-              desc={good.description}
-            />
+            <Link key={good.name + index} to={`/goods/${good.name}`}>
+              <GoodPageItem
+                photo={good.image}
+                name={good.name}
+                desc={good.description}
+              />
+            </Link>
           ))}
         </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>

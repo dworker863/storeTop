@@ -8,8 +8,6 @@ import {
 } from './StyledGoodPageItem';
 
 const GoodPageItem: FC<IGoodPageItem> = ({ photo, name, desc }) => {
-  console.log(name);
-
   return (
     <StyledGoodPageItem>
       <StyledGoodPageItemPhoto image={photo}></StyledGoodPageItemPhoto>

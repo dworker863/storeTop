@@ -23,7 +23,7 @@ import Note from '../../Elements/Note/Note';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   StyledCategoryGoodsTitle,
   StyledCategoryGoodsWrapper,
@@ -123,12 +123,16 @@ const UserCabinet: FC = () => {
         <StyledCategoryGoodsTitle>Последние товары</StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
           {userWithGoods.map((viewedGood: IGood, index: number) => (
-            <GoodPageItem
+            <Link
               key={viewedGood.name + index}
-              photo={viewedGood.image}
-              name={viewedGood.name}
-              desc={viewedGood.description}
-            />
+              to={`/goods/${viewedGood.name}`}
+            >
+              <GoodPageItem
+                photo={viewedGood.image}
+                name={viewedGood.name}
+                desc={viewedGood.description}
+              />
+            </Link>
           ))}
         </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>
