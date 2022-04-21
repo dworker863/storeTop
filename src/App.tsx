@@ -61,8 +61,6 @@ function App() {
         return calculateRating(good.rating) >= 4;
       });
       console.log(filterGoods);
-
-      return dispatch(setSearchGoods(filterGoods));
     }
 
     if (!highRating) {
@@ -109,7 +107,7 @@ function App() {
       }
 
       default:
-        return search.searchGoods;
+        return dispatch(setSearchGoods(filterGoods));
     }
   };
 
