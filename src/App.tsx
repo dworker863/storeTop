@@ -26,6 +26,7 @@ import { setLoginWithToken } from './app/redux/reducers/auth/authReducer';
 import EditProfilePage from './app/components/Pages/EditProfilePage/EditProfilePage';
 import { calculateRating } from './app/commonFunctions/commonFunctions';
 import { setSearchGoods } from './app/redux/reducers/search/searchReducer';
+import { IGood } from './app/commonInterfaces/IGood';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
@@ -37,9 +38,7 @@ function App() {
   const auth = useSelector((state: RootState) => state.auth);
   const users = useSelector((state: RootState) => state.users.users);
   const user = users.filter((user: any) => user.email === auth.userEmail)[0];
-  const searchGoods: any[] = useSelector(
-    (state: RootState) => state.search.searchGoods,
-  );
+  const search = useSelector((state: RootState) => state.search);
 
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
 
@@ -47,10 +46,6 @@ function App() {
   const [orderModal, setOrderModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
   const dispatch = useDispatch();
-
-  // let searchGoods = searchStr.length
-  //   ? goodsArr.filter((good: IGood) => searchRegExp.test(good.name))
-  //   : [];
 
   const setfilterGoods = (
     startBy: string,
@@ -60,7 +55,7 @@ function App() {
     console.log(highRating);
 
     if (highRating) {
-      const filterGoods = searchGoods.filter((good) => {
+      const filterGoods = search.searchGoods.filter((good: IGood) => {
         return calculateRating(good.rating) >= 4;
       });
       console.log(filterGoods);
@@ -68,9 +63,18 @@ function App() {
       return dispatch(setSearchGoods(filterGoods));
     }
 
+    if (!highRating) {
+      const searchRegExp = new RegExp(`^${search.value}`);
+      const filterGoods = goodsArr.filter((good) =>
+        searchRegExp.test(good.name),
+      );
+
+      return dispatch(setSearchGoods(filterGoods));
+    }
+
     switch (startBy) {
       case 'rich': {
-        const filterGoods = [...searchGoods].sort(
+        const filterGoods = [...search.searchGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodSecond.price) - Number(goodFirst.price),
         );
@@ -79,7 +83,7 @@ function App() {
       }
 
       case 'cheap': {
-        const filterGoods = [...searchGoods].sort(
+        const filterGoods = [...search.searchGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodFirst.price) - Number(goodSecond.price),
         );
@@ -88,7 +92,7 @@ function App() {
       }
 
       case 'popular': {
-        const filterGoods = [...searchGoods].sort(
+        const filterGoods = [...search.searchGoods].sort(
           (goodFirst, goodSecond) =>
             Number(goodSecond.buysCount) - Number(goodFirst.buysCount),
         );
@@ -97,7 +101,7 @@ function App() {
       }
 
       case 'new': {
-        const filterGoods = [...searchGoods].sort(
+        const filterGoods = [...search.searchGoods].sort(
           (goodFirst, goodSecond) =>
             new Date(goodFirst.createdAt).getTime() -
             new Date(goodSecond.createdAt).getTime(),
@@ -107,7 +111,7 @@ function App() {
       }
 
       default:
-        return searchGoods;
+        return search.searchGoods;
     }
   };
 
@@ -153,7 +157,10 @@ function App() {
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="reviews" element={<ReviewsPage />} />
           <Route path="cart" element={<CartPage cart={cart} />} />
-          <Route path="search" element={<SearchPage goods={searchGoods} />} />
+          <Route
+            path="search"
+            element={<SearchPage goods={search.searchGoods} />}
+          />
           <Route path="registration" element={<RegistrationPage />} />
           <Route
             path="cabinet"
