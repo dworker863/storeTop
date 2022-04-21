@@ -138,3 +138,15 @@ export const sendRating = (
       throw new Error(e.response.data.message);
     });
 };
+
+export const addGoodToViewed = (email: string, goodName: string) => {
+  return instance
+    .put(`users/viewed`, { email, goodName })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};

@@ -12,4 +12,5 @@ export interface IUser {
   postIndex: string;
   role?: 'User';
   image: any;
+  lastViewedGoods?: string[];
 }

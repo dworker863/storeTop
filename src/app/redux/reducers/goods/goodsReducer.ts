@@ -1,4 +1,4 @@
-import { fetchGoods, sendRating } from '../../../api/api';
+import { addGoodToViewed, fetchGoods, sendRating } from '../../../api/api';
 import { AnyAction, Dispatch, ThunkAction } from '@reduxjs/toolkit';
 import {
   EGoods,
@@ -41,7 +41,6 @@ export const setGoodRating =
   ): ThunkAction<void, IGoodsState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): void => {
     sendRating(rating, goodId, category).then((res) => {
-      // console.log(res);
       fetchGoods().then((goods: IGoodsState) => dispatch(setGoods(goods)));
     });
   };

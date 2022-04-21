@@ -29,12 +29,18 @@ import {
   StyledCategoryGoodsWrapper,
 } from '../GoodPage/StyledGoodPage';
 import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
+import { IGood } from '../../../commonInterfaces/IGood';
 
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
+  const goods = useSelector((state: RootState) => state.goods);
+  const goodsArr = [...goods.electronics, ...goods.cosmetics];
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
   const [showPhone, setShowPhone] = useState(false);
   const user = users.filter((user: any) => user.email === userEmail)[0];
+  const userWithGoods = user.lastViewedGoods.map(
+    (good: string) => goodsArr.filter((goodItem) => goodItem.name === good)[0],
+  );
   const dateArr = String(new Date(user.createdAt)).split(' ');
   const navigate = useNavigate();
 
@@ -49,6 +55,8 @@ const UserCabinet: FC = () => {
   const editProfileButtonHandler = () => {
     navigate('/editprofile');
   };
+
+  console.log(userWithGoods);
 
   return (
     <Container type="common">
@@ -114,11 +122,14 @@ const UserCabinet: FC = () => {
         </StyledInfoWrapper>
         <StyledCategoryGoodsTitle>Последние товары</StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
-          {/* <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem />
-          <GoodPageItem /> */}
+          {userWithGoods.map((viewedGood: IGood, index: number) => (
+            <GoodPageItem
+              key={viewedGood.name + index}
+              photo={viewedGood.image}
+              name={viewedGood.name}
+              desc={viewedGood.description}
+            />
+          ))}
         </StyledCategoryGoodsWrapper>
         <div style={{ height: '20vh' }}></div>
       </StyledUserCabinet>
