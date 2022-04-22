@@ -54,10 +54,10 @@ export const setViewedGood =
   (
     email: string,
     goodName: string,
-  ): ThunkAction<void, IUsersState, unknown, AnyAction> =>
-  (dispatch: Dispatch<any>): void => {
-    addGoodToViewed(email, goodName).then((res) => {
-      dispatch(getUsers());
+  ): ThunkAction<Promise<any>, IUsersState, unknown, AnyAction> =>
+  (dispatch: Dispatch<any>): Promise<any> => {
+    return addGoodToViewed(email, goodName).then((res) => {
+      return dispatch(getUsers());
     });
   };
 

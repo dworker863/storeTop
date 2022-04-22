@@ -1,4 +1,4 @@
-import { addGoodToViewed, fetchGoods, sendRating } from '../../../api/api';
+import { fetchGoods, sendRating } from '../../../api/api';
 import { AnyAction, Dispatch, ThunkAction } from '@reduxjs/toolkit';
 import {
   EGoods,
@@ -6,6 +6,7 @@ import {
   IGoodsState,
   ISetGoodsAction,
 } from './IgoodsReducer';
+import { ICartGood, ICartState } from '../cart/IcartReducer';
 
 const initialState: IGoodsState = {
   cosmetics: [],
@@ -39,10 +40,12 @@ export const setGoodRating =
     goodId: string,
     category: string,
     userEmail: string,
-  ): ThunkAction<void, IGoodsState, unknown, AnyAction> =>
-  (dispatch: Dispatch<any>): void => {
-    sendRating(rating, goodId, category, userEmail).then((res) => {
-      fetchGoods().then((goods: IGoodsState) => dispatch(setGoods(goods)));
+  ): ThunkAction<Promise<any>, any, unknown, AnyAction> =>
+  (dispatch: Dispatch<any>): Promise<any> => {
+    return sendRating(rating, goodId, category, userEmail).then((res) => {
+      fetchGoods().then((goods: IGoodsState) => {
+        return dispatch(setGoods(goods));
+      });
     });
   };
 

@@ -152,6 +152,7 @@ function App() {
       <UnauthorizedModal
         active={unauthorizedModal}
         buttonHandler={unauthorizedButtonHandler}
+        user={user}
       />
       <LogoutModalContext.Provider value={logoutButtonHandler}>
         <SearchFilterContext.Provider value={setfilterGoods}>

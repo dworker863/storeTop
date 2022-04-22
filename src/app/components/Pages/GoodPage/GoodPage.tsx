@@ -30,7 +30,6 @@ import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import Image from '../../Blocks/Image/Image';
 import { StyledBlockLine } from '../../../commonStyles/StyledBlockLine';
 import Button from '../../Elements/Button/Button';
-import { useDispatch } from 'react-redux';
 import ratingIcon from '../../../../assets/images/rating-grey-icon.png';
 import ratingPrimaryIcon from '../../../../assets/images/rating-primary-icon.png';
 import {
@@ -46,6 +45,8 @@ import {
   setFavoriteGood,
   setViewedGood,
 } from '../../../redux/reducers/users/usersReducer';
+import { useAppDispatch } from '../../../hooks';
+import { useDispatch } from 'react-redux';
 
 const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
   const [matches, setMatches] = useState(
@@ -54,6 +55,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
 
   const { goodName } = useParams();
   const dispatch = useDispatch();
+  const appDispatch = useAppDispatch();
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
   const [good] = goodsArr.filter((good) => good.name === goodName);
   const category = goods.electronics.some(
@@ -151,9 +153,11 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
                   initialRating={goodRating || 5}
                   onClick={(value) => {
                     user
-                      ? dispatch(
+                      ? appDispatch(
                           setGoodRating(value, good.id, category, user.email),
                         )
+                          .then((res) => console.log('Спасибо за ваш голос'))
+                          .catch((e) => ratingHandler(true))
                       : ratingHandler(true);
                   }}
                 />

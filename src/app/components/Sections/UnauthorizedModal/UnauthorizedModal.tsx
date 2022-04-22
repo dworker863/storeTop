@@ -11,6 +11,7 @@ import { StyledUnauthorizedModal } from './StyledUnauthorizedModal';
 const UnauthorizedModal: FC<IUnauthorizedModal> = ({
   active,
   buttonHandler,
+  user,
 }) => {
   const buttonsClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
     buttonHandler(false);
@@ -20,7 +21,9 @@ const UnauthorizedModal: FC<IUnauthorizedModal> = ({
     <StyledUnauthorizedModal>
       <StyledModal active={active}>
         <StyledOrderModalText>
-          Только авторизованные пользователи могут оставлять рейтинг
+          {user
+            ? 'Вы уже ставили рейтинг этому товару'
+            : 'Только авторизованные пользователи могут оставлять рейтинг'}
         </StyledOrderModalText>
         <StyledModalCloseButton
           onClick={buttonsClickHandler}
