@@ -59,10 +59,14 @@ export const registration = (
   flatNumber: string,
   postIndex: string,
   role: string,
-  image: any,
+  image?: any,
 ): Promise<IUser> => {
   const formData = new FormData();
-  formData.append('image', image, image.name);
+
+  if (image) {
+    formData.append('image', image, image.name);
+  }
+
   const user = {
     username,
     email,
@@ -97,10 +101,15 @@ export const registration = (
 };
 
 export const updateUser = (user: IUser) => {
-  console.log(user.image.name);
+  console.log(user.image);
 
   const formData = new FormData();
-  formData.append('image', user.image, user.image.name);
+
+  if (typeof user.image === 'string') {
+    formData.append('image', user.image);
+  } else {
+    formData.append('image', user.image, user.image.name);
+  }
 
   for (let key in user) {
     if (key !== 'image') {
