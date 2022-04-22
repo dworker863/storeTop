@@ -150,7 +150,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
                   fullSymbol={<img src={ratingPrimaryIcon} className="icon" />}
                   initialRating={goodRating || 5}
                   onClick={(value) => {
-                    dispatch(setGoodRating(value, good.id, category));
+                    user && dispatch(setGoodRating(value, good.id, category));
                   }}
                 />
               </StyledGoodRatingIconsWrapper>
