@@ -6,4 +6,5 @@ export interface IGoodPage {
   goods: IGoodsState;
   cart: ICartState;
   user: IUser;
+  ratingHandler: (mode: boolean) => void;
 }

@@ -47,7 +47,7 @@ import {
   setViewedGood,
 } from '../../../redux/reducers/users/usersReducer';
 
-const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
+const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 800px)').matches,
   );
@@ -150,7 +150,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
                   fullSymbol={<img src={ratingPrimaryIcon} className="icon" />}
                   initialRating={goodRating || 5}
                   onClick={(value) => {
-                    user && dispatch(setGoodRating(value, good.id, category));
+                    user
+                      ? dispatch(setGoodRating(value, good.id, category))
+                      : ratingHandler(true);
                   }}
                 />
               </StyledGoodRatingIconsWrapper>

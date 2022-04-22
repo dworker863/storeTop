@@ -28,6 +28,7 @@ import { calculateRating } from './app/commonFunctions/commonFunctions';
 import { setSearchGoods } from './app/redux/reducers/search/searchReducer';
 import { IGood } from './app/commonInterfaces/IGood';
 import { IUser } from './app/commonInterfaces/IUser';
+import UnauthorizedModal from './app/components/Sections/UnauthorizedModal/UnauthorizedModal';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
@@ -48,6 +49,7 @@ function App() {
   const [authModal, setAuthModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
+  const [unauthorizedModal, setUnauthorizedModal] = useState(false);
   const dispatch = useDispatch();
 
   const setfilterGoods = (
@@ -126,6 +128,10 @@ function App() {
     setLogoutModal(mode);
   };
 
+  const unauthorizedButtonHandler = (mode: boolean) => {
+    setUnauthorizedModal(mode);
+  };
+
   useEffect(() => {
     if (localStorage.getItem('remember') === 'true') {
       dispatch(setLoginWithToken());
@@ -137,12 +143,16 @@ function App() {
   return (
     <ThemeProvider theme={commonTheme}>
       <Overlay
-        active={authModal || orderModal || logoutModal}
+        active={authModal || orderModal || logoutModal || unauthorizedModal}
         mode={window.location.pathname === '/cart' ? 'cart' : 'common'}
       />
       <AuthModal active={authModal} buttonHandler={authButtonHandler} />
       <OrderModal active={orderModal} buttonHandler={orderButtonHandler} />
       <LogoutModal active={logoutModal} buttonHandler={logoutButtonHandler} />
+      <UnauthorizedModal
+        active={unauthorizedModal}
+        buttonHandler={unauthorizedButtonHandler}
+      />
       <LogoutModalContext.Provider value={logoutButtonHandler}>
         <SearchFilterContext.Provider value={setfilterGoods}>
           <Header authButtonHandler={authButtonHandler} cart={cart} />
@@ -188,7 +198,14 @@ function App() {
           />
           <Route
             path="goods/:goodName"
-            element={<GoodPage goods={goods} cart={cart} user={user} />}
+            element={
+              <GoodPage
+                goods={goods}
+                cart={cart}
+                user={user}
+                ratingHandler={unauthorizedButtonHandler}
+              />
+            }
           />
         </Routes>
       </OrderModalContext.Provider>
