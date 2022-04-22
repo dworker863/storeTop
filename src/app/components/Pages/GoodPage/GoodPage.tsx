@@ -151,7 +151,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
                   initialRating={goodRating || 5}
                   onClick={(value) => {
                     user
-                      ? dispatch(setGoodRating(value, good.id, category))
+                      ? dispatch(
+                          setGoodRating(value, good.id, category, user.email),
+                        )
                       : ratingHandler(true);
                   }}
                 />

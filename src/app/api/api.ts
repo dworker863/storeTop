@@ -136,9 +136,10 @@ export const sendRating = (
   rating: number,
   goodId: string,
   category: string,
+  userEmail: string,
 ) => {
   return instance
-    .put(`goods/${category}/rating/${goodId}`, { rating: rating })
+    .put(`goods/${category}/rating/${goodId}`, { rating: rating, userEmail })
     .then((res) => {
       console.log(res.data);
       return res.data;

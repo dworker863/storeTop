@@ -38,9 +38,10 @@ export const setGoodRating =
     rating: number,
     goodId: string,
     category: string,
+    userEmail: string,
   ): ThunkAction<void, IGoodsState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): void => {
-    sendRating(rating, goodId, category).then((res) => {
+    sendRating(rating, goodId, category, userEmail).then((res) => {
       fetchGoods().then((goods: IGoodsState) => dispatch(setGoods(goods)));
     });
   };
