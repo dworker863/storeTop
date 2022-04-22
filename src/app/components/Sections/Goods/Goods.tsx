@@ -11,6 +11,7 @@ const Goods: FC<ISection> = ({
   title,
   desc,
   goods,
+  user,
   discount,
   hit,
   sliderClass,
@@ -36,7 +37,7 @@ const Goods: FC<ISection> = ({
         {goodsToMap.length &&
           goodsToMap.map((good, index) => (
             <SwiperSlide key={index + good.name}>
-              <GoodsItem good={good} />
+              <GoodsItem good={good} user={user} />
             </SwiperSlide>
           ))}
       </SliderComponent>

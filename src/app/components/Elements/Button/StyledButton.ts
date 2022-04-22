@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { IStyledButton } from './IButton';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
+import checkIcon from '../../../../assets/images/check-icon.png';
 
 export const StyledButton = styled.button<IStyledButton>`
   cursor: pointer;
@@ -43,6 +44,18 @@ export const StyledButton = styled.button<IStyledButton>`
         background-size: contain;
         background-repeat: no-repeat;
         transform: translateY(-45%);
+      }
+    `}
+
+    ${({ mode, favorite }) =>
+    mode === 'favorite' &&
+    favorite &&
+    css`
+      &:before {
+        width: 30px;
+        height: 30px;
+        background-image: url(${checkIcon});
+        transform: translateY(-55%);
       }
     `}
 

@@ -27,6 +27,7 @@ import EditProfilePage from './app/components/Pages/EditProfilePage/EditProfileP
 import { calculateRating } from './app/commonFunctions/commonFunctions';
 import { setSearchGoods } from './app/redux/reducers/search/searchReducer';
 import { IGood } from './app/commonInterfaces/IGood';
+import { IUser } from './app/commonInterfaces/IUser';
 
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
@@ -37,10 +38,12 @@ function App() {
   const goods = useSelector((state: RootState) => state.goods);
   const auth = useSelector((state: RootState) => state.auth);
   const users = useSelector((state: RootState) => state.users.users);
-  const user = users.filter((user: any) => user.email === auth.userEmail)[0];
+  const user: IUser = users.filter(
+    (user: any) => user.email === auth.userEmail,
+  )[0];
   const search = useSelector((state: RootState) => state.search);
 
-  const goodsArr = [...goods.electronics, ...goods.cosmetics];
+  const goodsArr: IGood[] = [...goods.electronics, ...goods.cosmetics];
 
   const [authModal, setAuthModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
@@ -148,14 +151,14 @@ function App() {
       <Menu categories={Object.keys(goods)} />
       <OrderModalContext.Provider value={orderButtonHandler}>
         <Routes>
-          <Route path="/" element={<HomePage goods={goodsArr} />} />
+          <Route path="/" element={<HomePage goods={goodsArr} user={user} />} />
           <Route path="conditions" element={<PaymentConditionsPage />} />
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="reviews" element={<ReviewsPage />} />
           <Route path="cart" element={<CartPage cart={cart} />} />
           <Route
             path="search"
-            element={<SearchPage goods={search.searchGoods} />}
+            element={<SearchPage goods={search.searchGoods} user={user} />}
           />
           <Route path="registration" element={<RegistrationPage />} />
           <Route
@@ -166,12 +169,22 @@ function App() {
           <Route
             path="goods/electronics"
             element={
-              <CategoryPage goods={goods.electronics} title="Электроника" />
+              <CategoryPage
+                goods={goods.electronics}
+                title="Электроника"
+                user={user}
+              />
             }
           />
           <Route
             path="goods/cosmetics"
-            element={<CategoryPage goods={goods.cosmetics} title="Косметика" />}
+            element={
+              <CategoryPage
+                goods={goods.cosmetics}
+                title="Косметика"
+                user={user}
+              />
+            }
           />
           <Route
             path="goods/:goodName"

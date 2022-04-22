@@ -41,7 +41,10 @@ import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 import Rating from 'react-rating';
 import { calculateRating } from '../../../commonFunctions/commonFunctions';
 import { setGoodRating } from '../../../redux/reducers/goods/goodsReducer';
-import { setViewedGood } from '../../../redux/reducers/users/usersReducer';
+import {
+  setFavoriteGood,
+  setViewedGood,
+} from '../../../redux/reducers/users/usersReducer';
 
 const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
   const [matches, setMatches] = useState(
@@ -64,6 +67,14 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
 
   const [goodCount, setGoodCount] = useState(0);
 
+  useEffect(() => {
+    window
+      .matchMedia('(min-width: 800px)')
+      .addEventListener('change', (e) => setMatches(e.matches));
+
+    dispatch(setViewedGood(user?.email, good?.name));
+  }, [good.name]);
+
   const decrementGoodsCount = () => {
     goodCount > 0 && setGoodCount(goodCount - 1);
   };
@@ -72,13 +83,9 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
     setGoodCount(goodCount + 1);
   };
 
-  useEffect(() => {
-    window
-      .matchMedia('(min-width: 800px)')
-      .addEventListener('change', (e) => setMatches(e.matches));
-
-    dispatch(setViewedGood(user?.email, good?.name));
-  }, [good.name]);
+  const addToFavoriteClickHandler = (userId: string, goodName: string) => {
+    dispatch(setFavoriteGood(userId, goodName));
+  };
 
   const addToCartClickHandler = () => {
     if (!cart.goods.some((goodItem) => goodItem.name === good.name)) {
@@ -216,8 +223,15 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
               />
               <Button
                 text={matches ? 'Добавить в список желаний' : ''}
-                clickHandler={addToCartClickHandler}
+                clickHandler={() =>
+                  addToFavoriteClickHandler(String(user.id), good.name)
+                }
                 mode="favorite"
+                favorite={
+                  user.favorites?.some((goodName) => goodName === good.name)
+                    ? true
+                    : false
+                }
               />
             </StyledGoodBtnWrapper>
           </StyledGoodInfo>

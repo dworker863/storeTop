@@ -13,4 +13,5 @@ export interface IUser {
   role?: 'User';
   image: any;
   lastViewedGoods?: string[];
+  favorites?: string[];
 }

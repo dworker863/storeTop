@@ -92,6 +92,7 @@ export const StyledGoodsItemWhite = styled.span`
 `;
 
 export const StyledGoodsItemFavorite = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,10 @@
 import { IUser } from './../../../commonInterfaces/IUser';
-import { addGoodToViewed, fetchUsers, updateUser } from './../../../api/api';
+import {
+  addGoodToFavorites,
+  addGoodToViewed,
+  fetchUsers,
+  updateUser,
+} from './../../../api/api';
 import { ThunkAction, AnyAction, Dispatch } from '@reduxjs/toolkit';
 import {
   IUsersState,
@@ -51,6 +56,17 @@ export const setViewedGood =
   ): ThunkAction<void, IUsersState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): void => {
     addGoodToViewed(email, goodName).then((res) => {
+      dispatch(getUsers());
+    });
+  };
+
+export const setFavoriteGood =
+  (
+    id: string,
+    goodName: string,
+  ): ThunkAction<void, IUsersState, unknown, AnyAction> =>
+  (dispatch: Dispatch<any>): void => {
+    addGoodToFavorites(id, goodName).then((res) => {
       dispatch(getUsers());
     });
   };

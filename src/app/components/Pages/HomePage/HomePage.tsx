@@ -4,9 +4,9 @@ import BannerFirst from '../../Sections/BannerFirst/BannerFirst';
 import Goods from '../../Sections/Goods/Goods';
 import BannerSecond from '../../Sections/BannerSecond/BannerSecond';
 import Order from '../../Sections/Order/Order';
-import { IGoods } from '../../../commonInterfaces/IGoods';
+import { IHomePage } from './IHomePage';
 
-const HomePage: FC<IGoods> = ({ goods }) => {
+const HomePage: FC<IHomePage> = ({ goods, user }) => {
   return (
     <main>
       <Container type="common">
@@ -15,6 +15,7 @@ const HomePage: FC<IGoods> = ({ goods }) => {
           title="Популярные товары"
           desc="То, что выбирают люди"
           goods={goods}
+          user={user}
           hit={true}
           sliderClass={[
             'swiper-button-prev-custom1',
@@ -25,6 +26,7 @@ const HomePage: FC<IGoods> = ({ goods }) => {
           title="Горячие скидки"
           desc="Избранные товары по новой цене"
           goods={goods}
+          user={user}
           discount={true}
           sliderClass={[
             'swiper-button-prev-custom2',
@@ -36,6 +38,7 @@ const HomePage: FC<IGoods> = ({ goods }) => {
           title="Свежие новинки"
           desc="Новое поступление"
           goods={goods}
+          user={user}
           sliderClass={[
             'swiper-button-prev-custom3',
             'swiper-button-next-custom3',

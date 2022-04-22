@@ -1,8 +1,7 @@
 import { IGood } from '../../../commonInterfaces/IGood';
 import { IUser } from '../../../commonInterfaces/IUser';
 
-export interface ICategoryPage {
+export interface IHomePage {
   goods: IGood[];
-  title: string;
   user: IUser;
 }

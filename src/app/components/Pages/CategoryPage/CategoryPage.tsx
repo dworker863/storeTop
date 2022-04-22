@@ -7,14 +7,14 @@ import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import { ICategoryPage } from './ICategoryPage';
 import { StyledCategory } from './StyledCategoryPage';
 
-const CategoryPage: FC<ICategoryPage> = ({ goods, title }) => {
+const CategoryPage: FC<ICategoryPage> = ({ goods, title, user }) => {
   return (
     <Container type="common">
       <StyledCategory>
         <SectionTitle primary={false} text={title} />
         <StyledGoodsWrapper>
           {goods.map((good, index) => (
-            <GoodsItem key={index + good.name} good={good} />
+            <GoodsItem key={index + good.name} good={good} user={user} />
           ))}
           <StyledHiddenCard></StyledHiddenCard>
           <StyledHiddenCard></StyledHiddenCard>

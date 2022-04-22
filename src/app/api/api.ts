@@ -152,3 +152,15 @@ export const addGoodToViewed = (email: string, goodName: string) => {
       throw new Error(e.response.data.message);
     });
 };
+
+export const addGoodToFavorites = (id: string, goodName: string) => {
+  return instance
+    .post(`users/${id}/favorites`, { favorite: goodName })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};

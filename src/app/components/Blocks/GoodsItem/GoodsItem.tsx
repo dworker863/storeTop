@@ -17,6 +17,7 @@ import {
 } from './StyledGoodsItem';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
 import cartIcon from '../../../../assets/images/cart-icon.png';
+import checkIcon from '../../../../assets/images/check-icon.png';
 import {
   setGoodCart,
   setCartGoodCount,
@@ -25,11 +26,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
 import { calculateRating } from '../../../commonFunctions/commonFunctions';
+import { setFavoriteGood } from '../../../redux/reducers/users/usersReducer';
 
-const GoodsItem: FC<IGoodItem> = ({ good }) => {
+const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
   const cartGoods = useSelector((state: RootState) => state.cart.goods);
   const dispatch = useDispatch();
   const rating = calculateRating(good.rating);
+
+  const addToFavoriteClickHandler = (userId: string, goodName: string) => {
+    dispatch(setFavoriteGood(userId, goodName));
+  };
 
   const addGoodToCart = () => {
     if (!cartGoods.some((goodItem) => goodItem.name === good.name)) {
@@ -91,10 +97,19 @@ const GoodsItem: FC<IGoodItem> = ({ good }) => {
           <StyledGoodsItemWhite>{good.price}</StyledGoodsItemWhite>
         </StyledGoodsItemPrice>
         <StyledGoodsItemCart onClick={addGoodToCart}>
-          <StyledGoodsItemIcon src={cartIcon} alt="Сердце" />
+          <StyledGoodsItemIcon src={cartIcon} alt="Корзина" />
         </StyledGoodsItemCart>
-        <StyledGoodsItemFavorite>
-          <StyledGoodsItemIcon src={favoriteIcon} alt="Сердце" />
+        <StyledGoodsItemFavorite
+          onClick={() => addToFavoriteClickHandler(String(user.id), good.name)}
+        >
+          <StyledGoodsItemIcon
+            src={
+              user.favorites?.some((goodName) => goodName === good.name)
+                ? checkIcon
+                : favoriteIcon
+            }
+            alt="Сердце"
+          />
         </StyledGoodsItemFavorite>
       </StyledGoodsItemPriceWrapper>
     </StyledGoodsItem>
