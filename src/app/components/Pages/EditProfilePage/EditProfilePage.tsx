@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import { StyledInfoWrapper } from '../../../commonStyles/StyledInfoWrapper';
 import { RootState } from '../../../redux/store';
@@ -13,7 +14,14 @@ const EditProfilePage: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
   const user = users.filter((user: any) => user.email === userEmail)[0];
-  const [userAvatar, setUserAvatar] = useState(user.image);
+  const [userAvatar, setUserAvatar] = useState(user?.image);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(user);
+
+    !user && navigate('/');
+  }, [user]);
 
   return (
     <Container type="common">
@@ -23,7 +31,7 @@ const EditProfilePage: FC = () => {
           <Image
             mode="edit"
             buttonMode="center"
-            image={user.image}
+            image={user?.image}
             changeHandler={setUserAvatar}
           />
           <StyledInfo>
