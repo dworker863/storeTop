@@ -3,6 +3,7 @@ import {
   addGoodToFavorites,
   addGoodToViewed,
   fetchUsers,
+  removeGoodFromFavorites,
   updateUser,
 } from './../../../api/api';
 import { ThunkAction, AnyAction, Dispatch } from '@reduxjs/toolkit';
@@ -67,6 +68,17 @@ export const setFavoriteGood =
   ): ThunkAction<void, IUsersState, unknown, AnyAction> =>
   (dispatch: Dispatch<any>): void => {
     addGoodToFavorites(id, goodName).then((res) => {
+      dispatch(getUsers());
+    });
+  };
+
+export const removeFavoriteGood =
+  (
+    id: string,
+    goodName: string,
+  ): ThunkAction<void, IUsersState, unknown, AnyAction> =>
+  (dispatch: Dispatch<any>): void => {
+    removeGoodFromFavorites(id, goodName).then((res) => {
       dispatch(getUsers());
     });
   };

@@ -164,3 +164,15 @@ export const addGoodToFavorites = (id: string, goodName: string) => {
       throw new Error(e.response.data.message);
     });
 };
+
+export const removeGoodFromFavorites = (id: string, goodName: string) => {
+  return instance
+    .delete(`users/${id}/favorites`, { data: { favorite: goodName } })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};

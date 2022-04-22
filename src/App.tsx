@@ -102,8 +102,8 @@ function App() {
       case 'new': {
         filterGoods = [...filterGoods].sort(
           (goodFirst, goodSecond) =>
-            new Date(goodFirst.createdAt).getTime() -
-            new Date(goodSecond.createdAt).getTime(),
+            new Date(goodSecond.createdAt).getTime() -
+            new Date(goodFirst.createdAt).getTime(),
         );
 
         return dispatch(setSearchGoods(filterGoods));

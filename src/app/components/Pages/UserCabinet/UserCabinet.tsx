@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 import Container from '../../Blocks/Container/Container';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
@@ -38,10 +38,10 @@ const UserCabinet: FC = () => {
   const userEmail = useSelector((state: RootState) => state.auth.userEmail);
   const [showPhone, setShowPhone] = useState(false);
   const user = users.filter((user: any) => user.email === userEmail)[0];
-  const userWithGoods = user.lastViewedGoods.map(
+  const userWithGoods = user?.lastViewedGoods.map(
     (good: string) => goodsArr.filter((goodItem) => goodItem.name === good)[0],
   );
-  const dateArr = String(new Date(user.createdAt)).split(' ');
+  const dateArr = String(new Date(user?.createdAt)).split(' ');
   const navigate = useNavigate();
 
   const eyeIconMouseDownHandler = (event: MouseEvent<HTMLImageElement>) => {
@@ -56,9 +56,9 @@ const UserCabinet: FC = () => {
     navigate('/editprofile');
   };
 
-  // useEffect(() => {
-  //   first;
-  // }, [third]);
+  useEffect(() => {
+    !user && navigate('/');
+  }, [user]);
 
   console.log(userWithGoods);
 
@@ -67,13 +67,13 @@ const UserCabinet: FC = () => {
       <StyledUserCabinet>
         <SectionTitle text="Личный кабинет" primary={false} />
         <StyledInfoWrapper>
-          <Image mode="profile" buttonMode="between" image={user.image} />
+          <Image mode="profile" buttonMode="between" image={user?.image} />
 
           <StyledInfo>
             <StyledUserCabinetEditButton onClick={editProfileButtonHandler}>
               Изменить или редактировать данные
             </StyledUserCabinetEditButton>
-            <StyledUserCabinetName>{user.username}</StyledUserCabinetName>
+            <StyledUserCabinetName>{user?.username}</StyledUserCabinetName>
             <StyledUserCabinetDate>
               <TextOrange text="Дата регистрации на сайте: " />
               <span>{`${dateArr[2]} ${months[dateArr[1].toLowerCase()]} ${
@@ -84,13 +84,15 @@ const UserCabinet: FC = () => {
               <StyledUserCabinetSubtitle>
                 Адрес электронной почты
               </StyledUserCabinetSubtitle>
-              {user.email}
+              {user?.email}
             </StyledUserCabinetEmail>
             <StyledUserCabinetTel>
               <StyledUserCabinetSubtitle>
                 Контактный номер телефона
               </StyledUserCabinetSubtitle>
-              {showPhone ? user.phone : `+7 (7XX) XXX X${user.phone.slice(-4)}`}
+              {showPhone
+                ? user?.phone
+                : `+7 (7XX) XXX X${user?.phone.slice(-4)}`}
               <StyledEyeIcon
                 position="static"
                 src={eyeIcon}
@@ -110,11 +112,11 @@ const UserCabinet: FC = () => {
                 Адрес и почтовый индекс
               </StyledUserCabinetSubtitle>
               <StyledTextSimple>Республика Казахстан,</StyledTextSimple>
-              <StyledTextSimple>{user.city}</StyledTextSimple>
+              <StyledTextSimple>{user?.city}</StyledTextSimple>
               <StyledTextSimple>
-                {`${user.street}, д.${user.houseNumber}, кв.${user.flatNumber}, ${user.floor} этаж`}
+                {`${user?.street}, д.${user?.houseNumber}, кв.${user?.flatNumber}, ${user?.floor} этаж`}
               </StyledTextSimple>
-              Почтовый индекс: {user.postIndex}
+              Почтовый индекс: {user?.postIndex}
               <Note>
                 <StyledTextGrey>Примечание:</StyledTextGrey>
                 <br />
@@ -126,7 +128,7 @@ const UserCabinet: FC = () => {
         </StyledInfoWrapper>
         <StyledCategoryGoodsTitle>Последние товары</StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
-          {userWithGoods.map((viewedGood: IGood, index: number) => (
+          {userWithGoods?.map((viewedGood: IGood, index: number) => (
             <Link
               key={viewedGood.name + index}
               to={`/goods/${viewedGood.name}`}

@@ -26,7 +26,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../../redux/store';
 import { calculateRating } from '../../../commonFunctions/commonFunctions';
-import { setFavoriteGood } from '../../../redux/reducers/users/usersReducer';
+import {
+  removeFavoriteGood,
+  setFavoriteGood,
+} from '../../../redux/reducers/users/usersReducer';
 
 const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
   const cartGoods = useSelector((state: RootState) => state.cart.goods);
@@ -35,6 +38,10 @@ const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
 
   const addToFavoriteClickHandler = (userId: string, goodName: string) => {
     dispatch(setFavoriteGood(userId, goodName));
+  };
+
+  const removeFromFavoriteClickHandler = (userId: string, goodName: string) => {
+    dispatch(removeFavoriteGood(userId, goodName));
   };
 
   const addGoodToCart = () => {
@@ -100,7 +107,12 @@ const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
           <StyledGoodsItemIcon src={cartIcon} alt="Корзина" />
         </StyledGoodsItemCart>
         <StyledGoodsItemFavorite
-          onClick={() => addToFavoriteClickHandler(String(user?.id), good.name)}
+          onClick={
+            user && user.favorites?.some((goodName) => goodName === good.name)
+              ? () =>
+                  removeFromFavoriteClickHandler(String(user?.id), good.name)
+              : () => addToFavoriteClickHandler(String(user?.id), good.name)
+          }
         >
           <StyledGoodsItemIcon
             src={

@@ -42,6 +42,7 @@ import Rating from 'react-rating';
 import { calculateRating } from '../../../commonFunctions/commonFunctions';
 import { setGoodRating } from '../../../redux/reducers/goods/goodsReducer';
 import {
+  removeFavoriteGood,
   setFavoriteGood,
   setViewedGood,
 } from '../../../redux/reducers/users/usersReducer';
@@ -81,6 +82,10 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
 
   const incrementGoodsCount = () => {
     setGoodCount(goodCount + 1);
+  };
+
+  const removeFromFavoriteClickHandler = (userId: string, goodName: string) => {
+    dispatch(removeFavoriteGood(userId, goodName));
   };
 
   const addToFavoriteClickHandler = (userId: string, goodName: string) => {
@@ -223,8 +228,16 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
               />
               <Button
                 text={matches ? 'Добавить в список желаний' : ''}
-                clickHandler={() =>
-                  addToFavoriteClickHandler(String(user.id), good.name)
+                clickHandler={
+                  user &&
+                  user.favorites?.some((goodName) => goodName === good.name)
+                    ? () =>
+                        removeFromFavoriteClickHandler(
+                          String(user.id),
+                          good.name,
+                        )
+                    : () =>
+                        addToFavoriteClickHandler(String(user.id), good.name)
                 }
                 mode="favorite"
                 favorite={
