@@ -37,14 +37,16 @@ const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
                 setUserAvatarUrl(URL.createObjectURL(acceptedFiles[0]));
               }}
             >
-              {userAvatarUrl === '' && !image && (
-                <img
-                  src={plusIcon}
-                  alt="Иконка знака плюс"
-                  style={{ width: 40 }}
-                />
-              )}
-              {(userAvatarUrl !== '' || image) && (
+              {userAvatarUrl === '' &&
+                (!image || image.slice(-9) === 'undefined') && (
+                  <img
+                    src={plusIcon}
+                    alt="Иконка знака плюс"
+                    style={{ width: 40 }}
+                  />
+                )}
+              {(userAvatarUrl !== '' ||
+                (image && image.slice(-9) !== 'undefined')) && (
                 <img
                   src={userAvatarUrl || image}
                   alt="Аватар"
