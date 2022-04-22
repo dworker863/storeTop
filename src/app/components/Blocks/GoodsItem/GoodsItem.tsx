@@ -100,11 +100,11 @@ const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
           <StyledGoodsItemIcon src={cartIcon} alt="Корзина" />
         </StyledGoodsItemCart>
         <StyledGoodsItemFavorite
-          onClick={() => addToFavoriteClickHandler(String(user.id), good.name)}
+          onClick={() => addToFavoriteClickHandler(String(user?.id), good.name)}
         >
           <StyledGoodsItemIcon
             src={
-              user.favorites?.some((goodName) => goodName === good.name)
+              user?.favorites?.some((goodName) => goodName === good.name)
                 ? checkIcon
                 : favoriteIcon
             }

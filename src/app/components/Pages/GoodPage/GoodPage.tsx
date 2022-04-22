@@ -73,7 +73,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
       .addEventListener('change', (e) => setMatches(e.matches));
 
     dispatch(setViewedGood(user?.email, good?.name));
-  }, [good.name]);
+  }, [good?.name]);
 
   const decrementGoodsCount = () => {
     goodCount > 0 && setGoodCount(goodCount - 1);
@@ -228,7 +228,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user }) => {
                 }
                 mode="favorite"
                 favorite={
-                  user.favorites?.some((goodName) => goodName === good.name)
+                  user?.favorites?.some((goodName) => goodName === good.name)
                     ? true
                     : false
                 }
