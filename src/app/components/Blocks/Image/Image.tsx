@@ -8,6 +8,7 @@ import {
 import Dropzone from 'react-dropzone';
 import plusIcon from '../../../../assets/images/plus-icon.png';
 import { IImage } from './IImage';
+import Button from '../../Elements/Button/Button';
 
 const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
   const [userAvatarUrl, setUserAvatarUrl] = useState('');
@@ -17,6 +18,7 @@ const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
 
     changeHandler && changeHandler(e.target.files[0]);
     e.target.files && setUserAvatarUrl(URL.createObjectURL(e.target.files[0]));
+    console.log(userAvatarUrl);
   };
 
   return (
@@ -61,6 +63,17 @@ const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
                   changeHandler={handleChange}
                   mode={mode}
                 />
+                {(acceptedFiles[0] || userAvatarUrl) && (
+                  <Button
+                    {...getInputProps()}
+                    text={'Х Удалить'}
+                    clickHandler={() => {
+                      acceptedFiles.length = 0;
+                      changeHandler && changeHandler(null);
+                      setUserAvatarUrl('');
+                    }}
+                  />
+                )}
               </StyledImageBtnWrapper>
             )}
           </>

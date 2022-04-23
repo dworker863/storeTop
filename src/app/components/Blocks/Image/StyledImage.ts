@@ -3,7 +3,7 @@ import { IStyledUserCabinetBtnWrapper, IStyledGoodImage } from './IImage';
 
 export const StyledImageWrapper = styled.div<IStyledGoodImage>`
   padding: 35px;
-  height: 600px;
+  height: max-content;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border: 1px solid ${(props) => props.theme.colors.lightGrey};
@@ -81,7 +81,9 @@ export const StyledImage = styled.div`
 `;
 export const StyledImageBtnWrapper = styled.div<IStyledUserCabinetBtnWrapper>`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
 
   ${({ mode }) =>
     mode === 'center' &&

@@ -107,7 +107,7 @@ export const updateUser = (user: IUser) => {
 
   if (typeof user.image === 'string') {
     formData.append('image', user.image);
-  } else {
+  } else if (user.image) {
     formData.append('image', user.image, user.image.name);
   }
 
