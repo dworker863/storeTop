@@ -6,5 +6,9 @@ export interface IGoodPage {
   goods: IGoodsState;
   cart: ICartState;
   user: IUser;
-  ratingHandler: (mode: boolean) => void;
+  ratingHandler: (mode: boolean, text: string) => void;
+}
+
+export interface IStyledGoodSticker {
+  mode: 'discount' | 'hit';
 }

@@ -12,19 +12,16 @@ const UnauthorizedModal: FC<IUnauthorizedModal> = ({
   active,
   buttonHandler,
   user,
+  text,
 }) => {
   const buttonsClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
-    buttonHandler(false);
+    buttonHandler(false, '');
   };
 
   return (
-    <StyledUnauthorizedModal>
+    <StyledUnauthorizedModal active={active}>
       <StyledModal active={active}>
-        <StyledOrderModalText>
-          {user
-            ? 'Вы уже ставили рейтинг этому товару'
-            : 'Только авторизованные пользователи могут оставлять рейтинг'}
-        </StyledOrderModalText>
+        <StyledOrderModalText>{}</StyledOrderModalText>
         <StyledModalCloseButton
           onClick={buttonsClickHandler}
         ></StyledModalCloseButton>

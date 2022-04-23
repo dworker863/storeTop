@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Container from '../../Blocks/Container/Container';
 import { IGoodPage } from './IGoodPage';
@@ -23,6 +23,7 @@ import {
   StyledGoodRatingText,
   StyledGoodRatingTextBig,
   StyledGoodSerialWrapper,
+  StyledGoodSticker,
   StyledGoodStock,
   StyledGoodSubTitle,
 } from './StyledGoodPage';
@@ -54,6 +55,7 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
   );
 
   const { goodName } = useParams();
+  // const unauthorizedModalHandler = useContext(UnauthorizedModalContext);
   const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
   const goodsArr = [...goods.electronics, ...goods.cosmetics];
@@ -143,6 +145,14 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
       <StyledGoodPage>
         <SectionTitle text={good?.name} primary={false} />
         <StyledGoodInfoWrapper>
+          {good.discount.length > 0 && (
+            <StyledGoodSticker mode="discount">
+              Скидка {good.discount}
+            </StyledGoodSticker>
+          )}
+          {good.hit && (
+            <StyledGoodSticker mode="hit">Хит продаж</StyledGoodSticker>
+          )}
           <div>
             <Image mode="good" buttonMode="between" image={good?.image} />
             <StyledGoodRating>
@@ -157,8 +167,13 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
                           setGoodRating(value, good.id, category, user.email),
                         )
                           .then((res) => console.log('Спасибо за ваш голос'))
-                          .catch((e) => ratingHandler(true))
-                      : ratingHandler(true);
+                          .catch((e) =>
+                            ratingHandler(
+                              true,
+                              'Только авторизованные пользователи могут ставтить рейтинг товару',
+                            ),
+                          )
+                      : ratingHandler(true, '');
                   }}
                 />
               </StyledGoodRatingIconsWrapper>
@@ -214,7 +229,8 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
                 <StyledGoodPageDiscountPrice>
                   {Number(good?.price) -
                     Number(good?.price) *
-                      (Number(good?.discount.slice(0, -1)) / 100)}
+                      (Number(good?.discount.slice(0, -1)) / 100) +
+                    ' тг.'}
                 </StyledGoodPageDiscountPrice>
               </>
             )}
@@ -244,8 +260,17 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
                           String(user.id),
                           good.name,
                         )
-                    : () =>
-                        addToFavoriteClickHandler(String(user.id), good.name)
+                    : () => {
+                        user
+                          ? addToFavoriteClickHandler(
+                              String(user.id),
+                              good.name,
+                            )
+                          : ratingHandler(
+                              true,
+                              'Только авторизованные пользователи могут добавлять товары в избранное',
+                            );
+                      }
                 }
                 mode="favorite"
                 favorite={

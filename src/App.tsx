@@ -33,6 +33,7 @@ import UnauthorizedModal from './app/components/Sections/UnauthorizedModal/Unaut
 export const OrderModalContext = createContext<any>(null);
 export const LogoutModalContext = createContext<any>(null);
 export const SearchFilterContext = createContext<any>(null);
+export const UnauthorizedModalContext = createContext<any>(null);
 
 function App() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -50,6 +51,7 @@ function App() {
   const [orderModal, setOrderModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
   const [unauthorizedModal, setUnauthorizedModal] = useState(false);
+  const [unauthorizedModalText, setUnauthorizedModalText] = useState('');
   const dispatch = useDispatch();
 
   const setfilterGoods = (
@@ -128,8 +130,9 @@ function App() {
     setLogoutModal(mode);
   };
 
-  const unauthorizedButtonHandler = (mode: boolean) => {
+  const unauthorizedButtonHandler = (mode: boolean, text: string) => {
     setUnauthorizedModal(mode);
+    setUnauthorizedModalText(text);
   };
 
   useEffect(() => {
@@ -153,6 +156,7 @@ function App() {
         active={unauthorizedModal}
         buttonHandler={unauthorizedButtonHandler}
         user={user}
+        text={unauthorizedModalText}
       />
       <LogoutModalContext.Provider value={logoutButtonHandler}>
         <SearchFilterContext.Provider value={setfilterGoods}>
@@ -161,54 +165,59 @@ function App() {
       </LogoutModalContext.Provider>
       <Menu categories={Object.keys(goods)} />
       <OrderModalContext.Provider value={orderButtonHandler}>
-        <Routes>
-          <Route path="/" element={<HomePage goods={goodsArr} user={user} />} />
-          <Route path="conditions" element={<PaymentConditionsPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="reviews" element={<ReviewsPage />} />
-          <Route path="cart" element={<CartPage cart={cart} />} />
-          <Route
-            path="search"
-            element={<SearchPage goods={search.searchGoods} user={user} />}
-          />
-          <Route path="registration" element={<RegistrationPage />} />
-          <Route
-            path="cabinet"
-            element={auth ? <UserCabinet /> : <Navigate to="/" replace />}
-          />
-          <Route path="editprofile" element={<EditProfilePage />} />
-          <Route
-            path="goods/electronics"
-            element={
-              <CategoryPage
-                goods={goods.electronics}
-                title="Электроника"
-                user={user}
-              />
-            }
-          />
-          <Route
-            path="goods/cosmetics"
-            element={
-              <CategoryPage
-                goods={goods.cosmetics}
-                title="Косметика"
-                user={user}
-              />
-            }
-          />
-          <Route
-            path="goods/:goodName"
-            element={
-              <GoodPage
-                goods={goods}
-                cart={cart}
-                user={user}
-                ratingHandler={unauthorizedButtonHandler}
-              />
-            }
-          />
-        </Routes>
+        <UnauthorizedModalContext.Provider value={unauthorizedButtonHandler}>
+          <Routes>
+            <Route
+              path="/"
+              element={<HomePage goods={goodsArr} user={user} />}
+            />
+            <Route path="conditions" element={<PaymentConditionsPage />} />
+            <Route path="contacts" element={<ContactsPage />} />
+            <Route path="reviews" element={<ReviewsPage />} />
+            <Route path="cart" element={<CartPage cart={cart} />} />
+            <Route
+              path="search"
+              element={<SearchPage goods={search.searchGoods} user={user} />}
+            />
+            <Route path="registration" element={<RegistrationPage />} />
+            <Route
+              path="cabinet"
+              element={auth ? <UserCabinet /> : <Navigate to="/" replace />}
+            />
+            <Route path="editprofile" element={<EditProfilePage />} />
+            <Route
+              path="goods/electronics"
+              element={
+                <CategoryPage
+                  goods={goods.electronics}
+                  title="Электроника"
+                  user={user}
+                />
+              }
+            />
+            <Route
+              path="goods/cosmetics"
+              element={
+                <CategoryPage
+                  goods={goods.cosmetics}
+                  title="Косметика"
+                  user={user}
+                />
+              }
+            />
+            <Route
+              path="goods/:goodName"
+              element={
+                <GoodPage
+                  goods={goods}
+                  cart={cart}
+                  user={user}
+                  ratingHandler={unauthorizedButtonHandler}
+                />
+              }
+            />
+          </Routes>
+        </UnauthorizedModalContext.Provider>
       </OrderModalContext.Provider>
     </ThemeProvider>
   );

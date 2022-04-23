@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { IGoodItem } from './IGoodItem';
 import {
   StyledGoodsItem,
@@ -30,9 +30,11 @@ import {
   removeFavoriteGood,
   setFavoriteGood,
 } from '../../../redux/reducers/users/usersReducer';
+import { UnauthorizedModalContext } from '../../../../App';
 
 const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
   const cartGoods = useSelector((state: RootState) => state.cart.goods);
+  const unauthorizedModalHandler = useContext(UnauthorizedModalContext);
   const dispatch = useDispatch();
   const rating = calculateRating(good.rating);
 
@@ -111,7 +113,14 @@ const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
             user && user.favorites?.some((goodName) => goodName === good.name)
               ? () =>
                   removeFromFavoriteClickHandler(String(user?.id), good.name)
-              : () => addToFavoriteClickHandler(String(user?.id), good.name)
+              : () => {
+                  user
+                    ? addToFavoriteClickHandler(String(user?.id), good.name)
+                    : unauthorizedModalHandler(
+                        true,
+                        'Только авторизованные пользователи могут добавлять товары в избранное',
+                      );
+                }
           }
         >
           <StyledGoodsItemIcon

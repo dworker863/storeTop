@@ -1,12 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { IStyledOrderModalWrapper } from './IUnauthorizedModal';
 
-export const StyledUnauthorizedModal = styled.div`
-  position: absolute;
-  top: 20%;
+export const StyledUnauthorizedModal = styled.div<IStyledOrderModalWrapper>`
+  z-index: 1000;
+  position: fixed;
+  display: none;
+  top: 0;
   width: 100%;
   height: 100vh;
 
-  /* div {
-    display: block;
-  } */
+  ${({ active }) =>
+    active &&
+    css`
+      display: block;
+    `}
 `;

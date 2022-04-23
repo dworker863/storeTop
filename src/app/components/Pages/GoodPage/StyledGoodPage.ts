@@ -1,10 +1,13 @@
 import { StyledInfoWrapper } from './../../../commonStyles/StyledInfoWrapper';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledInfo } from '../../../commonStyles/StyledInfo';
 import addCartIcon from '../../../../assets/images/cart-white-icon.png';
 import favoriteIcon from '../../../../assets/images/favorite-icon.png';
+import { IStyledGoodSticker } from './IGoodPage';
 
 export const StyledGoodInfoWrapper = styled(StyledInfoWrapper)`
+  position: relative;
+
   @media (max-width: 1200px) {
     flex-direction: column;
 
@@ -18,6 +21,30 @@ export const StyledGoodInfoWrapper = styled(StyledInfoWrapper)`
   @media (max-width: 768px) {
     width: 100%;
   }
+`;
+
+export const StyledGoodSticker = styled.div<IStyledGoodSticker>`
+  /* display: none; */
+  position: absolute;
+  top: 20px;
+  left: -1px;
+  font-family: Roboto, serif;
+  padding: 7px 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+
+  ${({ mode }) =>
+    mode === 'hit'
+      ? css`
+          color: #000;
+          background-color: ${(props) => props.theme.colors.yellow};
+        `
+      : css`
+          color: #fff;
+          background-color: ${(props) => props.theme.colors.red};
+        `}
 `;
 
 export const StyledGoodInfo = styled(StyledInfo)`
