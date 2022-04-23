@@ -23,7 +23,7 @@ import { StyledFormRegistrTextWrapper } from './StyledFormRegistration';
 import { IFormRegistration } from './IFormRegistration';
 
 const FormRegistration: FC<IFormRegistration> = ({ image }) => {
-  const error = useSelector((state: RootState) => state.auth.error);
+  const error = useSelector((state: RootState) => state.auth.errorRegistr);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useAppDispatch();
@@ -107,7 +107,7 @@ const FormRegistration: FC<IFormRegistration> = ({ image }) => {
             image,
           ),
         ).then((res) => {
-          if (res.payload.error.length === 0) {
+          if (res.payload.errorRegistr.length === 0) {
             navigate('/');
           }
         });

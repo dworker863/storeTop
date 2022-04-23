@@ -18,7 +18,7 @@ import { StyledEyeIcon } from '../../../commonStyles/StyledEyeIcon';
 import eyeIcon from '../../../../assets/images/eye-icon.png';
 
 const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
-  const error = useSelector((state: RootState) => state.auth.error);
+  const error = useSelector((state: RootState) => state.auth.errorLogin);
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -47,7 +47,7 @@ const FormAuth: FC<IFormAuth> = ({ authButtonHandler }) => {
       onSubmit={(values, { setSubmitting }) => {
         dispatch(setRemember(values.remember));
         dispatch(setLogin(values.email, values.password)).then((res) => {
-          if (res.payload.error.length > 0) {
+          if (res.payload.errorLogin.length > 0) {
             authButtonHandler(true);
           } else {
             authButtonHandler(false);

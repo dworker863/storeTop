@@ -25,7 +25,15 @@ const LogoutModal: FC<IModal> = ({ active, buttonHandler }) => {
 
   const logoutClickHandler = () => {
     const path = window.location.pathname;
-    dispatch(setAuth({ userName: '', userEmail: '', auth: false, error: '' }));
+    dispatch(
+      setAuth({
+        userName: '',
+        userEmail: '',
+        auth: false,
+        errorRegistr: '',
+        errorLogin: '',
+      }),
+    );
     if (path === '/cabinet' || path === '/editprofile') {
       navigate('/');
     }

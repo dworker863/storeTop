@@ -8,14 +8,16 @@ export interface IAuthState {
   userEmail: string;
   auth: boolean;
   remember: boolean;
-  error: string;
+  errorRegistr: string;
+  errorLogin: string;
 }
 
 export interface IAuth {
   userName: string;
   userEmail: string;
   auth: boolean;
-  error: string;
+  errorRegistr: string;
+  errorLogin: string;
 }
 
 export interface ISetAuthAction {

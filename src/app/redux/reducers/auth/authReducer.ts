@@ -17,7 +17,8 @@ const initialState: IAuthState = {
   userEmail: '',
   auth: false,
   remember: false,
-  error: '',
+  errorRegistr: '',
+  errorLogin: '',
 };
 
 const auth = (state = initialState, action: TAuthActionTypes | any) => {
@@ -68,7 +69,8 @@ export const setLogin =
             userName: user.username,
             userEmail: user.email,
             auth: true,
-            error: '',
+            errorRegistr: '',
+            errorLogin: '',
           }),
         );
       })
@@ -80,7 +82,8 @@ export const setLogin =
             userName: '',
             userEmail: '',
             auth: false,
-            error: e.message,
+            errorRegistr: '',
+            errorLogin: e.message,
           }),
         );
       });
@@ -96,7 +99,8 @@ export const setLoginWithToken =
             userName: user.username,
             userEmail: user.email,
             auth: true,
-            error: '',
+            errorRegistr: '',
+            errorLogin: '',
           }),
         );
       })
@@ -106,7 +110,8 @@ export const setLoginWithToken =
             userName: '',
             userEmail: '',
             auth: false,
-            error: e.message,
+            errorRegistr: '',
+            errorLogin: e.message,
           }),
         );
       });
@@ -149,7 +154,8 @@ export const setRegistration =
             userName: user.username,
             userEmail: user.email,
             auth: true,
-            error: '',
+            errorRegistr: '',
+            errorLogin: '',
           }),
         );
       })
@@ -159,7 +165,8 @@ export const setRegistration =
             userName: '',
             userEmail: '',
             auth: false,
-            error: e.message,
+            errorRegistr: e.message,
+            errorLogin: '',
           }),
         );
       });
