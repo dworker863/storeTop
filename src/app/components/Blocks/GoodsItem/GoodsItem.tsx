@@ -122,6 +122,9 @@ const GoodsItem: FC<IGoodItem> = ({ good, user }) => {
                       );
                 }
           }
+          favorite={
+            user && user.favorites?.some((goodName) => goodName === good.name)
+          }
         >
           <StyledGoodsItemIcon
             src={

@@ -51,6 +51,8 @@ export const StyledButton = styled.button<IStyledButton>`
     mode === 'favorite' &&
     favorite &&
     css`
+      background: linear-gradient(#d7d8d8, #afb3b6);
+
       &:before {
         width: 30px;
         height: 30px;

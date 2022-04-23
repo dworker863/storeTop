@@ -13,3 +13,7 @@ export interface IStyledSticker {
 export interface IStyledGoodPhoto {
   image: string;
 }
+
+export interface IStyledGoodsItemFavorite {
+  favorite?: boolean;
+}

@@ -1,4 +1,8 @@
-import { IStyledSticker, IStyledGoodPhoto } from './IGoodItem';
+import {
+  IStyledSticker,
+  IStyledGoodPhoto,
+  IStyledGoodsItemFavorite,
+} from './IGoodItem';
 import styled, { css } from 'styled-components';
 import trimmer from '../../../../assets/images/trimmer.png';
 
@@ -91,7 +95,7 @@ export const StyledGoodsItemWhite = styled.span`
   color: #fff;
 `;
 
-export const StyledGoodsItemFavorite = styled.div`
+export const StyledGoodsItemFavorite = styled.div<IStyledGoodsItemFavorite>`
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -99,6 +103,12 @@ export const StyledGoodsItemFavorite = styled.div`
   width: 55px;
   border-bottom-right-radius: 5px;
   background: linear-gradient(to bottom, #ffca67, #ffac3a);
+
+  ${({ favorite }) =>
+    favorite &&
+    css`
+      background: linear-gradient(#d7d8d8, #afb3b6);
+    `}
 `;
 
 export const StyledGoodsItemCart = styled.div`
