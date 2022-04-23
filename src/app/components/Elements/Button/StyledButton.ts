@@ -6,6 +6,7 @@ import checkIcon from '../../../../assets/images/check-icon.png';
 export const StyledButton = styled.button<IStyledButton>`
   cursor: pointer;
   background-color: #ff3a00;
+  min-width: 100px;
   padding: 15px 17px;
   border-radius: 5px;
   font-size: 16px;
