@@ -30,6 +30,7 @@ import {
 } from '../GoodPage/StyledGoodPage';
 import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 import { IGood } from '../../../commonInterfaces/IGood';
+import GoodsItem from '../../Blocks/GoodsItem/GoodsItem';
 
 const UserCabinet: FC = () => {
   const users = useSelector((state: RootState) => state.users.users);
@@ -40,6 +41,10 @@ const UserCabinet: FC = () => {
   const user = users.filter((user: any) => user.email === userEmail)[0];
   const userWithGoods = user?.lastViewedGoods.map(
     (good: string) => goodsArr.filter((goodItem) => goodItem.name === good)[0],
+  );
+  const favoriteGoods = user.favorites.map(
+    (goodName: any) =>
+      goodsArr.filter((good: any) => goodName === good.name)[0],
   );
   const dateArr = String(new Date(user?.createdAt)).split(' ');
   const navigate = useNavigate();
@@ -126,6 +131,12 @@ const UserCabinet: FC = () => {
             </StyledUserCabinetAddressWrapper>
           </StyledInfo>
         </StyledInfoWrapper>
+        <StyledCategoryGoodsTitle>Избранные товары</StyledCategoryGoodsTitle>
+        <StyledCategoryGoodsWrapper>
+          {favoriteGoods.map((good: IGood) => (
+            <GoodsItem good={good} user={user} />
+          ))}
+        </StyledCategoryGoodsWrapper>
         <StyledCategoryGoodsTitle>Последние товары</StyledCategoryGoodsTitle>
         <StyledCategoryGoodsWrapper>
           {userWithGoods?.map((viewedGood: IGood, index: number) => (
