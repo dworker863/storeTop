@@ -21,7 +21,7 @@ const UnauthorizedModal: FC<IUnauthorizedModal> = ({
   return (
     <StyledUnauthorizedModal active={active}>
       <StyledModal active={active}>
-        <StyledOrderModalText>{}</StyledOrderModalText>
+        <StyledOrderModalText>{text}</StyledOrderModalText>
         <StyledModalCloseButton
           onClick={buttonsClickHandler}
         ></StyledModalCloseButton>

@@ -131,8 +131,10 @@ function App() {
   };
 
   const unauthorizedButtonHandler = (mode: boolean, text: string) => {
-    setUnauthorizedModal(mode);
+    console.log(text);
+
     setUnauthorizedModalText(text);
+    setUnauthorizedModal(mode);
   };
 
   useEffect(() => {

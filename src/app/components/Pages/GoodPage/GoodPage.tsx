@@ -145,12 +145,12 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
       <StyledGoodPage>
         <SectionTitle text={good?.name} primary={false} />
         <StyledGoodInfoWrapper>
-          {good.discount.length > 0 && (
+          {good?.discount.length > 0 && (
             <StyledGoodSticker mode="discount">
               Скидка {good.discount}
             </StyledGoodSticker>
           )}
-          {good.hit && (
+          {good?.hit && (
             <StyledGoodSticker mode="hit">Хит продаж</StyledGoodSticker>
           )}
           <div>
@@ -170,10 +170,13 @@ const GoodPage: FC<IGoodPage> = ({ goods, cart, user, ratingHandler }) => {
                           .catch((e) =>
                             ratingHandler(
                               true,
-                              'Только авторизованные пользователи могут ставтить рейтинг товару',
+                              'Вы уже ставили рейтинг этому товару',
                             ),
                           )
-                      : ratingHandler(true, '');
+                      : ratingHandler(
+                          true,
+                          'Только авторизованные пользователи могут ставтить рейтинг товару',
+                        );
                   }}
                 />
               </StyledGoodRatingIconsWrapper>
