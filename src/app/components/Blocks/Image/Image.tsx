@@ -59,6 +59,7 @@ const Image: FC<IImage> = ({ mode, buttonMode, image, changeHandler }) => {
                 <ButtonUpload
                   {...getInputProps()}
                   changeHandler={handleChange}
+                  mode={mode}
                 />
               </StyledImageBtnWrapper>
             )}
