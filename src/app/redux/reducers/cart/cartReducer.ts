@@ -14,7 +14,7 @@ import {
 
 const initialState: ICartState = {
   goods: [],
-  delivery: 2000,
+  delivery: 0,
   sum: 0,
   selected: { delivery: 'почтой', payment: 'наличными' },
 };

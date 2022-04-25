@@ -51,7 +51,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
         dispatch(
           setCartSelect({
             delivery: cart.selected.delivery,
-            payment: 'почтой',
+            payment: 'наличными',
           }),
         );
         break;
