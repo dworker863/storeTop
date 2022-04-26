@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import checkIcon from '../../../../assets/images/check-icon.png';
 
 export const StyledCartPage = styled.section`
-  display: flex;
   color: ${(props) => props.theme.colors.fontColor};
 `;
 
 export const StyledCartTitle = styled.h2``;
+
+export const StyledCartPageWrapper = styled.div`
+  display: flex;
+`;
 
 export const StyledCartGoodsWrapper = styled.div``;
 
@@ -157,6 +160,7 @@ export const StyledCartSum = styled.div`
 export const StyledCartOrderWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 20px;
 `;
 
@@ -169,3 +173,7 @@ export const StyledCartOrderInfo = styled.span`
     color: ${(props) => props.theme.colors.primary};
   }
 `;
+
+export const StyledCartRecomended = styled.span``;
+
+export const StyledCartGoodCard = styled.span``;

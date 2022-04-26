@@ -49,7 +49,7 @@ const CartItem: FC<ICartItem> = ({ good, cart }) => {
         <StyledCartItemDesc>{good.description}</StyledCartItemDesc>
         <StyledCartItemSum>
           <StyledCartItemCountWrapper>
-            <StyledCartItemCount>{`1шт.`}</StyledCartItemCount>
+            <StyledCartItemCount>{good.goodsCount}</StyledCartItemCount>
             <StyledCartItemCountChanger onClick={decrementGoodsCount}>
               -
             </StyledCartItemCountChanger>
@@ -59,7 +59,7 @@ const CartItem: FC<ICartItem> = ({ good, cart }) => {
           </StyledCartItemCountWrapper>
           <StyledCartItemPrice>{`${good.price} тг.`}</StyledCartItemPrice>
         </StyledCartItemSum>
-        <StyledCartItemRemoveBtn>
+        <StyledCartItemRemoveBtn onClick={removeGoodFromCart}>
           Удалить товар из корзины
         </StyledCartItemRemoveBtn>
       </StyledCartItemInfo>
