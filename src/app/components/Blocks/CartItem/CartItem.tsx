@@ -8,11 +8,16 @@ import { ICartItem } from './ICartItem';
 import {
   StyledCartItem,
   StyledCartItemCount,
-  StyledCartItemCounter,
-  StyledCartItemDiscountPrice,
+  StyledCartItemCountChanger,
+  StyledCartItemCountWrapper,
+  StyledCartItemDesc,
+  StyledCartItemInfo,
   StyledCartItemName,
+  StyledCartItemPhoto,
   StyledCartItemPrice,
   StyledCartItemRemoveBtn,
+  StyledCartItemSerialNumber,
+  StyledCartItemSum,
 } from './StyledCartItem';
 
 const CartItem: FC<ICartItem> = ({ good, cart }) => {
@@ -35,7 +40,30 @@ const CartItem: FC<ICartItem> = ({ good, cart }) => {
 
   return (
     <StyledCartItem>
-      <StyledCartItemName>{good.name}</StyledCartItemName>
+      <StyledCartItemPhoto>
+        <img src={good.image} alt="" />
+      </StyledCartItemPhoto>
+      <StyledCartItemInfo>
+        <StyledCartItemName>{good.name}</StyledCartItemName>
+        <StyledCartItemSerialNumber>{good.name}</StyledCartItemSerialNumber>
+        <StyledCartItemDesc>{good.description}</StyledCartItemDesc>
+        <StyledCartItemSum>
+          <StyledCartItemCountWrapper>
+            <StyledCartItemCount>{`1шт.`}</StyledCartItemCount>
+            <StyledCartItemCountChanger onClick={decrementGoodsCount}>
+              -
+            </StyledCartItemCountChanger>
+            <StyledCartItemCountChanger onClick={incrementGoodsCount}>
+              +
+            </StyledCartItemCountChanger>
+          </StyledCartItemCountWrapper>
+          <StyledCartItemPrice>{`${good.price} тг.`}</StyledCartItemPrice>
+        </StyledCartItemSum>
+        <StyledCartItemRemoveBtn>
+          Удалить товар из корзины
+        </StyledCartItemRemoveBtn>
+      </StyledCartItemInfo>
+      {/* <StyledCartItemName>{good.name}</StyledCartItemName>
       <StyledCartItemCounter onClick={decrementGoodsCount}>
         {itemGood.goodsCount > 0 && '-'}
       </StyledCartItemCounter>
@@ -58,7 +86,7 @@ const CartItem: FC<ICartItem> = ({ good, cart }) => {
       )}
       <StyledCartItemRemoveBtn onClick={removeGoodFromCart}>
         X
-      </StyledCartItemRemoveBtn>
+      </StyledCartItemRemoveBtn> */}
     </StyledCartItem>
   );
 };
