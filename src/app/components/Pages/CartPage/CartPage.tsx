@@ -7,7 +7,6 @@ import {
 } from '../../../redux/reducers/cart/cartReducer';
 import CartItem from '../../Blocks/CartItem/CartItem';
 import Container from '../../Blocks/Container/Container';
-import GoodPageItem from '../../Blocks/GoodPageItem/GoodPageItem';
 import Button from '../../Elements/Button/Button';
 import { StyledTextGrey } from '../../Elements/ContactsItem/StyledContactsItem';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
@@ -16,7 +15,6 @@ import {
   StyledCartBigLine,
   StyledCartExpress,
   StyledCartFullLine,
-  StyledCartGoodCard,
   StyledCartGoodItem,
   StyledCartGoodItemCount,
   StyledCartGoodPrice,
@@ -37,7 +35,6 @@ import {
   StyledCartPromoBtn,
   StyledCartPromoInput,
   StyledCartPromoTitle,
-  StyledCartRecomended,
   StyledCartShortLine,
   StyledCartString,
   StyledCartSum,
@@ -56,7 +53,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
 
   const optionChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     switch (event.target.value) {
-      case 'экспресс': {
+      case 'Экспресс доставка +2000': {
         dispatch(setCartDelivery(2000));
         dispatch(
           setCartSelect({
@@ -67,7 +64,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
         break;
       }
 
-      case 'почтой': {
+      case 'Доставка почтой': {
         dispatch(setCartDelivery(0));
         dispatch(
           setCartSelect({
@@ -78,7 +75,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
         break;
       }
 
-      case 'наличными': {
+      case 'Оплата наличными': {
         dispatch(
           setCartSelect({
             delivery: cart.selected.delivery,
@@ -88,7 +85,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
         break;
       }
 
-      case 'банковской картой': {
+      case 'Оплата картой онлайн': {
         dispatch(
           setCartSelect({
             delivery: cart.selected.delivery,
@@ -148,7 +145,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
             <StyledCartShortLine></StyledCartShortLine>
             <StyledCartPageSelect onChange={optionChangeHandler}>
               <option>Экспресс доставка +2000</option>
-              <option>Доставка почтой</option>
+              <option selected>Доставка почтой</option>
             </StyledCartPageSelect>
             <StyledCartNote>
               <StyledTextGrey>Примечание:</StyledTextGrey>
@@ -181,11 +178,16 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
               </div>
               <StyledCartGoodPrice>30000 тг.</StyledCartGoodPrice>
             </StyledCartGoodItem>
-            <StyledCartExpress>2000 тг.</StyledCartExpress>
+            {cart.delivery > 0 && (
+              <StyledCartExpress>
+                <StyledCartGoodTitle>Экспресс-доставка</StyledCartGoodTitle>
+                <StyledCartGoodPrice>2000 тг.</StyledCartGoodPrice>
+              </StyledCartExpress>
+            )}
             <StyledCartFullLine></StyledCartFullLine>
             <StyledCartSumWrapper>
               <StyledCartPromo>Промокод не применен.</StyledCartPromo>
-              <StyledCartSum>62000 тг.</StyledCartSum>
+              <StyledCartSum>{cart.sum}</StyledCartSum>
             </StyledCartSumWrapper>
             <StyledCartFullLine></StyledCartFullLine>
             <StyledCartOrderWrapper>

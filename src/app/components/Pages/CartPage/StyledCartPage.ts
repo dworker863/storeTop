@@ -108,6 +108,7 @@ export const StyledCartSumTitle = styled.h3`
 export const StyledCartGoodItem = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 `;
 
@@ -128,8 +129,10 @@ export const StyledCartGoodPrice = styled.div`
 `;
 
 export const StyledCartExpress = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
-  font-weight: 700;
 `;
 
 export const StyledCartFullLine = styled.div`
