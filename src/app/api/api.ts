@@ -186,3 +186,24 @@ export const removeGoodFromFavorites = (id: string, goodName: string) => {
       throw new Error(e.response.data.message);
     });
 };
+
+export const addOrder = (
+  username: string,
+  phone: string,
+  city: string,
+  street: string,
+  houseNumber: string,
+  floor: string,
+  flatNumber: string,
+  postIndex: string,
+) => {
+  return instance
+    .post('/orders')
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((e) => {
+      throw new Error(e.response.data.message);
+    });
+};
