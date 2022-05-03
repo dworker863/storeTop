@@ -63,30 +63,6 @@ const CartItem: FC<ICartItem> = ({ good, cart }) => {
           Удалить товар из корзины
         </StyledCartItemRemoveBtn>
       </StyledCartItemInfo>
-      {/* <StyledCartItemName>{good.name}</StyledCartItemName>
-      <StyledCartItemCounter onClick={decrementGoodsCount}>
-        {itemGood.goodsCount > 0 && '-'}
-      </StyledCartItemCounter>
-      <StyledCartItemCount>{good.goodsCount}</StyledCartItemCount>
-      <StyledCartItemCounter onClick={incrementGoodsCount}>
-        +
-      </StyledCartItemCounter>
-      {good.discount.length === 0 ? (
-        <StyledCartItemPrice>{good.price}</StyledCartItemPrice>
-      ) : (
-        <>
-          <StyledCartItemDiscountPrice>
-            {good.price}
-          </StyledCartItemDiscountPrice>
-          <StyledCartItemPrice>
-            {Number(good.price) -
-              Number(good.price) * (Number(good.discount.slice(0, -1)) / 100)}
-          </StyledCartItemPrice>
-        </>
-      )}
-      <StyledCartItemRemoveBtn onClick={removeGoodFromCart}>
-        X
-      </StyledCartItemRemoveBtn> */}
     </StyledCartItem>
   );
 };
