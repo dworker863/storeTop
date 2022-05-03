@@ -143,7 +143,9 @@ export const StyledFilterCheckbox = styled(Field)`
     &:before {
       background-color: ${(props) => props.theme.colors.primary};
       background-image: url(${checkIcon});
-      background-size: contain;
+      background-size: 10px;
+      background-repeat: no-repeat;
+      background-position: 50%;
     }
   }
 `;

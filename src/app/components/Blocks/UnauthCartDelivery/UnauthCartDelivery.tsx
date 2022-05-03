@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { addOrder } from '../../../api/api';
 import { useAppDispatch } from '../../../hooks';
-import { setRegistration } from '../../../redux/reducers/auth/authReducer';
 import { StyledRegistrationTitle } from '../../Pages/RegistrationPage/StyledRegistrationPage';
 import { StyledCartPageDeliveryTitle } from '../AuthСartDelivery/StyledAuthCartDelivery';
 import { StyledUnauthCartPageDelivery } from './StyledUnauthCartDelivery';
