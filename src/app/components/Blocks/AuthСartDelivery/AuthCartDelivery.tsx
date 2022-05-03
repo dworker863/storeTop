@@ -111,7 +111,11 @@ const AuthCartDelivery: FC<IAuthCartDeliveryState> = ({
       </StyledCartSumWrapper>
       <StyledCartFullLine></StyledCartFullLine>
       <StyledCartOrderWrapper>
-        <Button text="Оформить заказ" clickHandler={submitHandler} />
+        {cart.selected.payment === 'Оплата наличными' ? (
+          <Button text="Оформить заказ" clickHandler={submitHandler} />
+        ) : (
+          <Button text="Перейти к оплате" clickHandler={submitHandler} />
+        )}
         <StyledCartOrderInfo>
           подробных условиях оплаты
           <br /> можете узнать <a href="#">здесь</a>
