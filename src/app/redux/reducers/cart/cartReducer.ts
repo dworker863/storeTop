@@ -16,7 +16,7 @@ const initialState: ICartState = {
   goods: [],
   delivery: 0,
   sum: 0,
-  selected: { delivery: 'почтой', payment: 'наличными' },
+  selected: { delivery: 'Доставка почтой', payment: 'Оплата наличными' },
 };
 
 type NewType = TCartActionTypes;

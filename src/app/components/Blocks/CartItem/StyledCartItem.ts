@@ -98,6 +98,7 @@ export const StyledCartItemPrice = styled.div`
 `;
 
 export const StyledCartItemRemoveBtn = styled.a`
+  cursor: pointer;
   text-decoration: underline;
   font-size: 14px;
   color: ${(props) => props.theme.colors.primary};
