@@ -168,7 +168,9 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
                     {`Количество: ${good.goodsCount}`}
                   </StyledCartGoodItemCount>
                 </div>
-                <StyledCartGoodPrice>{`${good.price} тг.`}</StyledCartGoodPrice>
+                <StyledCartGoodPrice>{`${
+                  Number(good.price) * good.goodsCount
+                } тг.`}</StyledCartGoodPrice>
               </StyledCartGoodItem>
             ))}
             {cart.delivery > 0 && (
