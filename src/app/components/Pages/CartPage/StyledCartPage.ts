@@ -29,6 +29,7 @@ export const StyledCartPageDeliveryTitle = styled.h3`
 
 export const StyledCartPageSelect = styled.select`
   margin-bottom: 20px;
+  padding: 5px;
   border-radius: 4px;
 `;
 

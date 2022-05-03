@@ -160,24 +160,17 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
             <StyledCartPromoBtn></StyledCartPromoBtn>
             <StyledCartShortLine></StyledCartShortLine>
             <StyledCartSumTitle>Общий итог</StyledCartSumTitle>
-            <StyledCartGoodItem>
-              <div>
-                <StyledCartGoodTitle>
-                  Название первого товара
-                </StyledCartGoodTitle>
-                <StyledCartGoodItemCount>Количество: 1</StyledCartGoodItemCount>
-              </div>
-              <StyledCartGoodPrice>30000 тг.</StyledCartGoodPrice>
-            </StyledCartGoodItem>
-            <StyledCartGoodItem>
-              <div>
-                <StyledCartGoodTitle>
-                  Название второго товара
-                </StyledCartGoodTitle>
-                <StyledCartGoodItemCount>Количество: 1</StyledCartGoodItemCount>
-              </div>
-              <StyledCartGoodPrice>30000 тг.</StyledCartGoodPrice>
-            </StyledCartGoodItem>
+            {cart.goods.map((good, index) => (
+              <StyledCartGoodItem key={good.name + index}>
+                <div>
+                  <StyledCartGoodTitle>{good.name}</StyledCartGoodTitle>
+                  <StyledCartGoodItemCount>
+                    {`Количество: ${good.goodsCount}`}
+                  </StyledCartGoodItemCount>
+                </div>
+                <StyledCartGoodPrice>{`${good.price} тг.`}</StyledCartGoodPrice>
+              </StyledCartGoodItem>
+            ))}
             {cart.delivery > 0 && (
               <StyledCartExpress>
                 <StyledCartGoodTitle>Экспресс-доставка</StyledCartGoodTitle>
