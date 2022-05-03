@@ -8,6 +8,7 @@ import {
 import AuthCartDelivery from '../../Blocks/AuthСartDelivery/AuthCartDelivery';
 import CartItem from '../../Blocks/CartItem/CartItem';
 import Container from '../../Blocks/Container/Container';
+import UnauthCartDelivery from '../../Blocks/UnauthCartDelivery/UnauthCartDelivery';
 import SectionTitle from '../../Elements/SectionTitle/SectionTitle';
 import { ICartPage } from './ICartPage';
 import {
@@ -16,7 +17,7 @@ import {
   StyledCartPageWrapper,
 } from './StyledCartPage';
 
-const CartPage: FC<ICartPage> = ({ cart }) => {
+const CartPage: FC<ICartPage> = ({ cart, auth }) => {
   const setOrderModalActive = useContext(OrderModalContext);
 
   console.log(cart.selected.delivery);
@@ -96,6 +97,7 @@ const CartPage: FC<ICartPage> = ({ cart }) => {
             'Добавьте товар в корзину'
           )}
         </StyledCartPageWrapper>
+        {cart.goods.length && !auth.auth && <UnauthCartDelivery />}
       </StyledCartPage>
       <div style={{ height: '20vh' }}></div>
     </Container>

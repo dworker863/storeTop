@@ -176,7 +176,7 @@ function App() {
             <Route path="conditions" element={<PaymentConditionsPage />} />
             <Route path="contacts" element={<ContactsPage />} />
             <Route path="reviews" element={<ReviewsPage />} />
-            <Route path="cart" element={<CartPage cart={cart} />} />
+            <Route path="cart" element={<CartPage cart={cart} auth={auth} />} />
             <Route
               path="search"
               element={<SearchPage goods={search.searchGoods} user={user} />}
